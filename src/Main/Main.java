@@ -1,4 +1,4 @@
-package com.blixtr;
+package Main;
 
 public class Main {
 
