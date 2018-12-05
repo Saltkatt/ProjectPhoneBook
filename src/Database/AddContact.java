@@ -5,8 +5,17 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * This class manages adding new contacts to the database
+ * @author Ida
+ */
 public class AddContact {
 
+    /**
+     * Inserts a new contact to the database
+     * @param name the name of the contact
+     * @param number the number of the contact
+     */
     public void addContact(String name, String number) {
         String sql = "INSERT INTO phone_book(name,number) VALUES(?,?)";
 
