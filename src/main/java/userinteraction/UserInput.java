@@ -11,7 +11,7 @@ public class UserInput {
     private static Scanner sc = new Scanner(System.in);
 
     /**
-     Controls the user input and returns it when it's a valid name input.
+     Checks the user input and returns it when it's a valid name input.
      */
     public static String name() {
         String name;
@@ -26,6 +26,24 @@ public class UserInput {
             }
         } while (!validInput);
         return name;
+    }
+
+    /**
+     Checks the user input and returns it when it's a valid phone number input.
+     */
+    public static String phoneNumber() {
+        String phoneNumber;
+        boolean validInput;
+        do {
+            phoneNumber = sc.nextLine().trim();
+            if (phoneNumber.matches("[0-9]{20}")) {
+                validInput = true;
+            } else {
+                UserOutput.printLine("Invalid input, try again!");
+                validInput = false;
+            }
+        }while (!validInput);
+        return phoneNumber;
     }
 
 }
