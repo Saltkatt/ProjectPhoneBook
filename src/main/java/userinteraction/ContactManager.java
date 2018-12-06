@@ -53,16 +53,16 @@ public class ContactManager {
     Collect name input from user and return it
      */
     public String enterName() {
-        userinteraction.UserOutput.printLine("Enter name:");
-        return userinteraction.UserInput.name();
+        UserOutput.printLine("Enter name:");
+        return UserInput.name();
     }
 
     /**
     Collect phone number input from user and return it
     */
     public String enterPhoneNumber() {
-        userinteraction.UserOutput.printLine("Enter phone number:");
-        return userinteraction.UserInput.phoneNumber();
+        UserOutput.printLine("Enter phone number:");
+        return UserInput.phoneNumber();
     }
 
 }
