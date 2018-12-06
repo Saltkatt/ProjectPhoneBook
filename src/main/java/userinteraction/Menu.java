@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @version version 0.1 Dec 06 2018
  */
 
-public class MenuLists {
+public class Menu {
 
     private ContactManager cm;
     private UserInput in;
@@ -18,17 +18,20 @@ public class MenuLists {
     private static ArrayList<MenuOptions> mainMenuList;
     private static ArrayList<MenuOptions> editMenuList;
 
-    public MenuLists(ContactManager cm, UserOutput out, UserInput in){
+    public Menu(ContactManager cm, UserOutput out, UserInput in){
         this.cm = cm;
         this.in = in;
         this.out = out;
-        mainMenuList = new ArrayList<>();
+        fillEditMenu();
+        fillMainMenu();
+
     }
 
     private final void fillMainMenu(){
-
+        mainMenuList = new ArrayList<>();
        // mainMenuList.add(new MenuOptions("1. Add conctact", cm.addContact()))
        // mainMenuList.add(new MenuOptions("2. Edit contact",
+
     }
 
     private final void fillEditMenu(){
