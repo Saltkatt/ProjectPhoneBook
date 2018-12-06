@@ -14,7 +14,14 @@ public class ContactManager {
     }
 
     /*
-    Providing database removal method with a contact id belonging to the contact to remove.
+    Providing database update name method with a contact id, belonging to the contact to update, and the new name.
+     */
+    public void updateName(int contactID) {
+        updateContact.updateName(contactID, enterName());
+    }
+
+    /*
+    Providing database removal method with a contact id, belonging to the contact to remove.
      */
     public void remove(int contactID) {
         removeContact.removeContact(contactID);
