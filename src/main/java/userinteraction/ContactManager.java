@@ -21,6 +21,12 @@ public class ContactManager {
         return userinteraction.UserInput.name();
     }
 
-
+    /*
+    Collect phone number input from user and return it
+    */
+    public String enterPhoneNumber() {
+        userinteraction.UserOutput.printLine("Enter phone number:");
+        return userinteraction.UserInput.phoneNumber();
+    }
 
 }
