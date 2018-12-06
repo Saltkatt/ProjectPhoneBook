@@ -1,4 +1,4 @@
-package UserInteraction;
+package userinteraction;
 
 public class ContactManager {
 }

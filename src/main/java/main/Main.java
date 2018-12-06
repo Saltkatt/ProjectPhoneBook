@@ -1,6 +1,6 @@
-package Main;
+package main;
 
-import Database.CreateDatabase;
+import database.*;
 
 public class Main {
 

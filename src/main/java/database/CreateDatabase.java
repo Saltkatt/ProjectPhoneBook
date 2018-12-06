@@ -1,4 +1,4 @@
-package Database;
+package database;
 
 import java.io.File;
 import java.sql.Connection;
@@ -13,7 +13,7 @@ import java.sql.Statement;
 public class CreateDatabase {
 
     /**
-     * Checks if the database already exists or not. If it doesn't, it creates it.
+     * Checks if the database exists. If it doesn't, it creates it.
      */
     public void createDatabaseIfNotExist(){
 
