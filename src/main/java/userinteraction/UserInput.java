@@ -1,5 +1,6 @@
 package main.java.userinteraction;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInput {
@@ -44,6 +45,24 @@ public class UserInput {
             }
         }while (!validInput);
         return phoneNumber;
+    }
+
+    /**
+     Checks the user input and returns it when it's a valid list choice input .
+     */
+    public static <T> int chooseFromList(List<T> list) {
+        String userSelection;
+        boolean validInput;
+        do {
+            userSelection = sc.nextLine().trim();
+            if (userSelection.matches("[0-9]+") && Integer.parseInt(userSelection) >= 1 && Integer.parseInt(userSelection) <= list.size()) {
+                validInput = true;
+            } else {
+                UserOutput.printLine("Invalid input, try again!");
+                validInput = false;
+            }
+        }while (!validInput);
+        return Integer.parseInt(userSelection);
     }
 
 }
