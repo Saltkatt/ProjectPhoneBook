@@ -27,23 +27,18 @@ public class Menu {
 
     }
 
-    private final void fillMainMenu(){
+    private void fillMainMenu(){
         mainMenuList = new ArrayList<>();
        // mainMenuList.add(new MenuOptions("1. Add conctact", cm.addContact()))
        // mainMenuList.add(new MenuOptions("2. Edit contact",
 
     }
 
-    private final void fillEditMenu(){
+    private void fillEditMenu(){
         editMenuList = new ArrayList<>();
 
 
     }
 
-    public ArrayList<MenuOptions> getMainMenuList(){
-        return mainMenuList;
-    }
-    public ArrayList<MenuOptions> getEditMenuList(){
-        return editMenuList;
-    }
+
 }
