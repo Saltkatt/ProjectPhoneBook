@@ -7,10 +7,17 @@ public class ContactManager {
      */
 
     /*
-    Getting info from user for creating a contact and providing the result to database communication method.
+    Getting info from user for creating a contact and providing the result to database adding method.
      */
-    public void createContect() {
+    public void create() {
         addContact.addContact(enterName(), enterPhoneNumber());
+    }
+
+    /*
+    Providing database removal method with a contact id belonging to the contact to remove.
+     */
+    public void remove(int contactID) {
+        removeContact.removeContact(contactID);
     }
 
     /*
