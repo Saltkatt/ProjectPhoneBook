@@ -9,4 +9,11 @@ public class MenuOptions {
         this.menuText = menuText;
         this.doIt = method;
     }
+
+    public DoSomething getDoIt(){
+        return doIt;
+    }
+    public String getMenuText(){
+        return menuText;
+    }
 }
