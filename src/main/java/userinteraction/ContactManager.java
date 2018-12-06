@@ -13,4 +13,14 @@ public class ContactManager {
         addContact.addContact(enterName(), enterPhoneNumber());
     }
 
+    /*
+    Collect name input from user and return it
+     */
+    public String enterName() {
+        userinteraction.UserOutput.printLine("Enter name:");
+        return userinteraction.UserInput.name();
+    }
+
+
+
 }
