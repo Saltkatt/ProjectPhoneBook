@@ -60,21 +60,4 @@ public class ContactManager {
     public void remove(int contactID) {
         removeContact.removeContact(contactID);
     }
-
-    /**
-     * Collect name input from user and return it
-     */
-    public String enterName() {
-        UserOutput.printLine("Enter name:");
-        return UserInput.name();
-    }
-
-    /**
-     * Collect phone number input from user and return it
-     */
-    public String enterPhoneNumber() {
-        UserOutput.printLine("Enter phone number:");
-        return UserInput.phoneNumber();
-    }
-
 }
