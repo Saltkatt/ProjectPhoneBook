@@ -37,7 +37,10 @@ public class ContactManager {
      * Providing database update name method with a contact id, belonging to the contact to update, and the new name.
      */
     public void updateName(int contactID) {
-        updateContact.updateName(contactID, enterName());
+        UserOutput.printLine("Enter new name:");
+        String name = UserInput.name();
+
+        updateContact.updateName(contactID, name);
     }
 
     /**
