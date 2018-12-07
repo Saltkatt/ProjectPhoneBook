@@ -17,8 +17,9 @@ public class Menu {
     private UserOutput out;
     private static ArrayList<MenuOptions> mainMenuList;
     private static ArrayList<MenuOptions> editMenuList;
+    private static Menu menuCaller;
 
-    public Menu(ContactManager cm, UserOutput out, UserInput in){
+    private Menu(ContactManager cm, UserOutput out, UserInput in){
         this.cm = cm;
         this.in = in;
         this.out = out;
@@ -27,6 +28,11 @@ public class Menu {
 
     }
 
+    public static Menu newMenu(){
+        if(menuCaller == null)
+            menuCaller = new Menu(new ContactManager(), new UserOutput(), new UserInput());
+        return menuCaller;
+    }
     private void fillMainMenu(){
         mainMenuList = new ArrayList<>();
        // mainMenuList.add(new MenuOptions("1. Add conctact", cm.addContact()))
