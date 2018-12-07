@@ -1,4 +1,4 @@
-package main.java.userinteraction;
+package userinteraction;
 
 import database.AddContact;
 import database.RemoveContact;
@@ -38,8 +38,8 @@ public class ContactManager {
      * Providing database update phone number method with a contact id, belonging to the contact to update,
      * and the new phone number.
      */
-    public void updateName(int contactID) {
-        updateContact.updateName(contactID, enterName());
+    public void updatePhoneNumber(int contactID) {
+        updateContact.updatePhoneNumber(contactID, enterPhoneNumber());
     }
 
     /**

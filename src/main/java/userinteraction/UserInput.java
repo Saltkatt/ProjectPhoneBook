@@ -1,4 +1,4 @@
-package main.java.userinteraction;
+package userinteraction;
 
 import java.util.List;
 import java.util.Scanner;

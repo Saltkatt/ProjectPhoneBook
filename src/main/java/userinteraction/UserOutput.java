@@ -1,4 +1,4 @@
-package main.java.userinteraction;
+package userinteraction;
 
 public class UserOutput {
 
