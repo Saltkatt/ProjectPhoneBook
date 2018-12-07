@@ -13,16 +13,12 @@ import java.util.ArrayList;
 public class Menu {
 
     private ContactManager cm;
-    private UserInput in;
-    private UserOutput out;
     private static ArrayList<MenuOptions> mainMenuList;
     private static ArrayList<MenuOptions> editMenuList;
     private static Menu menuCaller;
 
-    private Menu(ContactManager cm, UserOutput out, UserInput in){
+    private Menu(ContactManager cm){
         this.cm = cm;
-        this.in = in;
-        this.out = out;
         fillEditMenu();
         fillMainMenu();
 
@@ -30,12 +26,16 @@ public class Menu {
 
     public static Menu newMenu(){
         if(menuCaller == null)
-            menuCaller = new Menu(new ContactManager(), new UserOutput(), new UserInput());
+            menuCaller = new Menu(new ContactManager());
         return menuCaller;
     }
+
+
+
+
     private void fillMainMenu(){
         mainMenuList = new ArrayList<>();
-       // mainMenuList.add(new MenuOptions("1. Add conctact", cm.addContact()))
+        mainMenuList.add(new MenuOptions("1. Add contact", () -> cm.create()));
        // mainMenuList.add(new MenuOptions("2. Edit contact", () -> editMenu());
 
     }
@@ -49,9 +49,9 @@ public class Menu {
     }
 
     private void readMenu(ArrayList<MenuOptions> list){
-        //TODO: Call useroutput to print each String
-        //int option = in.getOption(list); TODO: Get int-answer from userInput
-        //list.get(Integer.parseInt(option)-1).getDoIt().doThing(); Run method
+         list.forEach(e -> UserOutput.printLine(e.getMenuText()));
+         int option =  UserInput.chooseFromList(list);
+         list.get(option-1).getDoIt().doThing();
     }
 
     public void mainMenu(){
