@@ -1,4 +1,4 @@
-package main.java.userinteraction;
+package userinteraction;
 
 import database.AddContact;
 import database.RemoveContact;
