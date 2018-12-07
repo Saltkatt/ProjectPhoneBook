@@ -24,7 +24,13 @@ public class ContactManager {
      * Getting info from user for creating a contact and providing the result to database adding method.
      */
     public void create() {
-        addContact.addContact(enterName(), enterPhoneNumber());
+        UserOutput.printLine("Enter name:");
+        String name = UserInput.name();
+
+        UserOutput.printLine("Enter phone number:");
+        String phoneNumber = UserInput.phoneNumber();
+
+        addContact.addContact(name, phoneNumber);
     }
 
     /**
