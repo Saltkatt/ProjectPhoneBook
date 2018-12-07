@@ -3,7 +3,7 @@ package main.java.userinteraction;
 public class UserOutput {
 
     /**
-     This class handles all user output.
+     * This class handles all user output.
      */
 
     public static void printLine(String output) {

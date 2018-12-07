@@ -6,13 +6,13 @@ import java.util.Scanner;
 public class UserInput {
 
     /**
-     This class handles all user output.
+     * This class handles all user output.
      */
 
     private static Scanner sc = new Scanner(System.in);
 
     /**
-     Checks the user input and returns it when it's a valid name input.
+     * Checks the user input and returns it when it's a valid name input.
      */
     public static String name() {
         String name;
@@ -30,7 +30,7 @@ public class UserInput {
     }
 
     /**
-     Checks the user input and returns it when it's a valid phone number input.
+     * Checks the user input and returns it when it's a valid phone number input.
      */
     public static String phoneNumber() {
         String phoneNumber;
@@ -48,7 +48,7 @@ public class UserInput {
     }
 
     /**
-     Checks the user input and returns it when it's a valid list choice input .
+     * Checks the user input and returns it when it's a valid list choice input .
      */
     public static <T> int chooseFromList(List<T> list) {
         String userSelection;
