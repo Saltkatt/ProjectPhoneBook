@@ -48,7 +48,10 @@ public class ContactManager {
      * and the new phone number.
      */
     public void updatePhoneNumber(int contactID) {
-        updateContact.updatePhoneNumber(contactID, enterPhoneNumber());
+        UserOutput.printLine("Enter new phone number:");
+        String phoneNumber = UserInput.phoneNumber();
+
+        updateContact.updatePhoneNumber(contactID, phoneNumber);
     }
 
     /**
