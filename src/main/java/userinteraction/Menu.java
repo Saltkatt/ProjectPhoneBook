@@ -15,7 +15,7 @@ public class Menu {
     private ContactManager cm;
     private static ArrayList<MenuOptions> mainMenuList;
     private static ArrayList<MenuOptions> editMenuList;
-    private static Menu menuCaller;
+    private static Menu menuInstance;
 
     private Menu(ContactManager cm){
         this.cm = cm;
@@ -25,9 +25,9 @@ public class Menu {
     }
 
     public static Menu newMenu(){
-        if(menuCaller == null)
-            menuCaller = new Menu(new ContactManager());
-        return menuCaller;
+        if(menuInstance == null)
+            menuInstance = new Menu(new ContactManager());
+        return menuInstance;
     }
 
 
