@@ -31,7 +31,7 @@ public class Menu {
     /**
      * Method that returns the only instance of this class
      *
-     * @return instance of class Menu
+     * @return The one instance of class Menu
      */
     public static Menu newMenu(){
         if(menuInstance == null)
