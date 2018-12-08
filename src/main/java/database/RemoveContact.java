@@ -17,7 +17,7 @@ public class RemoveContact {
      */
     public void removeContact(int contact_id){
         //String SQL-statement to delete contact.
-        String removeSQL = "DELETE FROM phone_book WHERE contact_id=" + contact_id + ";";
+        String removeSQL = "DELETE FROM phone_book WHERE contact_id= ?";
 
         //Connects to the database and deletes received id.
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:C:/sqlite/db/phone_book.db");
@@ -28,5 +28,5 @@ public class RemoveContact {
             System.out.println(e.getMessage());
         }
     }
-    
+
 }
