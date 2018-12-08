@@ -12,6 +12,9 @@ import java.sql.Statement;
  */
 public class CreateDatabase {
 
+    static String saveDir = System.getProperty("user.home") + File.separator + "IdeaProjects" + File.separator +
+            "ProjectPhoneBook" + File.separator;
+
     /**
      * Creates a database in the default project path. If the user have a different path than the default,
      * it creates the directories before creating the databasefile. If it needs to create a path it's platform independent.
@@ -25,13 +28,10 @@ public class CreateDatabase {
                 + ");";
 
 
-        String saveDir = System.getProperty("user.home") + File.separator + "IdeaProjects" + File.separator +
-                "ProjectPhoneBook" + File.separator;
         new File(saveDir).mkdirs();
 
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + saveDir + "phone_book.db")) {
-            Statement stmt = conn.createStatement();
-            stmt.execute(sql);
+            conn.createStatement().execute(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         }

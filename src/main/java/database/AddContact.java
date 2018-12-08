@@ -20,10 +20,7 @@ public class AddContact {
     public void addContact(String name, String number) {
         String sql = "INSERT INTO contacts(name,number) VALUES(?,?)";
 
-        String saveDir = System.getProperty("user.home") + File.separator + "IdeaProjects" + File.separator +
-                "ProjectPhoneBook" + File.separator;
-
-        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + saveDir + "phone_book.db");
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + CreateDatabase.saveDir + "phone_book.db");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, name);
             pstmt.setString(2, number);
