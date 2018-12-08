@@ -1,5 +1,7 @@
 package database;
 
+import java.sql.*;
+
 /**
  * This class selects contacts from the database
  * @author Elin Sexton
@@ -8,18 +10,27 @@ package database;
 public class SelectContact {
 
     /**
-     * Selects a contact from the database
-     * @param name of the contact
-     * @param number of the contact
+     * Selects all contacts from the database and prints the list.
      */
 
-    public void selectContact(String name, String number) {
+    public void selectAllContact() {
 
-        String selectNameSQL = "SELECT " + name + " FROM phone_book;";
-        String selectNumberSQL = "SELECT " + number + " FROM phone_book;";
-        String selectAllSQL = "SELECT * FROM phone_book;";
+        String selectAll = "SELECT * FROM phone_book";
+
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:C:/sqlite/db/phone_book.db");
+            Statement stmt  = con.createStatement();
+            ResultSet rs    = stmt.executeQuery(selectAll)){
+
+                while (rs.next()) {
+                    System.out.println(rs.getInt("contact_id") + "\t" +
+                            rs.getString("name") + "\t" +
+                            rs.getString("number"));
+                }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
-
-
+    
 }
