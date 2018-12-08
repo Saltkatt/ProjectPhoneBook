@@ -8,10 +8,15 @@ public class UpdateContact {
      * @param number of the contact.
      */
 
-    public void updateStatement(String name, String number) {
+    public void updateContact(int contact_id, String name, String number) {
 
-        String updateNameSQL = "UPDATE name FROM phone_book WHERE name=" + name + ";";
-        String updateNumberSQL = "UPDATE number FROM phone_book WHERE number=" + number + ";";
+        String updateName = "UPDATE phone_book SET name=" +name+ "WHERE contact_id=" +contact_id;
+        String updateNumber = "UPDATE phone_book SET number=" +number+ "WHERE contact_id=" +contact_id;
+
+
+
+
+
 
     }
 
