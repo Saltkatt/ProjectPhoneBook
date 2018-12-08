@@ -56,5 +56,28 @@ public class SelectContact {
         }
     }
 
+    /**
+     * Selects a contact based on the input number.
+     * @param number of the contact.
+     */
+    public void selectNumberContact(String number){
+
+        String selectNumber = "SELECT contact_id, name, number FROM phone_book WHERE number= ?";
+
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:C:/sqlite/db/phone_book.db");
+             PreparedStatement pstmt  = con.prepareStatement(selectNumber)){
+            pstmt.setString(1,number);
+            ResultSet rs  = pstmt.executeQuery();
+
+            while (rs.next()) {
+                System.out.println(rs.getInt("contact_id") +  "\t" +
+                        rs.getString("name") + "\t" +
+                        rs.getString("number"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 
 }
