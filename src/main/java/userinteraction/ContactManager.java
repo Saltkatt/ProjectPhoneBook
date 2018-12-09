@@ -101,4 +101,12 @@ public class ContactManager {
         UserOutput.printLine(headLine);
         return UserInput.name();
     }
+
+    /**
+     * Letting user enter a phone number and returns it.
+     */
+    public String enterPhoneNumber(String headLine) {
+        UserOutput.printLine(headLine);
+        return UserInput.phoneNumber();
+    }
 }
