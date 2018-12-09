@@ -16,23 +16,21 @@ public class ContactManager {
     private database.AddContact addContact;
     private database.RemoveContact removeContact;
     private database.UpdateContact updateContact;
+    private database.SelectContact selectContact;
 
-    public ContactManager(AddContact addContact, RemoveContact removeContact, UpdateContact updateContact) {
+    public ContactManager(AddContact addContact, RemoveContact removeContact, UpdateContact updateContact, SelectContact selectContact) {
         this.addContact = addContact;
         this.removeContact = removeContact;
         this.updateContact = updateContact;
+        this.selectContact = selectContact;
     }
 
     /**
      * Getting info from user for creating a contact and providing the result to database adding method.
      */
     public void create() {
-        UserOutput.printLine("Enter name:");
-        String name = UserInput.name();
-
-        UserOutput.printLine("Enter phone number:");
-        String phoneNumber = UserInput.phoneNumber();
-
+        String name = enterName("Enter name");
+        String phoneNumber = enterPhoneNumber("Enter phone number");
         addContact.addContact(name, phoneNumber);
     }
 
@@ -40,18 +38,15 @@ public class ContactManager {
      * Searching for contacts by name and returning the chosen contacts id.
      */
     public int searchByName() {
-        UserOutput.printLine("Enter name:");
-        String name = UserInput.name();
-        String contact = chooseContactFromList(SelectContact.selectContact(name, ""));
-        return Integer.parseInt(contact.substring(0, contact.indexOf(' ')));
+        String name = enterName("Enter name search phrase");
+        return chooseContactFromList(SelectContact.selectContact(name, ""));
     }
 
     /**
      * Searching for contacts by phone number and returning the chosen contacts id.
      */
     public int searchByPhoneNumber() {
-        UserOutput.printLine("Enter phone number:");
-        String phoneNumber = UserInput.phoneNumber();
+        String phoneNumber = enterPhoneNumber("Enter phone number search phrase");
         return chooseContactFromList(SelectContact.selectContact("", phoneNumber));
     }
 
@@ -70,9 +65,7 @@ public class ContactManager {
      * Providing database update name method with a contact id, belonging to the contact to update, and the new name.
      */
     public void updateName(int contactID) {
-        UserOutput.printLine("Enter new name:");
-        String name = UserInput.name();
-
+        String name = enterName("Enter new name");
         updateContact.updateName(contactID, name);
     }
 
@@ -81,9 +74,7 @@ public class ContactManager {
      * and the new phone number.
      */
     public void updatePhoneNumber(int contactID) {
-        UserOutput.printLine("Enter new phone number:");
-        String phoneNumber = UserInput.phoneNumber();
-
+        String phoneNumber = enterPhoneNumber("Enter new phone number");
         updateContact.updatePhoneNumber(contactID, phoneNumber);
     }
 
