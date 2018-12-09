@@ -5,6 +5,8 @@ import database.RemoveContact;
 import database.SelectContact;
 import database.UpdateContact;
 
+import java.util.List;
+
 public class ContactManager {
 
     /**
@@ -40,7 +42,7 @@ public class ContactManager {
     public int searchByName() {
         UserOutput.printLine("Enter name:");
         String name = UserInput.name();
-        String contact = chooseFromList(SelectContact.selectContact(name, ""));
+        String contact = chooseContactFromList(SelectContact.selectContact(name, ""));
         return Integer.parseInt(contact.substring(0, contact.indexOf(' ')));
     }
 
@@ -50,8 +52,18 @@ public class ContactManager {
     public int searchByPhoneNumber() {
         UserOutput.printLine("Enter phone number:");
         String phoneNumber = UserInput.phoneNumber();
-        String contact = chooseFromList(SelectContact.selectContact("", phoneNumber));
-        return Integer.parseInt(contact.substring(0, contact.indexOf(' ')));
+        return chooseContactFromList(SelectContact.selectContact("", phoneNumber));
+    }
+
+    /**
+     * Letting user choose contact from a list and returning its id.
+     */
+    public int chooseContactFromList(List<String> contacts) {
+        for(int i = 0; i < contacts.size(); i++) {
+            UserOutput.printLine(i + 1 + ". " + contacts.get(i).substring(contacts.indexOf(" ") + 1));
+        }
+        String contact = contacts.get(UserInput.chooseFromList(contacts));
+        return Integer.parseInt(contact.substring(0, contact.indexOf(" ")));
     }
 
     /**
