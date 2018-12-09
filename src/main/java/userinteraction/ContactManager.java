@@ -2,6 +2,7 @@ package userinteraction;
 
 import database.AddContact;
 import database.RemoveContact;
+import database.SelectContact;
 import database.UpdateContact;
 
 public class ContactManager {
@@ -31,6 +32,16 @@ public class ContactManager {
         String phoneNumber = UserInput.phoneNumber();
 
         addContact.addContact(name, phoneNumber);
+    }
+
+    /**
+     * Searching for contacts by name and returning the chosen contacts id.
+     */
+    public int searchByName() {
+        UserOutput.printLine("Enter name:");
+        String name = UserInput.name();
+        String contact = chooseFromList(SelectContact.selectContact(name, ""));
+        return Integer.parseInt(contact.substring(0, contact.indexOf(' ')));
     }
 
     /**
