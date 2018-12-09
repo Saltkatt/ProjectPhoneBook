@@ -35,30 +35,10 @@ public class ContactManager {
     }
 
     /**
-     * Searching for contacts by name and returning the chosen contacts id.
+     * Providing database removal method with a contact id, belonging to the contact to remove.
      */
-    public int searchByName() {
-        String name = enterName("Enter name search phrase");
-        return chooseContactFromList(SelectContact.selectContact(name, ""));
-    }
-
-    /**
-     * Searching for contacts by phone number and returning the chosen contacts id.
-     */
-    public int searchByPhoneNumber() {
-        String phoneNumber = enterPhoneNumber("Enter phone number search phrase");
-        return chooseContactFromList(SelectContact.selectContact("", phoneNumber));
-    }
-
-    /**
-     * Letting user choose contact from a list and returning its id.
-     */
-    public int chooseContactFromList(List<String> contacts) {
-        for(int i = 0; i < contacts.size(); i++) {
-            UserOutput.printLine(i + 1 + ". " + contacts.get(i).substring(contacts.indexOf(" ") + 1));
-        }
-        String contact = contacts.get(UserInput.chooseFromList(contacts));
-        return Integer.parseInt(contact.substring(0, contact.indexOf(" ")));
+    public void remove(int contactID) {
+        removeContact.removeContact(contactID);
     }
 
     /**
@@ -79,13 +59,6 @@ public class ContactManager {
     }
 
     /**
-     * Providing database removal method with a contact id, belonging to the contact to remove.
-     */
-    public void remove(int contactID) {
-        removeContact.removeContact(contactID);
-    }
-
-    /**
      * Letting user enter a name and returns it.
      */
     public String enterName(String headLine) {
@@ -99,5 +72,32 @@ public class ContactManager {
     public String enterPhoneNumber(String headLine) {
         UserOutput.printLine(headLine);
         return UserInput.phoneNumber();
+    }
+
+    /**
+     * Searching for contacts by name and returning the chosen contacts id.
+     */
+    public int searchByName() {
+        String name = enterName("Enter name search phrase");
+        return chooseContactFromList(selectContact.selectContact(name, ""));
+    }
+
+    /**
+     * Searching for contacts by phone number and returning the chosen contacts id.
+     */
+    public int searchByPhoneNumber() {
+        String phoneNumber = enterPhoneNumber("Enter phone number search phrase");
+        return chooseContactFromList(selectContact.selectContact("", phoneNumber));
+    }
+
+    /**
+     * Letting user choose contact from a list and returning its id.
+     */
+    public int chooseContactFromList(List<String> contacts) {
+        for (int i = 0; i < contacts.size(); i++) {
+            UserOutput.printLine(i + 1 + ". " + contacts.get(i).substring(contacts.indexOf(" ") + 1));
+        }
+        String contact = contacts.get(UserInput.chooseFromList(contacts));
+        return Integer.parseInt(contact.substring(0, contact.indexOf(" ")));
     }
 }
