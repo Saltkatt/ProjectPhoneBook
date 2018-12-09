@@ -93,4 +93,12 @@ public class ContactManager {
     public void remove(int contactID) {
         removeContact.removeContact(contactID);
     }
+
+    /**
+     * Letting user enter a name and returns it.
+     */
+    public String enterName(String headLine) {
+        UserOutput.printLine(headLine);
+        return UserInput.name();
+    }
 }
