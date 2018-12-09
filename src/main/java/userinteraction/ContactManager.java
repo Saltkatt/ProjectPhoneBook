@@ -45,6 +45,16 @@ public class ContactManager {
     }
 
     /**
+     * Searching for contacts by phone number and returning the chosen contacts id.
+     */
+    public int searchByPhoneNumber() {
+        UserOutput.printLine("Enter phone number:");
+        String phoneNumber = UserInput.phoneNumber();
+        String contact = chooseFromList(SelectContact.selectContact("", phoneNumber));
+        return Integer.parseInt(contact.substring(0, contact.indexOf(' ')));
+    }
+
+    /**
      * Providing database update name method with a contact id, belonging to the contact to update, and the new name.
      */
     public void updateName(int contactID) {
