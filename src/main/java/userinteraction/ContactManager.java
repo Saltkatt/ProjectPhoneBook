@@ -61,7 +61,7 @@ public class ContactManager {
     /**
      * Letting user enter a name and returns it.
      */
-    public String enterName(String headLine) {
+    private String enterName(String headLine) {
         UserOutput.printLine(headLine);
         return UserInput.name();
     }
@@ -69,7 +69,7 @@ public class ContactManager {
     /**
      * Letting user enter a phone number and returns it.
      */
-    public String enterPhoneNumber(String headLine) {
+    private String enterPhoneNumber(String headLine) {
         UserOutput.printLine(headLine);
         return UserInput.phoneNumber();
     }
@@ -100,7 +100,7 @@ public class ContactManager {
     /**
      * Letting user choose contact from a list and returning its id.
      */
-    public int chooseContactFromList(List<String> contacts) {
+    private int chooseContactFromList(List<String> contacts) {
         for (int i = 0; i < contacts.size(); i++) {
             UserOutput.printLine(i + 1 + ". " + contacts.get(i).substring(contacts.indexOf(" ") + 1));
         }
