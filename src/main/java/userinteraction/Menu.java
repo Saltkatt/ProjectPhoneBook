@@ -63,11 +63,11 @@ public class Menu {
 
     private void fillEditMenu(){
         editMenuList = new ArrayList<>();
-        editMenuList.add(new MenuOptions("1. Update name", cm.updateName()));
-        editMenuList.add(new MenuOptions("2. Update phonenumber", cm.updatePhoneNumber()));
-        editMenuList.add(new MenuOptions("3. Search by name", cm.searchByName()));
-        editMenuList.add(new MenuOptions("4. Search by phonenumber", cm.searchByPhoneNumber()));
-        editMenuList.add(new MenuOptions("5. Delete contact", cm.remove()));
+        editMenuList.add(new MenuOptions("1. Update name", () -> cm.updateName()));
+        editMenuList.add(new MenuOptions("2. Update phonenumber", () -> cm.updatePhoneNumber()));
+        editMenuList.add(new MenuOptions("3. Search by name", () ->  cm.searchByName()));
+        editMenuList.add(new MenuOptions("4. Search by phonenumber", () -> cm.searchByPhoneNumber()));
+        editMenuList.add(new MenuOptions("5. Delete contact", () -> cm.remove()));
         editMenuList.add(new MenuOptions("6. Back to main menu", () -> mainMenu()));
 
     }
