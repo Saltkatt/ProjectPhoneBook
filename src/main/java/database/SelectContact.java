@@ -42,7 +42,7 @@ public class SelectContact {
      */
     public List<String> selectNameContact(String name){
 
-        String selectName = "SELECT contact_id, name, number FROM contacts WHERE name= ?";
+        String selectName = "SELECT contact_id, name, number FROM contacts WHERE name LIKE ?%";
         List<String> contactName = new ArrayList<>();
 
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
