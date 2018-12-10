@@ -52,8 +52,10 @@ public class Menu {
     private void fillMainMenu(){
         mainMenuList = new ArrayList<>();
         mainMenuList.add(new MenuOptions("1. Add contact", () -> { cm.create(); mainMenu();} ));
-        mainMenuList.add(new MenuOptions("2. View/Edit contact", () -> { cm.findByList();
-                                                                                  editMenu();}));
+        mainMenuList.add(new MenuOptions("2. View/Edit contact", () -> {
+            if (cm.findByList()) editMenu();
+            mainMenu();
+        }));
         mainMenuList.add(new MenuOptions("3. Search contact", () -> searchMenu()));
         mainMenuList.add(new MenuOptions("4. Exit", () -> {}));
 
