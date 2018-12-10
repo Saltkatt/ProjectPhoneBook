@@ -17,7 +17,7 @@ public class SelectContact {
 
         String selectAll = "SELECT * FROM phone_book";
 
-        try (Connection con = DriverManager.getConnection("jdbc:sqlite:C:/sqlite/db/phone_book.db");
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
             Statement stmt  = con.createStatement();
             ResultSet rs    = stmt.executeQuery(selectAll)){
 
@@ -41,7 +41,7 @@ public class SelectContact {
 
         String selectName = "SELECT contact_id, name, number FROM phone_book WHERE name= ?";
 
-        try (Connection con = DriverManager.getConnection("jdbc:sqlite:C:/sqlite/db/phone_book.db");
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
              PreparedStatement pstmt  = con.prepareStatement(selectName)){
             pstmt.setString(1,name);
             ResultSet rs  = pstmt.executeQuery();
@@ -64,7 +64,7 @@ public class SelectContact {
 
         String selectNumber = "SELECT contact_id, name, number FROM phone_book WHERE number= ?";
 
-        try (Connection con = DriverManager.getConnection("jdbc:sqlite:C:/sqlite/db/phone_book.db");
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
              PreparedStatement pstmt  = con.prepareStatement(selectNumber)){
             pstmt.setString(1,number);
             ResultSet rs  = pstmt.executeQuery();
@@ -78,6 +78,4 @@ public class SelectContact {
             System.out.println(e.getMessage());
         }
     }
-
-
 }
