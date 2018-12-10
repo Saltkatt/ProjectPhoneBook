@@ -52,7 +52,6 @@ public class Menu {
         mainMenuList.add(new MenuOptions("1. Add contact", () -> cm.create()));
         mainMenuList.add(new MenuOptions("2. View all contacts", () -> { cm.findByList();
                                                                                   editMenu();}));
-       // mainMenuList.add(new MenuOptions("2. Edit contact", () -> editMenu());
 
     }
     /**
@@ -65,14 +64,11 @@ public class Menu {
     private void fillEditMenu(){
         editMenuList = new ArrayList<>();
         editMenuList.add(new MenuOptions("1. Update name", cm.updateName()));
-        editMenulist.add(new MenuOptions("2. Update phonenumber", cm.updatePhoneNumber()));
+        editMenuList.add(new MenuOptions("2. Update phonenumber", cm.updatePhoneNumber()));
         editMenuList.add(new MenuOptions("3. Search by name", cm.searchByName()));
         editMenuList.add(new MenuOptions("4. Search by phonenumber", cm.searchByPhoneNumber()));
         editMenuList.add(new MenuOptions("5. Delete contact", cm.remove()));
         editMenuList.add(new MenuOptions("6. Back to main menu", () -> mainMenu()));
-        //editMenuList.add(new MenuOptions("1. Search for contact, () -> cm.select(Usernput.getString())); This could also go to another menu. There should be a method for retrieving name/phonenumber?
-        //editMenuList.add(new MenuOptions("2. Delete contact, () -> cm
-        //editMenuList.add(new MenuOptions("3. Go back", () -> mainMenu());
 
     }
 
