@@ -1,10 +1,6 @@
 package userinteraction;
 
-import database.AddContact;
-import database.RemoveContact;
-import database.SelectContact;
-import database.UpdateContact;
-
+import database.*;
 import java.util.List;
 
 public class ContactManager {
@@ -13,17 +9,10 @@ public class ContactManager {
      * This class manages the user interactions which concern creating new and editing existing contacts.
      */
 
-    private database.AddContact addContact;
-    private database.RemoveContact removeContact;
-    private database.UpdateContact updateContact;
-    private database.SelectContact selectContact;
-
-    public ContactManager(AddContact addContact, RemoveContact removeContact, UpdateContact updateContact, SelectContact selectContact) {
-        this.addContact = addContact;
-        this.removeContact = removeContact;
-        this.updateContact = updateContact;
-        this.selectContact = selectContact;
-    }
+    private AddContact addContact = new AddContact();
+    private RemoveContact removeContact = new RemoveContact();
+    private UpdateContact updateContact = new UpdateContact();
+    private SelectContact selectContact = new SelectContact();
 
     /**
      * Getting info from user for creating a contact and providing the result to database adding method.
