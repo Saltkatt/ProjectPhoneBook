@@ -76,8 +76,8 @@ public class Menu {
 
     private void fillSearchMenu(){
         searchMenuList = new ArrayList<>();
-        searchMenuList.add(new MenuOptions("1. Search by name", () -> {cm.searchByName(); editMenu();}));
-        searchMenuList.add(new MenuOptions("2. Search by Phonenumber", () -> { cm.searchByPhoneNumber(); editMenu();}));
+        searchMenuList.add(new MenuOptions("1. Search by name", () -> {if(cm.searchByName()) editMenu(); searchMenu();}));
+        searchMenuList.add(new MenuOptions("2. Search by Phonenumber", () -> { if(cm.searchByPhoneNumber()) editMenu(); searchMenu();}));
         searchMenuList.add(new MenuOptions("3. Go back", () -> mainMenu()));
 
     }
