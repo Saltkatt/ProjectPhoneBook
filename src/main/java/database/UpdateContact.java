@@ -11,10 +11,9 @@ public class UpdateContact {
      * Updates a selected statement.
      * @param contact_id of the contact.
      * @param name of the contact.
-     * @param number of the contact.
      */
 
-    public void updateName(int contact_id, String name, String number) {
+    public void updateName(int contact_id, String name) {
 
         String updateName = "UPDATE phone_book SET name= ? WHERE contact_id= ?";
 
