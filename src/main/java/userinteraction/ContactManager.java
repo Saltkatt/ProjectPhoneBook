@@ -14,6 +14,8 @@ public class ContactManager {
     private UpdateContact updateContact = new UpdateContact();
     private SelectContact selectContact = new SelectContact();
 
+    private int chosenContactID;
+
     /**
      * Getting info from user for creating a contact and providing the result to database adding method.
      */
@@ -66,24 +68,24 @@ public class ContactManager {
     /**
      * Picking from full contact list and returning the chosen contacts id.
      */
-    public int findByList() {
-        return chooseContactFromList(selectContact.selectAllContacts());
+    public void findByList() {
+        chosenContactID = chooseContactFromList(selectContact.selectAllContacts());
     }
 
     /**
      * Searching for contacts by name and returning the chosen contacts id.
      */
-    public int searchByName() {
+    public void searchByName() {
         String name = enterName("Enter name search phrase");
-        return chooseContactFromList(selectContact.selectContact(name, ""));
+        chosenContactID = chooseContactFromList(selectContact.selectContact(name, ""));
     }
 
     /**
      * Searching for contacts by phone number and returning the chosen contacts id.
      */
-    public int searchByPhoneNumber() {
+    public void searchByPhoneNumber() {
         String phoneNumber = enterPhoneNumber("Enter phone number search phrase");
-        return chooseContactFromList(selectContact.selectContact("", phoneNumber));
+        chosenContactID = chooseContactFromList(selectContact.selectContact("", phoneNumber));
     }
 
     /**
