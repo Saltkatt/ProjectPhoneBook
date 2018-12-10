@@ -14,12 +14,11 @@ public class UpdateContact {
      * @param number of the contact.
      */
 
-    public void updateContact(int contact_id, String name, String number) {
+    public void updateName(int contact_id, String name, String number) {
 
         String updateName = "UPDATE phone_book SET name= ? WHERE contact_id= ?";
-        String updateNumber = "UPDATE phone_book SET number= ? WHERE contact_id= ?";
 
-        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" + CreateDatabase.saveDir + "phone_book.db");
              PreparedStatement pstmt = con.prepareStatement(updateName)) {
             pstmt.setString(1, name);
             pstmt.setInt(2, contact_id);
@@ -27,9 +26,13 @@ public class UpdateContact {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
 
+    public void updatePhoneNumber(int contact_id, String number) {
+
+        String updatePhoneNumber = "UPDATE phone_book SET number= ? WHERE contact_id= ?";
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:C:/sqlite/db/phone_book.db");
-             PreparedStatement pstmt = con.prepareStatement(updateNumber)) {
+             PreparedStatement pstmt = con.prepareStatement(updatePhoneNumber)) {
             pstmt.setString(1, number);
             pstmt.setInt(2, contact_id);
             pstmt.executeUpdate();
