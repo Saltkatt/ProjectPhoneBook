@@ -1,5 +1,7 @@
 package database;
 
+import java.sql.*;
+
 /**
  * This class selects contacts from the database
  * @author Elin Sexton
@@ -8,18 +10,72 @@ package database;
 public class SelectContact {
 
     /**
-     * Selects a contact from the database
-     * @param name of the contact
-     * @param number of the contact
+     * Selects all contacts from the database and prints the list.
      */
 
-    public void selectContact(String name, String number) {
+    public void selectAllContact() {
 
-        String selectNameSQL = "SELECT " + name + " FROM phone_book;";
-        String selectNumberSQL = "SELECT " + number + " FROM phone_book;";
-        String selectAllSQL = "SELECT * FROM phone_book;";
+        String selectAll = "SELECT * FROM phone_book";
+
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
+            Statement stmt  = con.createStatement();
+            ResultSet rs    = stmt.executeQuery(selectAll)){
+
+                while (rs.next()) {
+                    System.out.println(rs.getInt("contact_id") + "\t" +
+                            rs.getString("name") + "\t" +
+                            rs.getString("number"));
+                }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
+    /**
+     * Selects a contact based on the input name.
+     * @param name of the contact.
+     */
+    public void selectNameContact(String name){
 
+        String selectName = "SELECT contact_id, name, number FROM phone_book WHERE name= ?";
+
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
+             PreparedStatement pstmt  = con.prepareStatement(selectName)){
+            pstmt.setString(1,name);
+            ResultSet rs  = pstmt.executeQuery();
+
+            while (rs.next()) {
+                System.out.println(rs.getInt("contact_id") +  "\t" +
+                        rs.getString("name") + "\t" +
+                        rs.getString("number"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Selects a contact based on the input number.
+     * @param number of the contact.
+     */
+    public void selectNumberContact(String number){
+
+        String selectNumber = "SELECT contact_id, name, number FROM phone_book WHERE number= ?";
+
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
+             PreparedStatement pstmt  = con.prepareStatement(selectNumber)){
+            pstmt.setString(1,number);
+            ResultSet rs  = pstmt.executeQuery();
+
+            while (rs.next()) {
+                System.out.println(rs.getInt("contact_id") +  "\t" +
+                        rs.getString("name") + "\t" +
+                        rs.getString("number"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
