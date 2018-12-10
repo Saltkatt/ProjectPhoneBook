@@ -69,7 +69,7 @@ public class ContactManager {
      * Picking from full contact list and returning the chosen contacts id.
      */
     public void findByList() {
-        chosenContactID = chooseContactFromList(selectContact.selectAllContacts());
+        chosenContactID = chooseContactFromList(selectContact.selectAllContact());
     }
 
     /**
@@ -77,7 +77,7 @@ public class ContactManager {
      */
     public void searchByName() {
         String name = enterName("Enter name search phrase");
-        chosenContactID = chooseContactFromList(selectContact.selectContact(name, ""));
+        chosenContactID = chooseContactFromList(selectContact.selectNameContact(name));
     }
 
     /**
@@ -85,7 +85,7 @@ public class ContactManager {
      */
     public void searchByPhoneNumber() {
         String phoneNumber = enterPhoneNumber("Enter phone number search phrase");
-        chosenContactID = chooseContactFromList(selectContact.selectContact("", phoneNumber));
+        chosenContactID = chooseContactFromList(selectContact.selectNumberContact(phoneNumber));
     }
 
     /**
