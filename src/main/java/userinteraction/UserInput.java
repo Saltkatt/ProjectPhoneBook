@@ -37,7 +37,7 @@ public class UserInput {
         boolean validInput;
         do {
             phoneNumber = sc.nextLine().trim();
-            if (phoneNumber.matches("[0-9]{20}")) {
+            if (phoneNumber.matches("[0-9]{1,20}")) {
                 validInput = true;
             } else {
                 UserOutput.printLine("Invalid input, try again!");
