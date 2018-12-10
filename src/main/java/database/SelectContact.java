@@ -1,6 +1,8 @@
 package database;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class selects contacts from the database
@@ -13,7 +15,7 @@ public class SelectContact {
      * Selects all contacts from the database and prints the list.
      */
 
-    public void selectAllContact() {
+    public List<String> selectAllContact() {
 
         String selectAll = "SELECT * FROM phone_book";
 
@@ -21,11 +23,13 @@ public class SelectContact {
             Statement stmt  = con.createStatement();
             ResultSet rs    = stmt.executeQuery(selectAll)){
 
+            List<String> contacts = new ArrayList<>();
+
                 while (rs.next()) {
-                    System.out.println(rs.getInt("contact_id") + "\t" +
+                    contacts.add(rs.getInt("contact_id") + "\t" +
                             rs.getString("name") + "\t" +
                             rs.getString("number"));
-                }
+                } return contacts;
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
