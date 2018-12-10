@@ -15,6 +15,7 @@ public class Menu {
     private ContactManager cm;
     private static ArrayList<MenuOptions> mainMenuList;
     private static ArrayList<MenuOptions> editMenuList;
+    private static ArrayList<MenuOptions> searchMenuList;
     private static Menu menuInstance;
 
     /**
@@ -25,6 +26,7 @@ public class Menu {
         this.cm = cm;
         fillEditMenu();
         fillMainMenu();
+        fillSearchMenu();
 
     }
 
@@ -52,6 +54,7 @@ public class Menu {
         mainMenuList.add(new MenuOptions("1. Add contact", () -> cm.create()));
         mainMenuList.add(new MenuOptions("2. View all contacts", () -> { cm.findByList();
                                                                                   editMenu();}));
+        mainMenuList.add(new MenuOptions("3. Search", () ->))
 
     }
     /**
@@ -63,12 +66,18 @@ public class Menu {
 
     private void fillEditMenu(){
         editMenuList = new ArrayList<>();
-        editMenuList.add(new MenuOptions("1. Update name", () -> cm.updateName()));
+        editMenuList.add(new MenuOptions("1. Update name", () -> {cm.updateName(); mainMenu();}));
         editMenuList.add(new MenuOptions("2. Update phonenumber", () -> cm.updatePhoneNumber()));
-        editMenuList.add(new MenuOptions("3. Search by name", () ->  cm.searchByName()));
-        editMenuList.add(new MenuOptions("4. Search by phonenumber", () -> cm.searchByPhoneNumber()));
-        editMenuList.add(new MenuOptions("5. Delete contact", () -> cm.remove()));
-        editMenuList.add(new MenuOptions("6. Back to main menu", () -> mainMenu()));
+        editMenuList.add(new MenuOptions("3. Delete contact", () -> cm.remove()));
+        editMenuList.add(new MenuOptions("4. Back to main menu", () -> mainMenu()));
+
+    }
+
+    private void fillSearchMenu(){
+        searchMenuList = new ArrayList<>();
+        searchMenuList.add(new MenuOptions("1. Search by name", () -> {cm.searchByName(); editMenu();}));
+        searchMenuList.add(new MenuOptions("2. Search by Phonenumber", () -> { cm.searchByPhoneNumber(); editMenu();}));
+        searchMenuList.add(new MenuOptions("3. Go back", () -> mainMenu()));
 
     }
 
