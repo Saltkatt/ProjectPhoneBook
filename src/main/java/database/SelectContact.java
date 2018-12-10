@@ -47,7 +47,7 @@ public class SelectContact {
 
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
              PreparedStatement pstmt  = con.prepareStatement(selectName)){
-            pstmt.setString(1,name);
+            pstmt.setString(1,"%" + name + "%");
             ResultSet rs  = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -73,7 +73,7 @@ public class SelectContact {
 
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
              PreparedStatement pstmt  = con.prepareStatement(selectNumber)){
-            pstmt.setString(1,number);
+            pstmt.setString(1,"%" + number + "%");
             ResultSet rs  = pstmt.executeQuery();
 
 
