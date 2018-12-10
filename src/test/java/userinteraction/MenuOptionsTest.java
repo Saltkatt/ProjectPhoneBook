@@ -9,6 +9,9 @@ class MenuOptionsTest {
     @Test
     void badStringTest(){
         assertThrows(IllegalArgumentException.class, () -> new MenuOptions("", () -> {}));
+        String str = "";
+        assertThrows(IllegalArgumentException.class, () -> new MenuOptions(str,
+                () -> {}));
 
     }
 
@@ -29,5 +32,12 @@ class MenuOptionsTest {
 
     @org.junit.jupiter.api.Test
     void getMenuText() {
+        String str = "Test";
+        MenuOptions mo = new MenuOptions(str, () -> {});
+        assertEquals(str, mo.getMenuText());
+        str = "This is another test!!!!!";
+        mo = new MenuOptions(str, () -> {});
+        assertEquals(str, mo.getMenuText());
+        assertFalse("Test".equals(mo.getMenuText()));
     }
 }
