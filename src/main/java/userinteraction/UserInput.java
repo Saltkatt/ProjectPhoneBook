@@ -62,7 +62,7 @@ public class UserInput {
                 validInput = false;
             }
         }while (!validInput);
-        return Integer.parseInt(userSelection);
+        return Integer.parseInt(userSelection) - 1;
     }
 
 }
