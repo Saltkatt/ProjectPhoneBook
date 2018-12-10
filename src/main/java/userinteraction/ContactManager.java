@@ -68,35 +68,53 @@ public class ContactManager {
     /**
      * Picking from full contact list and saving the chosen contacts id.
      */
-    public void findByList() {
-        chosenContactID = chooseContactFromList(selectContact.selectAllContact());
+    public boolean findByList() {
+        if (chooseContactFromList(selectContact.selectAllContact())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
-     * Searching for contacts by name and saving the chosen contacts id.
+     * Searching for contacts by name and return if found or not.
      */
-    public void searchByName() {
+    public boolean searchByName() {
         String name = enterName("Enter name search phrase");
-        chosenContactID = chooseContactFromList(selectContact.selectNameContact(name));
+        if (chooseContactFromList(selectContact.selectNameContact(name))) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
-     * Searching for contacts by phone number and saving the chosen contacts id.
+     * Searching for contacts by phone number and return if found or not.
      */
-    public void searchByPhoneNumber() {
+    public boolean searchByPhoneNumber() {
         String phoneNumber = enterPhoneNumber("Enter phone number search phrase");
-        chosenContactID = chooseContactFromList(selectContact.selectNumberContact(phoneNumber));
+        if (chooseContactFromList(selectContact.selectNumberContact(phoneNumber))) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
-     * Letting user choose contact from a list and returning its id.
+     * Letting user choose contact from a list and saving its id.
      */
-    private int chooseContactFromList(List<String> contacts) {
+    private boolean chooseContactFromList(List<String> contacts) {
+        if (contacts.size() < 1) {
+            UserOutput.printLine("No contacts found");
+            return false;
+        }
+
         for (int i = 0; i < contacts.size(); i++) {
             String contact = contacts.get(i);
             UserOutput.printLine(i + 1 + ". " + contact.substring(contact.indexOf("\t") + 1));
         }
         String contact = contacts.get(UserInput.chooseFromList(contacts) - 1);
-        return Integer.parseInt(contact.substring(0, contact.indexOf("\t")));
+        chosenContactID = Integer.parseInt(contact.substring(0, contact.indexOf("\t")));
+        return true;
     }
 }
