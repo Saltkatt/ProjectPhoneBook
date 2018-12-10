@@ -17,7 +17,7 @@ public class SelectContact {
 
     public List<String> selectAllContact() {
 
-        String selectAll = "SELECT * FROM phone_book";
+        String selectAll = "SELECT * FROM contacts";
         List<String> contacts = new ArrayList<>();
 
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
