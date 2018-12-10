@@ -68,7 +68,7 @@ public class SelectContact {
      */
     public List<String> selectNumberContact(String number){
 
-        String selectNumber = "SELECT contact_id, name, number FROM phone_book WHERE number= ?";
+        String selectNumber = "SELECT contact_id, name, number FROM contacts WHERE number= ?";
         List<String> contactNumber = new ArrayList<>();
 
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
