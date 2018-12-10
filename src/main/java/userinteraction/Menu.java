@@ -72,7 +72,7 @@ public class Menu {
         editMenuList.add(new MenuOptions("1. Update name", () -> {cm.updateName(); editMenu();}));
         editMenuList.add(new MenuOptions("2. Update phonenumber", () -> { cm.updatePhoneNumber(); editMenu();}));
         editMenuList.add(new MenuOptions("3. Delete contact", () -> { cm.remove(); mainMenu();} ));
-        editMenuList.add(new MenuOptions("4. Back to main menu", () -> mainMenu()));
+        editMenuList.add(new MenuOptions("4. Back to main menu", () -> {}));
 
     }
 
