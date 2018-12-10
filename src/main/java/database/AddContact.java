@@ -11,7 +11,7 @@ import java.sql.SQLException;
  * @author Ida
  */
 public class AddContact {
-
+ 
     /**
      * Inserts a new contact to the database
      * @param name the name of the contact
