@@ -51,10 +51,11 @@ public class Menu {
 
     private void fillMainMenu(){
         mainMenuList = new ArrayList<>();
-        mainMenuList.add(new MenuOptions("1. Add contact", () -> cm.create()));
-        mainMenuList.add(new MenuOptions("2. View all contacts", () -> { cm.findByList();
+        mainMenuList.add(new MenuOptions("1. Add contact", () -> { cm.create(); mainMenu();} ));
+        mainMenuList.add(new MenuOptions("2. View/Edit contact", () -> { cm.findByList();
                                                                                   editMenu();}));
-        mainMenuList.add(new MenuOptions("3. Search", () ->))
+        mainMenuList.add(new MenuOptions("3. Search contact", () -> searchMenu()));
+        mainMenuList.add(new MenuOptions("4. Exit", () -> {}));
 
     }
     /**
@@ -66,9 +67,9 @@ public class Menu {
 
     private void fillEditMenu(){
         editMenuList = new ArrayList<>();
-        editMenuList.add(new MenuOptions("1. Update name", () -> {cm.updateName(); mainMenu();}));
-        editMenuList.add(new MenuOptions("2. Update phonenumber", () -> cm.updatePhoneNumber()));
-        editMenuList.add(new MenuOptions("3. Delete contact", () -> cm.remove()));
+        editMenuList.add(new MenuOptions("1. Update name", () -> {cm.updateName(); editMenu();}));
+        editMenuList.add(new MenuOptions("2. Update phonenumber", () -> { cm.updatePhoneNumber(); editMenu();}));
+        editMenuList.add(new MenuOptions("3. Delete contact", () -> { cm.remove(); editMenu();} ));
         editMenuList.add(new MenuOptions("4. Back to main menu", () -> mainMenu()));
 
     }
@@ -104,6 +105,10 @@ public class Menu {
      */
     public void editMenu(){
         readMenu(editMenuList);
+    }
+
+    public void searchMenu(){
+        readMenu(searchMenuList);
     }
 
 
