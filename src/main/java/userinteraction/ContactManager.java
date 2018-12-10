@@ -97,6 +97,6 @@ public class ContactManager {
             UserOutput.printLine(i + 1 + ". " + contact.substring(contact.indexOf("\t") + 1));
         }
         String contact = contacts.get(UserInput.chooseFromList(contacts) - 1);
-        return Integer.parseInt(contact.substring(0, contact.indexOf(" ")));
+        return Integer.parseInt(contact.substring(0, contact.indexOf("\t")));
     }
 }
