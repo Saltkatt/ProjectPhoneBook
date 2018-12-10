@@ -13,26 +13,52 @@ import java.util.ArrayList;
 public class Menu {
 
     private ContactManager cm;
-    private UserInput in;
-    private UserOutput out;
     private static ArrayList<MenuOptions> mainMenuList;
     private static ArrayList<MenuOptions> editMenuList;
+    private static Menu menuInstance;
 
-    public Menu(ContactManager cm, UserOutput out, UserInput in){
+    /**
+     * Private constructor for Menu
+     * @param cm The ContactManager that manages the Database of Contacts
+     */
+    private Menu(ContactManager cm){
         this.cm = cm;
-        this.in = in;
-        this.out = out;
         fillEditMenu();
         fillMainMenu();
 
     }
 
+    /**
+     * Method that returns the only instance of this class
+     *
+     * @return The one instance of class Menu
+     */
+    public static Menu newMenu(){
+        if(menuInstance == null)
+            menuInstance = new Menu(new ContactManager());
+        return menuInstance;
+    }
+
+
+    /**
+     * Method that initializes and adds all MenuOptions-object
+     * into arrayList mainMenuList
+     *
+     * This method is called from Menu-constructor
+     */
+
     private void fillMainMenu(){
         mainMenuList = new ArrayList<>();
-       // mainMenuList.add(new MenuOptions("1. Add conctact", cm.addContact()))
+        mainMenuList.add(new MenuOptions("1. Add contact", () -> cm.create()));
        // mainMenuList.add(new MenuOptions("2. Edit contact", () -> editMenu());
 
     }
+    /**
+     * Method that initializes and adds all MenuOptions-object
+     * into arrayList editMenuList
+     *
+     * This method is called from Menu-constructor
+     */
 
     private void fillEditMenu(){
         editMenuList = new ArrayList<>();
@@ -42,16 +68,27 @@ public class Menu {
 
     }
 
+    /**
+     * Method that helps print menu, get user input for said menu
+     * and runs method corresponding to input
+     *
+     * @param list of menuoptions that should be run
+     */
     private void readMenu(ArrayList<MenuOptions> list){
-        //TODO: Call useroutput to print each String
-        //int option = in.getOption(list); TODO: Get int-answer from userInput
-        //list.get(Integer.parseInt(option)-1).getDoIt().doThing(); Run method
+         list.forEach(e -> UserOutput.printLine(e.getMenuText()));
+         int option =  UserInput.chooseFromList(list);
+         list.get(option-1).getDoIt().doThing();
     }
 
+    /**
+     * Calls readMenu(ArrayList<> list) with mainMenuList as argument
+     */
     public void mainMenu(){
        readMenu(mainMenuList);
     }
-
+    /**
+     * Calls readMenu(ArrayList<> list) with editMenuList as argument
+     */
     public void editMenu(){
         readMenu(editMenuList);
     }
