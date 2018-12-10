@@ -28,25 +28,25 @@ public class ContactManager {
     /**
      * Providing database removal method with a contact id, belonging to the contact to remove.
      */
-    public void remove(int contactID) {
-        removeContact.removeContact(contactID);
+    public void remove() {
+        removeContact.removeContact(chosenContactID);
     }
 
     /**
      * Providing database update name method with a contact id, belonging to the contact to update, and the new name.
      */
-    public void updateName(int contactID) {
+    public void updateName() {
         String name = enterName("Enter new name");
-        updateContact.updateName(contactID, name);
+        updateContact.updateName(chosenContactID, name);
     }
 
     /**
      * Providing database update phone number method with a contact id, belonging to the contact to update,
      * and the new phone number.
      */
-    public void updatePhoneNumber(int contactID) {
+    public void updatePhoneNumber() {
         String phoneNumber = enterPhoneNumber("Enter new phone number");
-        updateContact.updatePhoneNumber(contactID, phoneNumber);
+        updateContact.updatePhoneNumber(chosenContactID, phoneNumber);
     }
 
     /**
