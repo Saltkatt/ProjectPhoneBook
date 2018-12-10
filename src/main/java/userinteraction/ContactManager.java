@@ -66,14 +66,14 @@ public class ContactManager {
     }
 
     /**
-     * Picking from full contact list and returning the chosen contacts id.
+     * Picking from full contact list and saving the chosen contacts id.
      */
     public void findByList() {
         chosenContactID = chooseContactFromList(selectContact.selectAllContact());
     }
 
     /**
-     * Searching for contacts by name and returning the chosen contacts id.
+     * Searching for contacts by name and saving the chosen contacts id.
      */
     public void searchByName() {
         String name = enterName("Enter name search phrase");
@@ -81,7 +81,7 @@ public class ContactManager {
     }
 
     /**
-     * Searching for contacts by phone number and returning the chosen contacts id.
+     * Searching for contacts by phone number and saving the chosen contacts id.
      */
     public void searchByPhoneNumber() {
         String phoneNumber = enterPhoneNumber("Enter phone number search phrase");
