@@ -75,6 +75,13 @@ public class ContactManager {
     }
 
     /**
+     * Picking from full contact list and returning the chosen contacts id.
+     */
+    public int findByList() {
+        return chooseContactFromList(selectContact.selectAllContacts());
+    }
+
+    /**
      * Searching for contacts by name and returning the chosen contacts id.
      */
     public int searchByName() {
