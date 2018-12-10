@@ -42,12 +42,12 @@ public class SelectContact {
      */
     public List<String> selectNameContact(String name){
 
-        String selectName = "SELECT contact_id, name, number FROM contacts WHERE name= ?";
+        String selectName = "SELECT contact_id, name, number FROM contacts WHERE name LIKE ?";
         List<String> contactName = new ArrayList<>();
 
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
              PreparedStatement pstmt  = con.prepareStatement(selectName)){
-            pstmt.setString(1,name);
+            pstmt.setString(1,"%" + name + "%");
             ResultSet rs  = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -68,12 +68,12 @@ public class SelectContact {
      */
     public List<String> selectNumberContact(String number){
 
-        String selectNumber = "SELECT contact_id, name, number FROM contacts WHERE number= ?";
+        String selectNumber = "SELECT contact_id, name, number FROM contacts WHERE number LIKE ?";
         List<String> contactNumber = new ArrayList<>();
 
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
              PreparedStatement pstmt  = con.prepareStatement(selectNumber)){
-            pstmt.setString(1,number);
+            pstmt.setString(1,"%" + number + "%");
             ResultSet rs  = pstmt.executeQuery();
 
 
