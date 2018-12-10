@@ -42,7 +42,7 @@ public class SelectContact {
      */
     public List<String> selectNameContact(String name){
 
-        String selectName = "SELECT contact_id, name, number FROM contacts WHERE LIKE ?";
+        String selectName = "SELECT contact_id, name, number FROM contacts WHERE name LIKE ?";
         List<String> contactName = new ArrayList<>();
 
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
@@ -68,7 +68,7 @@ public class SelectContact {
      */
     public List<String> selectNumberContact(String number){
 
-        String selectNumber = "SELECT contact_id, name, number FROM contacts WHERE LIKE ?";
+        String selectNumber = "SELECT contact_id, name, number FROM contacts WHERE number LIKE ?";
         List<String> contactNumber = new ArrayList<>();
 
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
