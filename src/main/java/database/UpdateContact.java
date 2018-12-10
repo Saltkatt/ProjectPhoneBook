@@ -30,7 +30,7 @@ public class UpdateContact {
     public void updatePhoneNumber(int contact_id, String number) {
 
         String updatePhoneNumber = "UPDATE phone_book SET number= ? WHERE contact_id= ?";
-        try (Connection con = DriverManager.getConnection("jdbc:sqlite:C:/sqlite/db/phone_book.db");
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" + CreateDatabase.saveDir + "phone_book.db");
              PreparedStatement pstmt = con.prepareStatement(updatePhoneNumber)) {
             pstmt.setString(1, number);
             pstmt.setInt(2, contact_id);
