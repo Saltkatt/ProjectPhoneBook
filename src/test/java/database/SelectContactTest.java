@@ -1,4 +1,12 @@
 package database;
 
-public class SelectContactTest {
+import org.junit.jupiter.api.Test;
+
+class SelectContactTest {
+
+    @Test
+    void testSelectAll() {
+
+    }
+
 }
