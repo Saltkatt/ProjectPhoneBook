@@ -21,7 +21,7 @@ public class MenuOptions {
      *
      * @param menuText Text of the menu-option, eg "1. Add contact" or "Enter name: "
      * @param method An implementation of functional Interface DoSomething. Override void method doThing() with
-     *               whatever method you please. Should correspond to the Menu Text
+     *               whatever method you please. Should correspond to the PhoneBookMenus Text
      */
     public MenuOptions(String menuText, DoSomething method){
         if(menuText.isEmpty())
@@ -40,7 +40,7 @@ public class MenuOptions {
 
     /**
      *
-     * @return Returns the text of your Menu-option
+     * @return Returns the text of your PhoneBookMenus-option
      */
     public String getMenuText(){
         return menuText;

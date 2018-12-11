@@ -2,7 +2,7 @@ package userinteraction;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MenuTest {
+class PhoneBookMenusTest {
 
     @org.junit.jupiter.api.Test
     void mainMenu() {
