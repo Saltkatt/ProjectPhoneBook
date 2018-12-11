@@ -1,4 +1,16 @@
 package database;
 
-public class RemoveContactTest {
+import org.junit.jupiter.api.Test;
+
+class RemoveContactTest {
+
+    /**
+     * Test removeContact.
+     */
+
+    @Test
+    void testRemove() {
+
+    }
+
 }
