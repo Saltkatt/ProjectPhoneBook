@@ -10,7 +10,5 @@ public class Main {
         //Database db = new Database("phone_book.db");
         //db.setupDatabase();
 
-
-        Menu.newMenu().mainMenu();
     }
 }

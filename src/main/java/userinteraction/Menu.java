@@ -100,7 +100,8 @@ public class Menu {
      * Calls readMenu(ArrayList<> list) with mainMenuList as argument
      */
     public void mainMenu(){
-       readMenu(mainMenuList);
+       MenuReader.printMenu(mainMenuList);
+       MenuReader.executeMenu(mainMenuList, UserInput.chooseFromList(mainMenuList));
     }
     /**
      * Calls readMenu(ArrayList<> list) with editMenuList as argument
