@@ -1,6 +1,5 @@
 package userinteraction;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -10,19 +9,19 @@ import java.util.ArrayList;
  * @version version 0.1 Dec 06 2018
  */
 
-public class Menu {
+public class PhoneBookMenus {
 
     private ContactManager cm;
     private static ArrayList<MenuOptions> mainMenuList;
     private static ArrayList<MenuOptions> editMenuList;
     private static ArrayList<MenuOptions> searchMenuList;
-    private static Menu menuInstance;
+    private static PhoneBookMenus phoneBookMenusInstance;
 
     /**
-     * Private constructor for Menu
+     * Private constructor for PhoneBookMenus
      * @param cm The ContactManager that manages the Database of Contacts
      */
-    private Menu(ContactManager cm){
+    private PhoneBookMenus(ContactManager cm){
         this.cm = cm;
         fillEditMenu();
         fillMainMenu();
@@ -33,12 +32,12 @@ public class Menu {
     /**
      * Method that returns the only instance of this class
      *
-     * @return The one instance of class Menu
+     * @return The one instance of class PhoneBookMenus
      */
-    public static Menu newMenu(){
-        if(menuInstance == null)
-            menuInstance = new Menu(new ContactManager());
-        return menuInstance;
+    public static PhoneBookMenus newMenu(){
+        if(phoneBookMenusInstance == null)
+            phoneBookMenusInstance = new PhoneBookMenus(new ContactManager());
+        return phoneBookMenusInstance;
     }
 
 
@@ -46,7 +45,7 @@ public class Menu {
      * Method that initializes and adds all MenuOptions-object
      * into arrayList mainMenuList
      *
-     * This method is called from Menu-constructor
+     * This method is called from PhoneBookMenus-constructor
      */
 
     private void fillMainMenu(){
@@ -64,7 +63,7 @@ public class Menu {
      * Method that initializes and adds all MenuOptions-object
      * into arrayList editMenuList
      *
-     * This method is called from Menu-constructor
+     * This method is called from PhoneBookMenus-constructor
      */
 
     private void fillEditMenu(){
@@ -107,11 +106,13 @@ public class Menu {
      * Calls readMenu(ArrayList<> list) with editMenuList as argument
      */
     public void editMenu(){
-        readMenu(editMenuList);
+        MenuReader.printMenu(editMenuList);
+        MenuReader.executeMenu(editMenuList, UserInput.chooseFromList(editMenuList));
     }
 
     public void searchMenu(){
-        readMenu(searchMenuList);
+        MenuReader.printMenu(searchMenuList);
+        MenuReader.executeMenu(searchMenuList, UserInput.chooseFromList(editMenuList));
     }
 
 
