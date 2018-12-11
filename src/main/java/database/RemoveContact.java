@@ -11,6 +11,13 @@ import java.sql.SQLException;
  */
 
 public class RemoveContact {
+
+    private String fileName;
+
+    public RemoveContact(String fileName){
+        this.fileName = fileName;
+    }
+
     /**
      * Deletes an existing contact from the database.
      * @param contact_id of the contact.
@@ -20,7 +27,7 @@ public class RemoveContact {
         String removeSQL = "DELETE FROM contacts WHERE contact_id= ?";
 
         //Connects to the database and deletes received id.
-        try (Connection con = DriverManager.getConnection("jdbc:sqlite:phone_book.db");
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" + fileName);
              PreparedStatement pstmt = con.prepareStatement(removeSQL)) {
             pstmt.setInt(1, contact_id);
             pstmt.executeUpdate();

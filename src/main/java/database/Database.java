@@ -10,14 +10,28 @@ import java.sql.Statement;
  * This class set up the database and the tables in it
  * @author Ida
  */
-public class CreateDatabase {
+public class Database {
 
+    //TODO remove public access?
+    private String fileName;
+    public AddContact addContact;
+    public RemoveContact removeContact;
+    public UpdateContact updateContact;
+    public SelectContact selectContact;
 
+    public Database(String fileName){
+        this.fileName = fileName;
+        addContact = new AddContact(fileName);
+        removeContact = new RemoveContact(fileName);
+        updateContact = new UpdateContact(fileName);
+        selectContact = new SelectContact(fileName);
+
+    }
 
     /**
      * Creates a database in the same directory as where the project is saved
      */
-    public void createDatabaseIfNotExist(){
+    public void setupDatabase(){
 
         String sql = "CREATE TABLE IF NOT EXISTS contacts (\n"
                 + " contact_id INTEGER PRIMARY KEY,\n"
@@ -26,11 +40,12 @@ public class CreateDatabase {
                 + ");";
 
 
-        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:phone_book.db")) {
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + fileName)) {
             conn.createStatement().execute(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
 }
