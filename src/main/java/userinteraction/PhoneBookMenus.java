@@ -89,11 +89,11 @@ public class PhoneBookMenus {
      *
      * @param list of menuoptions that should be run
      */
-    private void readMenu(ArrayList<MenuOptions> list){
-         list.forEach(e -> UserOutput.printLine(e.getMenuText()));
-         int option =  UserInput.chooseFromList(list);
-         list.get(option-1).getDoIt().doThing();
-    }
+//    private void readMenu(ArrayList<MenuOptions> list){
+//         list.forEach(e -> UserOutput.printLine(e.getMenuText()));
+//         int option =  UserInput.chooseFromList(list);
+//         list.get(option-1).getDoIt().doThing();
+//    }
 
     /**
      * Calls readMenu(ArrayList<> list) with mainMenuList as argument
@@ -113,6 +113,16 @@ public class PhoneBookMenus {
     public void searchMenu(){
         MenuReader.printMenu(searchMenuList);
         MenuReader.executeMenu(searchMenuList, UserInput.chooseFromList(searchMenuList));
+    }
+
+    public ArrayList<MenuOptions> getMainMenuList(){
+        return mainMenuList;
+    }
+    public ArrayList<MenuOptions> getEditMenuList(){
+        return editMenuList;
+    }
+    public ArrayList<MenuOptions> getSearchMenuList(){
+        return searchMenuList;
     }
 
 
