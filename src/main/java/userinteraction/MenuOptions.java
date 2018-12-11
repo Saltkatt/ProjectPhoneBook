@@ -24,6 +24,8 @@ public class MenuOptions {
      *               whatever method you please. Should correspond to the Menu Text
      */
     public MenuOptions(String menuText, DoSomething method){
+        if(menuText.isEmpty())
+            throw new IllegalArgumentException("Enter text");
         this.menuText = menuText;
         this.doIt = method;
     }
