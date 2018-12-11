@@ -2,14 +2,25 @@ package database;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class AddContactTest {
+import org.junit.jupiter.api.TestInstance;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+class AddContactTest {
+
+    private Database db;
 
     @BeforeAll
-    void createDatabaseConnection(){
-        //new Database().setupDatabase("phone_book_test.db");
+    void setupTestDatabase(){
+        db = new Database("insert_test.db");
+        db.setupDatabase();
     }
 
     @Test
@@ -25,6 +36,7 @@ public class AddContactTest {
     @Test
     void testThatValuesCantBeNull(){
 
+
     }
 
     @Test
@@ -33,7 +45,11 @@ public class AddContactTest {
     }
 
     @AfterAll
-    void closeDatabaseConnection(){
-
+    static void removeTestDatabase(){
+        try {
+            Files.deleteIfExists(Paths.get("insert_test.db"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
