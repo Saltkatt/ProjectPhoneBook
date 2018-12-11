@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,9 +22,18 @@ class MenuReaderTest {
     }
 
     @Test
-    void printMenu() {
-
-        assertEquals("1. Say hello\n2. Change Stringtest to \"Hello\"", MenuReader.printMenu(mo));
+    void printMenuTest() {
+        PrintStream stream = new PrintStream(System.out);
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        MenuReader.printMenu(mo);
+        String s = out.toString();
+        out.reset();
+        System.out.println("1. Say hello");
+        System.out.println("2. Change Stringtest to \"Hello\"");
+        String m = out.toString();
+        assertEquals(s, m);
+        System.setOut(stream);
     }
 
     @Test
