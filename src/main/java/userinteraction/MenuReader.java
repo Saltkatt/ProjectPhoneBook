@@ -10,12 +10,9 @@ public class MenuReader {
         }
     }
     public static void executeMenu(ArrayList<MenuOptions> list, int choice){
-        list.get(choice).getDoIt().doThing();
+        list.get(choice-1).getDoIt().doThing();
     }
-    public static void readAndExecuteMenu(ArrayList<MenuOptions> list, int choice){
-        printMenu(list);
-        executeMenu(list, choice);
-    }
+
 
 
 

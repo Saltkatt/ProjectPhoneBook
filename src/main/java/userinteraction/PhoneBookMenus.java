@@ -112,7 +112,7 @@ public class PhoneBookMenus {
 
     public void searchMenu(){
         MenuReader.printMenu(searchMenuList);
-        MenuReader.executeMenu(searchMenuList, UserInput.chooseFromList(editMenuList));
+        MenuReader.executeMenu(searchMenuList, UserInput.chooseFromList(searchMenuList));
     }
 
 
