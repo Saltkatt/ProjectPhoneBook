@@ -25,7 +25,7 @@ public class Database {
         removeContact = new RemoveContact(fileName);
         updateContact = new UpdateContact(fileName);
         selectContact = new SelectContact(fileName);
-
+        setupDatabase();
     }
 
     /**
