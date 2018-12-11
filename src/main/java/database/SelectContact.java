@@ -14,7 +14,6 @@ public class SelectContact {
     /**
      * Selects all contacts from the database and prints the list.
      */
-
     public List<String> selectAllContact() {
 
         String selectAll = "SELECT * FROM contacts";
@@ -75,8 +74,6 @@ public class SelectContact {
              PreparedStatement pstmt  = con.prepareStatement(selectNumber)){
             pstmt.setString(1,"%" + number + "%");
             ResultSet rs  = pstmt.executeQuery();
-
-
 
             while (rs.next()) {
                 contactNumber.add (rs.getInt("contact_id") +  "\t" +
