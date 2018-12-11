@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Test;
 
 class SelectContactTest {
 
+    /**
+     * Tests for selecting all, name and number.
+     */
+
     @Test
     void testSelectAll() {
 
