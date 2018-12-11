@@ -30,7 +30,7 @@ class MenuOptionsTest {
         assertFalse(mo2.getDoIt().equals(mo.getDoIt()));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getMenuText() {
         String str = "Test";
         MenuOptions mo = new MenuOptions(str, () -> {});
