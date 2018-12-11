@@ -9,4 +9,14 @@ class SelectContactTest {
 
     }
 
+    @Test
+    void testSelectName() {
+
+    }
+
+    @Test
+    void testSelectNumber() {
+
+    }
+
 }
