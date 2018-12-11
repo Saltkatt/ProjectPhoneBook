@@ -9,10 +9,10 @@ public class ContactManager {
      * This class manages the user interactions which concern creating new and editing existing contacts.
      */
 
-    private AddContact addContact = new AddContact();
-    private RemoveContact removeContact = new RemoveContact();
-    private UpdateContact updateContact = new UpdateContact();
-    private SelectContact selectContact = new SelectContact();
+    private AddContact addContact = new AddContact("");
+    private RemoveContact removeContact = new RemoveContact("");
+    private UpdateContact updateContact = new UpdateContact("");
+    private SelectContact selectContact = new SelectContact("");
 
     private int chosenContactID;
 
