@@ -20,7 +20,7 @@ public class AddContact {
     public void addContact(String name, String number) {
         String sql = "INSERT INTO contacts(name,number) VALUES(?,?)";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + CreateDatabase.saveDir + "phone_book.db");
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:phone_book.db");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, name);
             pstmt.setString(2, number);

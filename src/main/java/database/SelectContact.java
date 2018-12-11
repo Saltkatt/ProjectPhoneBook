@@ -20,7 +20,7 @@ public class SelectContact {
         String selectAll = "SELECT * FROM contacts";
         List<String> contacts = new ArrayList<>();
 
-        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:phone_book.db");
             Statement stmt  = con.createStatement();
             ResultSet rs    = stmt.executeQuery(selectAll)){
 
@@ -45,7 +45,7 @@ public class SelectContact {
         String selectName = "SELECT contact_id, name, number FROM contacts WHERE name LIKE ?";
         List<String> contactName = new ArrayList<>();
 
-        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:phone_book.db");
              PreparedStatement pstmt  = con.prepareStatement(selectName)){
             pstmt.setString(1,"%" + name + "%");
             ResultSet rs  = pstmt.executeQuery();
@@ -71,7 +71,7 @@ public class SelectContact {
         String selectNumber = "SELECT contact_id, name, number FROM contacts WHERE number LIKE ?";
         List<String> contactNumber = new ArrayList<>();
 
-        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" +CreateDatabase.saveDir+"phone_book.db");
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:phone_book.db");
              PreparedStatement pstmt  = con.prepareStatement(selectNumber)){
             pstmt.setString(1,"%" + number + "%");
             ResultSet rs  = pstmt.executeQuery();
