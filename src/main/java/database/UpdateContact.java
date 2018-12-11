@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class UpdateContact {
 
     /**
-     * Updates a selected statement.
+     * Updates the name of the row selected.
      * @param contact_id of the contact.
      * @param name of the contact.
      */
@@ -27,6 +27,11 @@ public class UpdateContact {
         }
     }
 
+    /**
+     * Updates the number of the contact selected.
+     * @param contact_id of the contact.
+     * @param number of the contact.
+     */
     public void updatePhoneNumber(int contact_id, String number) {
 
         String updatePhoneNumber = "UPDATE contacts SET number= ? WHERE contact_id= ?";
