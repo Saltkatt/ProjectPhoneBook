@@ -116,13 +116,19 @@ public class PhoneBookMenus {
     }
 
     public ArrayList<MenuOptions> getMainMenuList(){
-        return mainMenuList;
+        ArrayList<MenuOptions> menu = new ArrayList<>();
+        menu.addAll(mainMenuList);
+        return menu;
     }
     public ArrayList<MenuOptions> getEditMenuList(){
-        return editMenuList;
+        ArrayList<MenuOptions> menu = new ArrayList<>();
+        menu.addAll(editMenuList);
+        return menu;
     }
     public ArrayList<MenuOptions> getSearchMenuList(){
-        return searchMenuList;
+        ArrayList<MenuOptions> menu = new ArrayList<>();
+        menu.addAll(searchMenuList);
+        return menu;
     }
 
 
