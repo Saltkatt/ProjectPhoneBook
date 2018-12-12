@@ -1,5 +1,6 @@
 package userinteraction;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -22,7 +23,8 @@ public class MenuReader {
     public static void printMenu(List<MenuOption> list){
         if(list.size() > 0){
             list.forEach(e -> UserOutput.printLine(e.getMenuText()));
-        }
+        }else
+            throw new IllegalArgumentException();
     }
 
     /**
@@ -33,10 +35,10 @@ public class MenuReader {
      * @param choice The position of the MenuOptions on the list
      */
     public static void executeMenu(List<MenuOption> list, int choice){
-        if(choice > list.size() || choice < 0)
+        if(choice >= list.size() || choice < 0)
             throw new IllegalArgumentException();
         if(list.size() > 0)
-            list.get(choice-1).getDoIt().doThing();
+            list.get(choice).getDoIt().doThing();
     }
 
 

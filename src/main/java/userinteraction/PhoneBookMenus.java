@@ -19,10 +19,10 @@ public class PhoneBookMenus {
 
     /**
      * Private constructor for PhoneBookMenus
-     * @param cm The ContactManager that manages the Database of Contacts
+     *
      */
-    private PhoneBookMenus(ContactManager cm){
-        this.cm = cm;
+    private PhoneBookMenus(){
+        this.cm =  new ContactManager();
         fillEditMenu();
         fillMainMenu();
         fillSearchMenu();
@@ -36,7 +36,7 @@ public class PhoneBookMenus {
      */
     public static PhoneBookMenus newMenu(){
         if(phoneBookMenusInstance == null)
-            phoneBookMenusInstance = new PhoneBookMenus(new ContactManager());
+            phoneBookMenusInstance = new PhoneBookMenus();
         return phoneBookMenusInstance;
     }
 
@@ -103,7 +103,7 @@ public class PhoneBookMenus {
      */
     public void editMenu(){
         MenuReader.printMenu(editMenuList);
-        MenuReader.executeMenu(editMenuList, UserInput.chooseFromList(editMenuList));
+        MenuReader.executeMenu(editMenuList, UserInput.chooseFromList(editMenuList)-1);
     }
 
     /**
@@ -113,7 +113,7 @@ public class PhoneBookMenus {
      */
     public void searchMenu(){
         MenuReader.printMenu(searchMenuList);
-        MenuReader.executeMenu(searchMenuList, UserInput.chooseFromList(searchMenuList));
+        MenuReader.executeMenu(searchMenuList, UserInput.chooseFromList(searchMenuList)-1);
     }
 
     /**

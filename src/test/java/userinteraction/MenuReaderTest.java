@@ -6,6 +6,7 @@ import org.junit.jupiter.api.TestInstance;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,7 +38,8 @@ class MenuReaderTest {
     }
 
     @Test
-    void executeMenuTest() {
+    void executeMenuTest() throws SQLException {
+        test = "";
         PrintStream stream = new PrintStream(System.out);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -47,6 +49,18 @@ class MenuReaderTest {
         assertEquals("", test);
         mo.get(1).getDoIt().doThing();
         assertEquals("Hello", test);
+
+    }
+
+    @Test
+    void illegalInputTest(){
+        ArrayList<MenuOption> list = new ArrayList<>();
+        assertThrows(IllegalArgumentException.class, () -> MenuReader.printMenu(list));
+        list.add(new MenuOption("Test", () -> {}));
+        assertThrows(IllegalArgumentException.class, () -> MenuReader.executeMenu(list, 2));
+        assertThrows(IllegalArgumentException.class, () -> MenuReader.executeMenu(list, 10));
+        assertThrows(IllegalArgumentException.class, () -> MenuReader.executeMenu(list, 100));
+        assertThrows(IllegalArgumentException.class, () -> MenuReader.executeMenu(list, -1));
 
     }
 
