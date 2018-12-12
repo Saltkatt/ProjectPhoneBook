@@ -33,9 +33,9 @@ public class Database {
      */
     private void setupDatabase(){
 
-        String sql = "CREATE TABLE IF NOT EXISTS contacts (\n"
+        String sql = "CREATE TABLE contacts (\n"
                 + " contact_id INTEGER PRIMARY KEY,\n"
-                + "	name TEXT NOT NULL CHECK (length(number) > 0 AND length(name) < 25),\n"
+                + "	name TEXT NOT NULL CHECK (length(number) > 0 AND length(name) < 26),\n"
                 + "	number TEXT NOT NULL CHECK (length(number) > 0 AND length(number) < 21)\n"
                 + ");";
 
