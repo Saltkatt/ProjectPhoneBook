@@ -31,11 +31,11 @@ public class Database {
     /**
      * Creates a database in the same directory as where the project is saved
      */
-    public void setupDatabase(){
+    private void setupDatabase(){
 
         String sql = "CREATE TABLE IF NOT EXISTS contacts (\n"
                 + " contact_id INTEGER PRIMARY KEY,\n"
-                + "	name TEXT NOT NULL CHECK (length(name) < 25),\n"
+                + "	name TEXT NOT NULL CHECK (length(number) > 0 AND length(name) < 25),\n"
                 + "	number TEXT NOT NULL CHECK (length(number) > 0 AND length(number) < 21)\n"
                 + ");";
 
