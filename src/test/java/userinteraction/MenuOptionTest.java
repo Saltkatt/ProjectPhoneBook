@@ -4,13 +4,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MenuOptionsTest {
+class MenuOptionTest {
 
     @Test
     void badStringTest(){
-        assertThrows(IllegalArgumentException.class, () -> new MenuOptions("", () -> {}));
+        assertThrows(IllegalArgumentException.class, () -> new MenuOption("", () -> {}));
         String str = "";
-        assertThrows(IllegalArgumentException.class, () -> new MenuOptions(str,
+        assertThrows(IllegalArgumentException.class, () -> new MenuOption(str,
                 () -> {}));
 
     }
@@ -19,12 +19,12 @@ class MenuOptionsTest {
     void getDoIt() {
         DoSomething d = () -> System.out.println("Test successful");
         DoSomething e = () -> System.out.println("Test");
-        MenuOptions mo = new MenuOptions("1", d);
+        MenuOption mo = new MenuOption("1", d);
         assertEquals(d, mo.getDoIt());
         assertFalse(mo.getDoIt().equals(e));
         assertTrue(!(mo.getDoIt().equals(e)));
         assertTrue(mo.getDoIt().equals(d));
-        MenuOptions mo2 = new MenuOptions("2", e);
+        MenuOption mo2 = new MenuOption("2", e);
         assertFalse(mo2.getDoIt().equals(d));
         assertTrue(mo2.getDoIt().equals(e));
         assertFalse(mo2.getDoIt().equals(mo.getDoIt()));
@@ -33,10 +33,10 @@ class MenuOptionsTest {
     @Test
     void getMenuText() {
         String str = "Test";
-        MenuOptions mo = new MenuOptions(str, () -> {});
+        MenuOption mo = new MenuOption(str, () -> {});
         assertEquals(str, mo.getMenuText());
         str = "This is another test!!!!!";
-        mo = new MenuOptions(str, () -> {});
+        mo = new MenuOption(str, () -> {});
         assertEquals(str, mo.getMenuText());
         assertFalse("Test".equals(mo.getMenuText()));
     }
