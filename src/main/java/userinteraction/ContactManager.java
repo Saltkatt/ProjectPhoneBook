@@ -104,16 +104,19 @@ public class ContactManager {
      * Letting user choose contact from a list and saving its id.
      */
     private boolean chooseContactFromList(List<String> contacts) {
-        if (contacts.size() < 1) {
-            UserOutput.printLine("No contacts found");
-            return false;
-        }
-
         for (int i = 0; i < contacts.size(); i++) {
             String contact = contacts.get(i);
             UserOutput.printLine(i + 1 + ". " + contact.substring(contact.indexOf("\t") + 1));
         }
-        String contact = contacts.get(UserInput.chooseFromList(contacts) - 1);
+
+        int listChoice = UserInput.chooseFromList(contacts);
+
+        if (listChoice == -1) {
+            UserOutput.printLine("No contacts found");
+            return false;
+        }
+
+        String contact = contacts.get(listChoice - 1);
         chosenContactID = Integer.parseInt(contact.substring(0, contact.indexOf("\t")));
         return true;
     }
