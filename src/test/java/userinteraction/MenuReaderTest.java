@@ -13,12 +13,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class MenuReaderTest {
 
     private String test = "";
-    ArrayList<MenuOptions> mo = new ArrayList<>();
+    ArrayList<MenuOption> mo = new ArrayList<>();
 
     @BeforeAll
     void setUp(){
-        mo.add(new MenuOptions("1. Say hello", () -> System.out.print("Hello")));
-        mo.add(new MenuOptions("2. Change Stringtest to \"Hello\"", () -> test = "Hello"));
+        mo.add(new MenuOption("1. Say hello", () -> System.out.print("Hello")));
+        mo.add(new MenuOption("2. Change Stringtest to \"Hello\"", () -> test = "Hello"));
     }
 
     @Test
