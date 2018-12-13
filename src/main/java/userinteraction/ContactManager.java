@@ -1,6 +1,8 @@
 package userinteraction;
 
 import database.*;
+
+import java.sql.SQLException;
 import java.util.List;
 
 public class ContactManager {
@@ -22,7 +24,11 @@ public class ContactManager {
     public void create() {
         String name = enterName("Enter name");
         String phoneNumber = enterPhoneNumber("Enter phone number");
-        addContact.addContact(name, phoneNumber);
+        try {
+            addContact.addContact(name, phoneNumber);
+        }catch(SQLException e){
+            System.out.println("error");
+        }
     }
 
     /**
