@@ -18,7 +18,10 @@ public class AddContact {
     }
 
     /**
-     * Inserts a new contact to the database
+     * Inserts a new contact to the database.
+     * It uses throws instead of dealing with the exception right away so the test methods can be written the way they are...
+     * It uses both try catch and throws so the connection will be closed when the method is done.
+     *
      * @param name the name of the contact
      * @param number the number of the contact
      */
