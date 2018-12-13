@@ -92,8 +92,12 @@ public class PhoneBookMenus {
      * This loops through and executes the doSomething()-method attached to the chosen
      */
     public void mainMenu(){
-       MenuReader.printMenu(mainMenuList);
-       MenuReader.executeMenu(mainMenuList, UserInput.chooseFromList(mainMenuList));
+        try {
+            MenuReader.printMenu(mainMenuList);
+            MenuReader.executeMenu(mainMenuList, UserInput.chooseFromList(mainMenuList) - 1);
+        }catch(IllegalArgumentException e){
+
+        }
     }
 
     /**
@@ -102,8 +106,12 @@ public class PhoneBookMenus {
      * This loops through and executes the doSomething()-method attached to the chosen
      */
     public void editMenu(){
-        MenuReader.printMenu(editMenuList);
-        MenuReader.executeMenu(editMenuList, UserInput.chooseFromList(editMenuList)-1);
+        try {
+            MenuReader.printMenu(editMenuList);
+            MenuReader.executeMenu(editMenuList, UserInput.chooseFromList(editMenuList) - 1);
+        }catch(IllegalArgumentException e){
+
+        }
     }
 
     /**
@@ -112,8 +120,12 @@ public class PhoneBookMenus {
      * This loops through and executes the doSomething()-method attached to the chosen
      */
     public void searchMenu(){
-        MenuReader.printMenu(searchMenuList);
-        MenuReader.executeMenu(searchMenuList, UserInput.chooseFromList(searchMenuList)-1);
+        try {
+            MenuReader.printMenu(searchMenuList);
+            MenuReader.executeMenu(searchMenuList, UserInput.chooseFromList(searchMenuList) - 1);
+        }catch(IllegalArgumentException e){
+
+        }
     }
 
     /**

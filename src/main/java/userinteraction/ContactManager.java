@@ -1,6 +1,7 @@
 package userinteraction;
 
 import database.*;
+
 import java.util.List;
 
 public class ContactManager {
