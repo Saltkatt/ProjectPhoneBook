@@ -19,10 +19,10 @@ public class PhoneBookMenus {
 
     /**
      * Private constructor for PhoneBookMenus
-     * @param cm The ContactManager that manages the Database of Contacts
+     *
      */
-    private PhoneBookMenus(ContactManager cm){
-        this.cm = cm;
+    private PhoneBookMenus(){
+        this.cm =  new ContactManager();
         fillEditMenu();
         fillMainMenu();
         fillSearchMenu();
@@ -36,7 +36,7 @@ public class PhoneBookMenus {
      */
     public static PhoneBookMenus newMenu(){
         if(phoneBookMenusInstance == null)
-            phoneBookMenusInstance = new PhoneBookMenus(new ContactManager());
+            phoneBookMenusInstance = new PhoneBookMenus();
         return phoneBookMenusInstance;
     }
 
@@ -103,7 +103,7 @@ public class PhoneBookMenus {
      */
     public void editMenu(){
         MenuReader.printMenu(editMenuList);
-        MenuReader.executeMenu(editMenuList, UserInput.chooseFromList(editMenuList));
+        MenuReader.executeMenu(editMenuList, UserInput.chooseFromList(editMenuList)-1);
     }
 
     /**
@@ -113,13 +113,16 @@ public class PhoneBookMenus {
      */
     public void searchMenu(){
         MenuReader.printMenu(searchMenuList);
-        MenuReader.executeMenu(searchMenuList, UserInput.chooseFromList(searchMenuList));
+        MenuReader.executeMenu(searchMenuList, UserInput.chooseFromList(searchMenuList)-1);
     }
 
     /**
+     *Returns a copy of mainMenu-ArrayList. This is the list
+     * of MenuOptions used when interacting with the
+     * main menu of the program, switching between searchmenu
+     * and editmenu on input.
      *
-     *
-     * @return
+     * @return Returns a copy of internal MainMenu-arraylist
      */
     public ArrayList<MenuOption> getMainMenuList(){
         ArrayList<MenuOption> menu = new ArrayList<>();
@@ -128,9 +131,11 @@ public class PhoneBookMenus {
     }
 
     /**
+     *Returns a copy of editMenu-ArrayList. This is the list
+     * of MenuOptions used when interacting with the
+     * programs update-function
      *
-     *
-     * @return
+     * @return Copy of PhoneBookMenus internal EditMenu-arraylist
      */
     public ArrayList<MenuOption> getEditMenuList(){
         ArrayList<MenuOption> menu = new ArrayList<>();
@@ -139,8 +144,10 @@ public class PhoneBookMenus {
     }
 
     /**
-     * //TODO write something generic hereeeeeee as desc
-     * @return
+     * Returns a copy of searchMenu-ArrayList. This is the list
+     * of MenuOptions used when interacting with the programs
+     * search-function
+     * @return Copy of PhoneBookMenus internal SearchMenu-arraylist
      */
     public ArrayList<MenuOption> getSearchMenuList(){
         ArrayList<MenuOption> menu = new ArrayList<>();
