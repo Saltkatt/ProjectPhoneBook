@@ -66,7 +66,7 @@ class AddContactTest {
     }
 
     @AfterAll
-    void removeDatabaseSoTheTestAlwaysRunsWithANewOne(){
+    void removeDatabaseSoTheTestsAlwaysRunWithANewOne(){
         try {
             Files.deleteIfExists(Paths.get("database_test_insert.db"));
         } catch (IOException e) {
