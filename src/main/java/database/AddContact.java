@@ -18,20 +18,23 @@ public class AddContact {
     }
 
     /**
-     * Inserts a new contact to the database
+     * Inserts a new contact to the database.
+     * It uses throws instead of dealing with the exception right away so the test methods can be written the way they are...
+     * It uses both try catch and throws so the connection will be closed when the method is done.
+     *
      * @param name the name of the contact
      * @param number the number of the contact
      */
-    public void addContact(String name, String number) {
+    public void addContact(String name, String number) throws SQLException{
         String sql = "INSERT INTO contacts(name,number) VALUES(?,?)";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + fileName);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try(Connection conn = DriverManager.getConnection("jdbc:sqlite:" + fileName);
+            PreparedStatement pstmt = conn.prepareStatement(sql);){
             pstmt.setString(1, name);
             pstmt.setString(2, number);
             pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException e){
+            throw new SQLException();
         }
     }
 }

@@ -12,17 +12,17 @@ import java.util.ArrayList;
 public class PhoneBookMenus {
 
     private ContactManager cm;
-    private static ArrayList<MenuOptions> mainMenuList;
-    private static ArrayList<MenuOptions> editMenuList;
-    private static ArrayList<MenuOptions> searchMenuList;
+    private static ArrayList<MenuOption> mainMenuList;
+    private static ArrayList<MenuOption> editMenuList;
+    private static ArrayList<MenuOption> searchMenuList;
     private static PhoneBookMenus phoneBookMenusInstance;
 
     /**
      * Private constructor for PhoneBookMenus
-     * @param cm The ContactManager that manages the Database of Contacts
+     *
      */
-    private PhoneBookMenus(ContactManager cm){
-        this.cm = cm;
+    private PhoneBookMenus(){
+        this.cm =  new ContactManager();
         fillEditMenu();
         fillMainMenu();
         fillSearchMenu();
@@ -36,93 +36,123 @@ public class PhoneBookMenus {
      */
     public static PhoneBookMenus newMenu(){
         if(phoneBookMenusInstance == null)
-            phoneBookMenusInstance = new PhoneBookMenus(new ContactManager());
+            phoneBookMenusInstance = new PhoneBookMenus();
         return phoneBookMenusInstance;
     }
 
 
     /**
-     * Method that initializes and adds all MenuOptions-object
+     * Method that initializes and adds all MenuOption-object
      * into arrayList mainMenuList
      *
      * This method is called from PhoneBookMenus-constructor
      */
-
     private void fillMainMenu(){
         mainMenuList = new ArrayList<>();
-        mainMenuList.add(new MenuOptions("1. Add contact", () -> { cm.create(); mainMenu();} ));
-        mainMenuList.add(new MenuOptions("2. View/Edit contact", () -> {
+        mainMenuList.add(new MenuOption("1. Add contact", () -> { cm.create(); mainMenu();} ));
+        mainMenuList.add(new MenuOption("2. View/Edit contact", () -> {
             if (cm.findByList()) editMenu();
             mainMenu();
         }));
-        mainMenuList.add(new MenuOptions("3. Search contact", () -> searchMenu()));
-        mainMenuList.add(new MenuOptions("4. Exit", () -> {}));
+        mainMenuList.add(new MenuOption("3. Search contact", () -> searchMenu()));
+        mainMenuList.add(new MenuOption("4. Exit", () -> {}));
 
     }
     /**
-     * Method that initializes and adds all MenuOptions-object
+     * Private method that initializes and adds all MenuOption-object
      * into arrayList editMenuList
      *
-     * This method is called from PhoneBookMenus-constructor
+     * This method is called from PhoneBookMenus-constructor only once
      */
-
     private void fillEditMenu(){
         editMenuList = new ArrayList<>();
-        editMenuList.add(new MenuOptions("1. Update name", () -> {cm.updateName(); editMenu();}));
-        editMenuList.add(new MenuOptions("2. Update phonenumber", () -> { cm.updatePhoneNumber(); editMenu();}));
-        editMenuList.add(new MenuOptions("3. Delete contact", () -> { cm.remove(); mainMenu();} ));
-        editMenuList.add(new MenuOptions("4. Back to main menu", () -> {}));
+        editMenuList.add(new MenuOption("1. Update name", () -> {cm.updateName(); editMenu();}));
+        editMenuList.add(new MenuOption("2. Update phonenumber", () -> { cm.updatePhoneNumber(); editMenu();}));
+        editMenuList.add(new MenuOption("3. Delete contact", () -> { cm.remove(); mainMenu();} ));
+        editMenuList.add(new MenuOption("4. Back to main menu", () -> {}));
 
     }
-
+    /**
+     * Private method that initializes and adds all MenuOption-object
+     * into arrayList searchMenuList
+     *
+     * This method is called from PhoneBookMenus-constructor only once
+     */
     private void fillSearchMenu(){
         searchMenuList = new ArrayList<>();
-        searchMenuList.add(new MenuOptions("1. Search by name", () -> {if(cm.searchByName()) editMenu(); searchMenu();}));
-        searchMenuList.add(new MenuOptions("2. Search by Phonenumber", () -> { if(cm.searchByPhoneNumber()) editMenu(); searchMenu();}));
-        searchMenuList.add(new MenuOptions("3. Go back", () -> mainMenu()));
+        searchMenuList.add(new MenuOption("1. Search by name", () -> {if(cm.searchByName()) editMenu(); searchMenu();}));
+        searchMenuList.add(new MenuOption("2. Search by Phonenumber", () -> { if(cm.searchByPhoneNumber()) editMenu(); searchMenu();}));
+        searchMenuList.add(new MenuOption("3. Go back", () -> mainMenu()));
 
     }
 
     /**
-     * Method that helps print menu, get user input for said menu
-     * and runs method corresponding to input
-     *
-     * @param list of menuoptions that should be run
-     */
-//    private void readMenu(ArrayList<MenuOptions> list){
-//         list.forEach(e -> UserOutput.printLine(e.getMenuText()));
-//         int option =  UserInput.chooseFromList(list);
-//         list.get(option-1).getDoIt().doThing();
-//    }
-
-    /**
-     * Calls readMenu(ArrayList<> list) with mainMenuList as argument
+     * Calls MenuReader.printMenu() with mainMenuList as argument and then MenuReader.executeMenu()
+     * with mainMenuList and an int from UserInput as argument.
+     * This loops through and executes the doSomething()-method attached to the chosen
      */
     public void mainMenu(){
        MenuReader.printMenu(mainMenuList);
        MenuReader.executeMenu(mainMenuList, UserInput.chooseFromList(mainMenuList));
     }
+
     /**
-     * Calls readMenu(ArrayList<> list) with editMenuList as argument
+     * Calls MenuReader.printMenu() with editMenuList as argument and then MenuReader.executeMenu()
+     * with editMenuList and an int from UserInput as argument.
+     * This loops through and executes the doSomething()-method attached to the chosen
      */
     public void editMenu(){
         MenuReader.printMenu(editMenuList);
-        MenuReader.executeMenu(editMenuList, UserInput.chooseFromList(editMenuList));
+        MenuReader.executeMenu(editMenuList, UserInput.chooseFromList(editMenuList)-1);
     }
 
+    /**
+     * Calls MenuReader.printMenu() with searchMenuList as argument and then MenuReader.executeMenu()
+     * with searchMenuList and an int from UserInput as argument.
+     * This loops through and executes the doSomething()-method attached to the chosen
+     */
     public void searchMenu(){
         MenuReader.printMenu(searchMenuList);
-        MenuReader.executeMenu(searchMenuList, UserInput.chooseFromList(searchMenuList));
+        MenuReader.executeMenu(searchMenuList, UserInput.chooseFromList(searchMenuList)-1);
     }
 
-    public ArrayList<MenuOptions> getMainMenuList(){
-        return mainMenuList;
+    /**
+     *Returns a copy of mainMenu-ArrayList. This is the list
+     * of MenuOptions used when interacting with the
+     * main menu of the program, switching between searchmenu
+     * and editmenu on input.
+     *
+     * @return Returns a copy of internal MainMenu-arraylist
+     */
+    public ArrayList<MenuOption> getMainMenuList(){
+        ArrayList<MenuOption> menu = new ArrayList<>();
+        menu.addAll(mainMenuList);
+        return menu;
     }
-    public ArrayList<MenuOptions> getEditMenuList(){
-        return editMenuList;
+
+    /**
+     *Returns a copy of editMenu-ArrayList. This is the list
+     * of MenuOptions used when interacting with the
+     * programs update-function
+     *
+     * @return Copy of PhoneBookMenus internal EditMenu-arraylist
+     */
+    public ArrayList<MenuOption> getEditMenuList(){
+        ArrayList<MenuOption> menu = new ArrayList<>();
+        menu.addAll(editMenuList);
+        return menu;
     }
-    public ArrayList<MenuOptions> getSearchMenuList(){
-        return searchMenuList;
+
+    /**
+     * Returns a copy of searchMenu-ArrayList. This is the list
+     * of MenuOptions used when interacting with the programs
+     * search-function
+     * @return Copy of PhoneBookMenus internal SearchMenu-arraylist
+     */
+    public ArrayList<MenuOption> getSearchMenuList(){
+        ArrayList<MenuOption> menu = new ArrayList<>();
+        menu.addAll(searchMenuList);
+        return menu;
     }
 
 
