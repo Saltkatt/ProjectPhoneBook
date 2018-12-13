@@ -12,13 +12,18 @@ import java.sql.Statement;
  */
 public class Database {
 
-    //TODO remove public access?
     private String fileName;
-    public AddContact addContact;
-    public RemoveContact removeContact;
-    public UpdateContact updateContact;
-    public SelectContact selectContact;
-
+    private AddContact addContact;
+    private RemoveContact removeContact;
+    private UpdateContact updateContact;
+    private SelectContact selectContact;
+    
+    /**
+     * Having instances of all the smaller classes that works with the database here ensures that the right instance of a
+     * database is updated when a method is used by referring to its name.
+     *
+     * @param fileName the name of the database that will be created
+     */
     public Database(String fileName){
         this.fileName = fileName;
         addContact = new AddContact(fileName);
@@ -48,4 +53,19 @@ public class Database {
     }
 
 
+    public AddContact getAddContact() {
+        return addContact;
+    }
+
+    public RemoveContact getRemoveContact() {
+        return removeContact;
+    }
+
+    public UpdateContact getUpdateContact() {
+        return updateContact;
+    }
+
+    public SelectContact getSelectContact() {
+        return selectContact;
+    }
 }

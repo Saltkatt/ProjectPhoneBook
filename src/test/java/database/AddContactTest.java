@@ -25,19 +25,19 @@ class AddContactTest {
 
     @Test
     void testThatValuesCantBeNull(){
-        assertThrows(SQLException.class, () -> db.addContact.addContact(null, null));
+        assertThrows(SQLException.class, () -> db.getAddContact().addContact(null, null));
     }
 
 
     @Test
     void testThatStringValuesCantBeEmpty(){
-        assertThrows(SQLException.class, () -> db.addContact.addContact("", ""));
+        assertThrows(SQLException.class, () -> db.getAddContact().addContact("", ""));
     }
 
     @Test
     void testIfPossibleToInsertValuesThatDoesntAlreadyExistInTable(){
         try {
-            db.addContact.addContact("Bob", "123");
+            db.getAddContact().addContact("Bob", "123");
         } catch (SQLException e) {
             fail(e.getMessage());
         }
@@ -46,8 +46,8 @@ class AddContactTest {
     @Test
     void testIfPossibleToInsertValuesThatAlreadyExistInTable(){
         try{
-            db.addContact.addContact("TheSuperCreativeName", "123321");
-            db.addContact.addContact("TheSuperCreativeName", "123321");
+            db.getAddContact().addContact("TheSuperCreativeName", "123321");
+            db.getAddContact().addContact("TheSuperCreativeName", "123321");
         } catch (SQLException e){
             fail(e.getMessage());
         }
@@ -57,16 +57,16 @@ class AddContactTest {
     @Test
     void testThatCharactersCantExceedMaxLimit(){
         try{
-            db.addContact.addContact("aaaaaaaaaaaaaaaaaaaaaaaaa", "11111111111111111111");
+            db.getAddContact().addContact("aaaaaaaaaaaaaaaaaaaaaaaaa", "11111111111111111111");
         } catch(SQLException e){
             fail(e.getMessage());
         }
         assertThrows(SQLException.class, () ->
-                db.addContact.addContact("aaaaaaaaaaaaaaaaaaaaaaaaaa", "111111111111111111111"));
+                db.getAddContact().addContact("aaaaaaaaaaaaaaaaaaaaaaaaaa", "111111111111111111111"));
     }
 
     @AfterAll
-    void removeDatabaseSoTheTestAlwaysRunsWithANewOne(){
+    void removeDatabaseSoTheTestsAlwaysRunWithANewOne(){
         try {
             Files.deleteIfExists(Paths.get("database_test_insert.db"));
         } catch (IOException e) {
