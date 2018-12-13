@@ -1,7 +1,5 @@
 package main;
 
-import database.Database;
-import userinteraction.PhoneBookMenus;
 
 public class Main {
 

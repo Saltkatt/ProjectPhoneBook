@@ -24,6 +24,7 @@ public class ContactManager {
         String name = enterName("Enter name");
         String phoneNumber = enterPhoneNumber("Enter phone number");
         addContact.addContact(name, phoneNumber);
+      
     }
 
     /**
