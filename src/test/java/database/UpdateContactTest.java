@@ -36,14 +36,21 @@ class UpdateContactTest {
      */
     @Test
     void testUpdateName() {
-
-        db.getUpdateContact().updateName(0,"Solveig");
+        //Updates name of contact Anton to Solveig.
+        db.getUpdateContact().updateName(1,"Solveig");
+        //SelectContact uses an arraylist and therefore starts the list at position 0 instead of 1.
+        //Therefore we get position 0 instead of 1.
         assertEquals(db.getSelectContact().selectAllContact().get(0),"1	Solveig	0107433221");
 
     }
 
     @Test
     void testUpdateNumber() {
+        //Updates phone number of contact.
+        db.getUpdateContact().updatePhoneNumber(3,"1234567890");
+        //SelectContact uses an arraylist and therefore starts the list at position 0 instead of 1.
+        //Therefore we get position 2 for Carl instead of 3.
+        assertEquals(db.getSelectContact().selectAllContact().get(2),"3\tCarl\t1234567890");
 
     }
 
