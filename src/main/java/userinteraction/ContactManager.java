@@ -108,7 +108,8 @@ public class ContactManager {
      * Letting user choose contact from a list and saving its id.
      */
     private boolean chooseContactFromList(List<String> contacts) {
-        contacts.add("Cancel");
+        if(contacts.size() != 0)
+            contacts.add("Cancel");
         for (int i = 0; i < contacts.size(); i++) {
             String contact = contacts.get(i);
             UserOutput.printLine(i + 1 + ". " + contact.substring(contact.indexOf("\t") + 1));
