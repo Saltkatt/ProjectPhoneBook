@@ -3,12 +3,15 @@ package database;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.SQLException;
+import static org.junit.jupiter.api.Assertions.*;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class RemoveContactTest {
 
     private Database db;
@@ -29,13 +32,20 @@ class RemoveContactTest {
     }
 
     /**
-     * Test removeContact.
+     * Test removeContact:
+     * removes one contact (2. Bertil) is removed from the list by checking the sixe of the list.
      */
 
     @Test
-    void testRemove() {
+    void testRemoveOne() {
+
+        db.getRemoveContact().removeContact(2);
+        assertEquals(db.getSelectContact().selectAllContact().size(), 4);
 
     }
+
+
+
 
     //removes the testing database after tests.
     @AfterAll
