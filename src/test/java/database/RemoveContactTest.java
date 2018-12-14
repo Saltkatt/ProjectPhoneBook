@@ -1,8 +1,12 @@
 package database;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 
 class RemoveContactTest {
@@ -31,6 +35,16 @@ class RemoveContactTest {
     @Test
     void testRemove() {
 
+    }
+
+    //removes the testing database after tests.
+    @AfterAll
+    void removeDatabase(){
+        try {
+            Files.deleteIfExists(Paths.get("database_testing_remove"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
