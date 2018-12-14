@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,41 +13,82 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserInputTest {
 
     @Test
-    void checkValidNameInput() {
+    void checkValidNameInputRegular() {
         checkIfUserInputIsValidOrNot("name", true, "Name");
+    }
+
+    @Test
+    void checkValidNameInputWithHyphen() {
         checkIfUserInputIsValidOrNot("name", true, "Name-Name");
+    }
+
+    @Test
+    void checkValidNameInputWithApostrophe() {
         checkIfUserInputIsValidOrNot("name", true, "Name'Name");
+    }
+
+    @Test
+    void checkValidNameInputWithWhitespace() {
         checkIfUserInputIsValidOrNot("name", true, "Name Name");
     }
 
     @Test
-    void checkFaultyNameInput() {
-        checkIfUserInputIsValidOrNot("name", false, "Name@Name");
+    void checkFaultyNameInputWithNumbers() {
         checkIfUserInputIsValidOrNot("name", false, "Name123");
-        checkIfUserInputIsValidOrNot("name", false, "999");
-        checkIfUserInputIsValidOrNot("name", false, "Name???");
-        checkIfUserInputIsValidOrNot("name", false, "\n");
+    }
+
+    @Test
+    void checkFaultyNameInputWithNoInput() {
         checkIfUserInputIsValidOrNot("name", false, " ");
+    }
+
+    @Test
+    void checkFaultyNameInputWithTooManyChars() {
         checkIfUserInputIsValidOrNot("name", false, "Abcdefghiasdaopfspiansfpianspfinaspfnaspfniapsnpasnfpasnfsapfnpaonf");
     }
 
     @Test
-    void checkValidPhoneNumberInput() {
+    void checkFaultyNameInputFaultyChar() {
+        checkIfUserInputIsValidOrNot("name", false, "Name???");
+    }
+
+    @Test
+    void checkValidPhoneNumberInputWithLowNumber() {
         checkIfUserInputIsValidOrNot("phoneNumber", true, "1");
+    }
+
+    @Test
+    void checkValidPhoneNumberInputWithLargeNumber() {
         checkIfUserInputIsValidOrNot("phoneNumber", true, "99999999999999999");
+    }
+
+    @Test
+    void checkValidPhoneNumberInputWithAllNumbers() {
         checkIfUserInputIsValidOrNot("phoneNumber", true, "0123456789");
     }
 
     @Test
-    void checkFaultyPhoneNumberInput() {
+    void checkFaultyPhoneNumberInputWithChars() {
         checkIfUserInputIsValidOrNot("phoneNumber", false, "aaa");
-        checkIfUserInputIsValidOrNot("phoneNumber", false, "/");
-        checkIfUserInputIsValidOrNot("phoneNumber", false, "\n");
+    }
+
+    @Test
+    void checkFaultyPhoneNumberInputWithNoInput() {
         checkIfUserInputIsValidOrNot("phoneNumber", false, " ");
+    }
+
+    @Test
+    void checkFaultyPhoneNumberInputWithTooManyNumbers() {
         checkIfUserInputIsValidOrNot("phoneNumber", false, "999999999999999999999999999999999999999999");
     }
 
+    @Test
+    void checkFaultyPhoneNumberInputWithFaultyChar() {
+        checkIfUserInputIsValidOrNot("phoneNumber", false, "///");
+    }
+
     private void checkIfUserInputIsValidOrNot(String nameOrPhoneNumber, boolean shouldBeValid, String userInput) {
+
         System.setIn(new ByteArrayInputStream(userInput.getBytes()));
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -62,6 +102,7 @@ class UserInputTest {
             } else {
                 returnedInput = UserInput.phoneNumber();
             }
+
 
             if (shouldBeValid && returnedInput.equals(userInput)) {
                 assertTrue(true);
@@ -78,20 +119,39 @@ class UserInputTest {
     }
 
     @Test
-    void checkValidListChoiceInput() {
+    void checkValidListChoiceInputWithLowNumber() {
         List<String> testList = Arrays.asList("This", "Is", "A", "Test", "List");
         checkIfUserInputIsValidOrNot(testList, true, "1");
+    }
+
+    @Test
+    void checkValidListChoiceInputWithHighNumber() {
+        List<String> testList = Arrays.asList("This", "Is", "A", "Test", "List");
         checkIfUserInputIsValidOrNot(testList, true, "5");
     }
 
     @Test
-    void checkFaultyListChoiceInput() {
+    void checkFaultyListChoiceInputWithNoInput() {
         List<String> testList = Arrays.asList("This", "Is", "A", "Test", "List");
         checkIfUserInputIsValidOrNot(testList, false, " ");
-        checkIfUserInputIsValidOrNot(testList, false, "\n");
+    }
+
+    @Test
+    void checkFaultyListChoiceInputWithTooLargeNumber() {
+        List<String> testList = Arrays.asList("This", "Is", "A", "Test", "List");
         checkIfUserInputIsValidOrNot(testList, false, "6");
+    }
+
+    @Test
+    void checkFaultyListChoiceInputWithTooLowNumber() {
+        List<String> testList = Arrays.asList("This", "Is", "A", "Test", "List");
         checkIfUserInputIsValidOrNot(testList, false, "0");
-        checkIfUserInputIsValidOrNot(testList, false, "abc");
+    }
+
+    @Test
+    void checkFaultyListChoiceInputWithFaultyChar() {
+        List<String> testList = Arrays.asList("This", "Is", "A", "Test", "List");
+        checkIfUserInputIsValidOrNot(testList, false, "a");
     }
 
     private <T> void checkIfUserInputIsValidOrNot(List<T> list, boolean shouldBeValid, String userInput) {
