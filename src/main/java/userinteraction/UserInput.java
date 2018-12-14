@@ -9,14 +9,13 @@ public class UserInput {
      * This class handles all user output.
      */
 
-    private static Scanner sc = new Scanner(System.in);
-
     /**
      * Ask for user input and returns it when it's a valid name input.
      */
     public static String name() {
+        Scanner sc = new Scanner(System.in);
         String userInput;
-        while (!checkUserInputValidity(userInput = sc.nextLine().trim(), "[a-öA-Ö\\\\-\\\\s\\']{1,30}"));
+        while (!checkUserInputValidity(userInput = sc.nextLine().trim(), "[a-öA-Ö\\-\\s\\']{1,30}"));
         return userInput;
     }
 
@@ -24,6 +23,7 @@ public class UserInput {
      * Ask for user input and returns it when it's a valid phone number input.
      */
     public static String phoneNumber() {
+        Scanner sc = new Scanner(System.in);
         String userInput;
         while (!checkUserInputValidity(userInput = sc.nextLine().trim(), "[0-9]{1,20}"));
         return userInput;
@@ -33,6 +33,7 @@ public class UserInput {
      * Ask for user input and returns it when it's a valid list choice input .
      */
     public static <T> int chooseFromList(List<T> list) {
+        Scanner sc = new Scanner(System.in);
         if (list.size() < 1) {
             return -1;
         }

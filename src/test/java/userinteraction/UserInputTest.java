@@ -3,29 +3,74 @@ package userinteraction;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserInputTest {
 
     @Test
-    void name() {
-        ByteArrayInputStream in = new ByteArrayInputStream("test".getBytes());
-        System.setIn(in);
-        String test = UserInput.name();
-        assertEquals(test, "test");
-
+    void checkValidNameInput() {
+        checkIfUserInputIsValidOrNot("name", true, "Name");
+        checkIfUserInputIsValidOrNot("name", true, "Name-Name");
+        checkIfUserInputIsValidOrNot("name", true, "Name'Name");
+        checkIfUserInputIsValidOrNot("name", true, "Name Name");
     }
 
     @Test
-    void phoneNumber() {
-        ByteArrayInputStream in = new ByteArrayInputStream("5".getBytes());
-        System.setIn(in);
-        String test = UserInput.phoneNumber();
-        assertEquals(test, "5");
+    void checkFaultyNameInput() {
+        checkIfUserInputIsValidOrNot("name", false, "Name@Name");
+        checkIfUserInputIsValidOrNot("name", false, "Name123");
+        checkIfUserInputIsValidOrNot("name", false, "999");
+        checkIfUserInputIsValidOrNot("name", false, "Name???");
+        checkIfUserInputIsValidOrNot("name", false, "\n");
+        checkIfUserInputIsValidOrNot("name", false, " ");
+        checkIfUserInputIsValidOrNot("name", false, "Abcdefghiasdaopfspiansfpianspfinaspfnaspfniapsnpasnfpasnfsapfnpaonf");
     }
 
     @Test
-    void chooseFromList() {
+    void checkValidPhoneNumberInput() {
+        checkIfUserInputIsValidOrNot("phoneNumber", true, "1");
+        checkIfUserInputIsValidOrNot("phoneNumber", true, "99999999999999999");
+        checkIfUserInputIsValidOrNot("phoneNumber", true, "0123456789");
+    }
+
+    @Test
+    void checkFaultyPhoneNumberInput() {
+        checkIfUserInputIsValidOrNot("phoneNumber", false, "aaa");
+        checkIfUserInputIsValidOrNot("phoneNumber", false, "/");
+        checkIfUserInputIsValidOrNot("phoneNumber", false, "\n");
+        checkIfUserInputIsValidOrNot("phoneNumber", false, " ");
+        checkIfUserInputIsValidOrNot("phoneNumber", false, "999999999999999999999999999999999999999999");
+    }
+
+    private void checkIfUserInputIsValidOrNot(String nameOrPhoneNumber, boolean shouldBeValid, String userInput) {
+        System.setIn(new ByteArrayInputStream(userInput.getBytes()));
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        try {
+            String returnedInput;
+
+            if (nameOrPhoneNumber.equals("name")) {
+                returnedInput = UserInput.name();
+            } else {
+                returnedInput = UserInput.phoneNumber();
+            }
+
+            if (shouldBeValid && returnedInput.equals(userInput)) {
+                assertTrue(true);
+            } else if (shouldBeValid && !returnedInput.equals(userInput)) {
+                fail("User input should be valid and is returned as a valid input, but is not returned correctly");
+            } else {
+                fail("User input should not be valid but is returned as a valid input");
+            }
+        } catch (Exception e) {
+            String actual = out.toString().trim().replace("\r", "");
+            String expected = "Invalid input, try again!";
+            assertEquals(expected, actual);
+        }
     }
 }
