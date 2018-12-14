@@ -3,6 +3,7 @@ package userinteraction;
 import database.*;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContactManager {
@@ -21,11 +22,15 @@ public class ContactManager {
     public void create() {
         String name = enterName("Enter name");
         String phoneNumber = enterPhoneNumber("Enter phone number");
-        try {
-            db.getAddContact().addContact(name, phoneNumber);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        if(areYouSure()) {
+            try {
+                db.getAddContact().addContact(name, phoneNumber);
+                UserOutput.printLine("Contact added");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else
+            UserOutput.printLine("Contact not added");
 
     }
 
@@ -33,7 +38,13 @@ public class ContactManager {
      * Providing database removal method with a contact id, belonging to the contact to remove.
      */
     public void remove() {
-        db.getRemoveContact().removeContact(chosenContactID);
+        if(areYouSure()){
+            db.getRemoveContact().removeContact(chosenContactID);
+            UserOutput.printLine("User deleted");
+        }
+        else
+            UserOutput.printLine("User not deleted");
+
     }
 
     /**
@@ -67,6 +78,15 @@ public class ContactManager {
     private String enterPhoneNumber(String headLine) {
         UserOutput.printLine(headLine);
         return UserInput.phoneNumber();
+    }
+
+    private boolean areYouSure(){
+        UserOutput.printLine("Are you sure?");
+        ArrayList<String> l = new ArrayList<>();
+        l.add("1. Yes");
+        l.add("2. No");
+        l.forEach(e -> UserOutput.printLine(e));
+        return UserInput.chooseFromList(l) == 1;
     }
 
     /**
