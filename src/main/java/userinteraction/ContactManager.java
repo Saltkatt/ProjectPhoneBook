@@ -3,6 +3,7 @@ package userinteraction;
 import database.*;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContactManager {
@@ -33,7 +34,18 @@ public class ContactManager {
      * Providing database removal method with a contact id, belonging to the contact to remove.
      */
     public void remove() {
-        db.getRemoveContact().removeContact(chosenContactID);
+        UserOutput.printLine("Are you sure?");
+        ArrayList<String> l = new ArrayList<>();
+        l.add("1. Yes");
+        l.add("2. No");
+        l.forEach(e -> UserOutput.printLine(e));
+        if(UserInput.chooseFromList(l) == 1){
+            db.getRemoveContact().removeContact(chosenContactID);
+            UserOutput.printLine("User deleted");
+        }
+        else
+            UserOutput.printLine("User not deleted");
+
     }
 
     /**
