@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.SQLException;
+import static org.junit.jupiter.api.Assertions.*;
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SelectContactTest {
 
@@ -31,15 +33,20 @@ class SelectContactTest {
 
     /**
      * Tests for selecting all, name and number.
+     * SelectContact sends information to an ArrayList and therefore needs a toString to find contacts.
      */
 
     @Test
     void testSelectAll() {
 
+
+
     }
 
     @Test
     void testSelectName() {
+        
+        assertEquals(db.getSelectContact().selectNameContact("Daniella").toString(),"[4\tDaniella\t0404659301]");
 
     }
 
