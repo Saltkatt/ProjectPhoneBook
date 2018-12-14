@@ -43,10 +43,7 @@ class RemoveContactTest {
         assertEquals(db.getSelectContact().selectAllContact().size(), 4);
 
     }
-
-
-
-
+    
     //removes the testing database after tests.
     @AfterAll
     void removeDatabase(){
