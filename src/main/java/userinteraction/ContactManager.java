@@ -11,7 +11,7 @@ public class ContactManager {
      * This class manages the user interactions which concern creating new and editing existing contacts.
      */
 
-    private Database db = new Database("");
+    private Database db = new Database("my_contacts.db");
 
     private int chosenContactID;
 
