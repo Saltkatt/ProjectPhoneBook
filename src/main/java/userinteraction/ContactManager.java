@@ -2,6 +2,7 @@ package userinteraction;
 
 import database.*;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class ContactManager {
@@ -10,10 +11,7 @@ public class ContactManager {
      * This class manages the user interactions which concern creating new and editing existing contacts.
      */
 
-    private AddContact addContact = new AddContact("");
-    private RemoveContact removeContact = new RemoveContact("");
-    private UpdateContact updateContact = new UpdateContact("");
-    private SelectContact selectContact = new SelectContact("");
+    private Database db = new Database("");
 
     private int chosenContactID;
 
@@ -23,15 +21,19 @@ public class ContactManager {
     public void create() {
         String name = enterName("Enter name");
         String phoneNumber = enterPhoneNumber("Enter phone number");
-        addContact.addContact(name, phoneNumber);
-      
+        try {
+            db.getAddContact().addContact(name, phoneNumber);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
      * Providing database removal method with a contact id, belonging to the contact to remove.
      */
     public void remove() {
-        removeContact.removeContact(chosenContactID);
+        db.getRemoveContact().removeContact(chosenContactID);
     }
 
     /**
@@ -39,7 +41,7 @@ public class ContactManager {
      */
     public void updateName() {
         String name = enterName("Enter new name");
-        updateContact.updateName(chosenContactID, name);
+        db.getUpdateContact().updateName(chosenContactID, name);
     }
 
     /**
@@ -48,7 +50,7 @@ public class ContactManager {
      */
     public void updatePhoneNumber() {
         String phoneNumber = enterPhoneNumber("Enter new phone number");
-        updateContact.updatePhoneNumber(chosenContactID, phoneNumber);
+        db.getUpdateContact().updatePhoneNumber(chosenContactID, phoneNumber);
     }
 
     /**
@@ -71,7 +73,7 @@ public class ContactManager {
      * Picking from full contact list and saving the chosen contacts id.
      */
     public boolean findByList() {
-        if (chooseContactFromList(selectContact.selectAllContact())) {
+        if (chooseContactFromList(db.getSelectContact().selectAllContact())) {
             return true;
         } else {
             return false;
@@ -83,7 +85,7 @@ public class ContactManager {
      */
     public boolean searchByName() {
         String name = enterName("Enter name search phrase");
-        if (chooseContactFromList(selectContact.selectNameContact(name))) {
+        if (chooseContactFromList(db.getSelectContact().selectNameContact(name))) {
             return true;
         } else {
             return false;
@@ -95,7 +97,7 @@ public class ContactManager {
      */
     public boolean searchByPhoneNumber() {
         String phoneNumber = enterPhoneNumber("Enter phone number search phrase");
-        if (chooseContactFromList(selectContact.selectNumberContact(phoneNumber))) {
+        if (chooseContactFromList(db.getSelectContact().selectNumberContact(phoneNumber))) {
             return true;
         } else {
             return false;
