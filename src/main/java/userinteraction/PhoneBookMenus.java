@@ -68,7 +68,7 @@ public class PhoneBookMenus {
         editMenuList = new ArrayList<>();
         editMenuList.add(new MenuOption("1. Update name", () -> {cm.updateName(); editMenu();}));
         editMenuList.add(new MenuOption("2. Update phonenumber", () -> { cm.updatePhoneNumber(); editMenu();}));
-        editMenuList.add(new MenuOption("3. Delete contact", () -> { cm.remove(); editMenu();} ));
+        editMenuList.add(new MenuOption("3. Delete contact", () -> { cm.remove(); if(cm.findByList()) editMenu();} ));
         editMenuList.add(new MenuOption("4. Back to main menu", () -> {}));
 
     }
