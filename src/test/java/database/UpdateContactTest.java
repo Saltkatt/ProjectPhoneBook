@@ -54,6 +54,7 @@ class UpdateContactTest {
 
     }
 
+
     //removes testing database after the tests.
     @AfterAll
     void removeDatabase(){
