@@ -39,19 +39,26 @@ class SelectContactTest {
     @Test
     void testSelectAll() {
 
-
+        assertEquals(db.getSelectContact().selectAllContact().toString(),
+                "[1\tAnton\t0107433221, " +
+                "2\tBertil\t0206122334, " +
+                "3\tCarl\t0305564738, " +
+                "4\tDaniella\t0404659301, " +
+                "5\tElin\t0509384929]");
 
     }
 
     @Test
     void testSelectName() {
-        
+
         assertEquals(db.getSelectContact().selectNameContact("Daniella").toString(),"[4\tDaniella\t0404659301]");
 
     }
 
     @Test
     void testSelectNumber() {
+
+        assertEquals(db.getSelectContact().selectNumberContact("0206122334").toString(),"[2\tBertil\t0206122334]");
 
     }
 
