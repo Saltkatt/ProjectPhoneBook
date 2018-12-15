@@ -15,10 +15,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class RemoveContactTest {
 
     private Database db;
+
+    //Create testing database.
     @BeforeAll
     void setupDatabase() {
         db = new Database("database_testing_remove");
-        //database to check updates against.
+
+        //Database to check updates against.
         try {
             db.getAddContact().addContact("Anton", "0107433221");
             db.getAddContact().addContact("Bertil", "0206122334");
@@ -33,7 +36,7 @@ class RemoveContactTest {
 
     /**
      * Test removeContact:
-     * removes one contact (2. Bertil) is removed from the list by checking the sixe of the list.
+     * Removes one contact: 2. Bertil is removed from the list, this is verified by checking the size of the list.
      */
 
     @Test
@@ -44,7 +47,7 @@ class RemoveContactTest {
 
     }
     
-    //removes the testing database after tests.
+    //Removes the testing database after tests.
     @AfterAll
     void removeDatabase(){
         try {

@@ -15,10 +15,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class SelectContactTest {
 
     private Database db;
+
+    //Create testing database
     @BeforeAll
     void setupDatabase() {
         db = new Database("database_testing_select");
-        //database to check updates against.
+
+        //Database to check updates against.
         try {
             db.getAddContact().addContact("Anton", "0107433221");
             db.getAddContact().addContact("Bertil", "0206122334");
@@ -36,6 +39,7 @@ class SelectContactTest {
      * SelectContact sends information to an ArrayList and therefore needs a toString to find contacts.
      */
 
+    //Tests that selectAll selects all the contacts in the database.
     @Test
     void testSelectAll() {
 
@@ -48,6 +52,7 @@ class SelectContactTest {
 
     }
 
+    //Tests that the contact (Daniella) is the one selected from the database.
     @Test
     void testSelectName() {
 
@@ -55,6 +60,7 @@ class SelectContactTest {
 
     }
 
+    //Tests that the contact number (0206122334) is the one selected from the database.
     @Test
     void testSelectNumber() {
 
@@ -62,7 +68,7 @@ class SelectContactTest {
 
     }
 
-    //removes testing database after the tests.
+    //Removes testing database after the tests.
     @AfterAll
     void removeDatabase(){
         try {
