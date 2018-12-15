@@ -15,10 +15,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class UpdateContactTest {
 
     private Database db;
+
+    //Create testing database.
     @BeforeAll
     void setupDatabase() {
         db = new Database("database_testing_update");
-        //database to check updates against.
+
+        //Database to check updates against.
         try {
             db.getAddContact().addContact("Anton", "0107433221");
             db.getAddContact().addContact("Bertil", "0206122334");
@@ -34,6 +37,8 @@ class UpdateContactTest {
     /**
      * Tests for updating name and number.
      */
+
+    //Tests that updateName updates the name of the first contact in the database.
     @Test
     void testUpdateName() {
         //Updates name of contact Anton to Solveig.
@@ -44,6 +49,7 @@ class UpdateContactTest {
 
     }
 
+    //Tests that updatePhoneNumber updates the number of the third contact in the database.
     @Test
     void testUpdateNumber() {
         //Updates phone number of contact.
@@ -55,7 +61,7 @@ class UpdateContactTest {
     }
 
 
-    //removes testing database after the tests.
+    //Removes testing database after the tests.
     @AfterAll
     void removeDatabase(){
         try {
