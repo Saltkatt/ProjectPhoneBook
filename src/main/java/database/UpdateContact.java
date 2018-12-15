@@ -21,6 +21,7 @@ public class UpdateContact {
 
     public void updateName(int contact_id, String name) {
 
+        //SQL-statement updates contact name.
         String updateName = "UPDATE contacts SET name= ? WHERE contact_id= ?";
 
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:" + fileName);
@@ -40,7 +41,9 @@ public class UpdateContact {
      */
     public void updatePhoneNumber(int contact_id, String number) {
 
+        //SQL-statement updates contact number.
         String updatePhoneNumber = "UPDATE contacts SET number= ? WHERE contact_id= ?";
+
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:" + fileName);
              PreparedStatement pstmt = con.prepareStatement(updatePhoneNumber)) {
             pstmt.setString(1, number);
