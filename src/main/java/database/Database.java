@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * This class set up the database and the tables in it
+ * This class set up the database and the tables in it.
  * @author Ida
  */
 public class Database {
@@ -19,8 +19,8 @@ public class Database {
     private SelectContact selectContact;
     
     /**
-     * Having instances of all the smaller classes that works with the database here ensures that the right instance of a
-     * database is updated when a method is used by referring to its name.
+     * Having instances of all the smaller classes here ensures that the right a database gets updated when a method in
+     * one of the smaller classes are used since they can call the right database by it's name automatically.
      *
      * @param fileName the name of the database that will be created
      */
@@ -40,10 +40,9 @@ public class Database {
 
         String sql = "CREATE TABLE IF NOT EXISTS contacts (\n"
                 + " contact_id INTEGER PRIMARY KEY,\n"
-                + "	name TEXT NOT NULL CHECK (length(number) >= 1 AND length(name) <= 30),\n"
+                + "	name TEXT NOT NULL CHECK (length(name) >= 1 AND length(name) <= 30),\n"
                 + "	number TEXT NOT NULL CHECK (length(number) >= 1 AND length(number) <= 20)\n"
                 + ");";
-
 
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + fileName)) {
             conn.createStatement().execute(sql);

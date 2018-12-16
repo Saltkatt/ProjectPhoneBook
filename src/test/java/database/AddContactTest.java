@@ -31,7 +31,6 @@ class AddContactTest {
     }
 
 
-    //TODO fix sql syntax so this test works
     @Test
     void testThatNameOnlyAcceptLettersAndNumberOnlyAcceptNumbers(){
         Database db3 = new Database("test_insert3.db");
