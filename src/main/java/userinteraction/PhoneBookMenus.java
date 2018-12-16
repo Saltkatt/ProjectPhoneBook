@@ -3,10 +3,12 @@ package userinteraction;
 import java.util.ArrayList;
 
 /**
- * This class creates menus
+ * This is a Singleton-class that creates menus with Lists of MenuOptions
+ * specifically for the Phone Book program.
+ * Calling the mainMenu()-method will start the program
  *
  * @author Daniella Norén
- * @version version 0.1 Dec 06 2018
+ * @version version 1.0 2018
  */
 
 public class PhoneBookMenus {
@@ -96,7 +98,7 @@ public class PhoneBookMenus {
             MenuReader.printMenu(mainMenuList);
             MenuReader.executeMenu(mainMenuList, UserInput.chooseFromList(mainMenuList) - 1);
         }catch(IllegalArgumentException e){
-
+            e.printStackTrace();
         }
     }
 
@@ -105,12 +107,12 @@ public class PhoneBookMenus {
      * with editMenuList and an int from UserInput as argument.
      * This loops through and executes the doSomething()-method attached to the chosen
      */
-    public void editMenu(){
+    private void editMenu(){
         try {
             MenuReader.printMenu(editMenuList);
             MenuReader.executeMenu(editMenuList, UserInput.chooseFromList(editMenuList) - 1);
         }catch(IllegalArgumentException e){
-
+            e.printStackTrace();
         }
     }
 
@@ -119,12 +121,12 @@ public class PhoneBookMenus {
      * with searchMenuList and an int from UserInput as argument.
      * This loops through and executes the doSomething()-method attached to the chosen
      */
-    public void searchMenu(){
+    private void searchMenu(){
         try {
             MenuReader.printMenu(searchMenuList);
             MenuReader.executeMenu(searchMenuList, UserInput.chooseFromList(searchMenuList) - 1);
         }catch(IllegalArgumentException e){
-
+            e.printStackTrace();
         }
     }
 

@@ -5,7 +5,7 @@ package userinteraction;
  * can be overwritten to do whatever is suitable
  *
  * @author Daniella Norén
- * @version 1 Build Dec 6
+ * @version 1.0 Build 2018
  */
 
 public interface DoSomething {

@@ -7,7 +7,7 @@ package userinteraction;
  * but can be used outside one as well.
  *
  * @author Daniella Norén
- * @version version 1 Build Dec 06 2018
+ * @version version 1.0 Build 2018
  */
 
 public class MenuOption {

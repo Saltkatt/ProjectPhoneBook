@@ -7,7 +7,7 @@ import java.util.List;
  * and execute the DoSomething-method in the MenuOption.
  *
  * @author Daniella Norén
- * @version 1 Build Dec 12
+ * @version 1.0 Build 2018
  *
  */
 
@@ -36,8 +36,7 @@ public class MenuReader {
     public static void executeMenu(List<MenuOption> list, int choice){
         if(choice >= list.size() || choice < 0)
             throw new IllegalArgumentException();
-        if(list.size() > 0)
-            list.get(choice).getDoIt().doThing();
+        list.get(choice).getDoIt().doThing();
     }
 
 
