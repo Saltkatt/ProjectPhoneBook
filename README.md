@@ -60,10 +60,6 @@ mvn test
 ## Built with
 
 IntelliJ
-Our minds
-Frustration
-
-## Thnx xoxo <3 <3
 
 
 
