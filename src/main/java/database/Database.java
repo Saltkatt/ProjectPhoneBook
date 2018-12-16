@@ -40,8 +40,8 @@ public class Database {
 
         String sql = "CREATE TABLE IF NOT EXISTS contacts (\n"
                 + " contact_id INTEGER PRIMARY KEY,\n"
-                + "	name TEXT NOT NULL CHECK (length(number) > 0 AND length(name) < 26),\n"
-                + "	number TEXT NOT NULL CHECK (length(number) > 0 AND length(number) < 21)\n"
+                + "	name TEXT NOT NULL CHECK (length(number) >= 1 AND length(name) <= 30),\n"
+                + "	number TEXT NOT NULL CHECK (length(number) >= 1 AND length(number) <= 20)\n"
                 + ");";
 
 

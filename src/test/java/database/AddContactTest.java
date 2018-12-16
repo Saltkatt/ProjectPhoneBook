@@ -31,48 +31,48 @@ class AddContactTest {
     }
 
 
+    //TODO fix sql syntax so this test works
     @Test
-    void testThatNameOnlyAcceptLetters(){
+    void testThatNameOnlyAcceptLettersAndNumberOnlyAcceptNumbers(){
         Database db3 = new Database("test_insert3.db");
-        //todo + fix database sql
-    }
-
-
-    @Test
-    void testThatNumberOnlyAcceptNumbers(){
-        Database db4 = new Database("test_insert4.db");
-        //todo + fix database sql
+        db3.getAddContact().addContact("abc", "123");
+        db3.getAddContact().addContact("123", "abc");
+        db3.getAddContact().addContact("abc", "abc");
+        db3.getAddContact().addContact("123", "123");
+        assertEquals(db3.getSelectContact().selectAllContact().size(), 1);
     }
 
 
     @Test
     void testThatCharactersCantExceedMaxLimit(){
-        Database db5 = new Database("test_insert5.db");
-        //todo + fix database sql bug
+        Database db4 = new Database("test_insert4.db");
+        db4.getAddContact().addContact("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" ,"11111111111111111111");
+        db4.getAddContact().addContact("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" ,"11111111111111111111");
+        db4.getAddContact().addContact("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" ,"111111111111111111111");
+        assertEquals(db4.getSelectContact().selectAllContact().size(), 1);
     }
 
 
     @Test
-    void testIfPossibleToInsertValuesThatShouldBeValidThatDoesntAlreadyExistInTable(){
+    void testIfPossibleToInsertValidValuesThatDoesntAlreadyExistInTable(){
+        Database db5 = new Database("test_insert5.db");
+        db5.getAddContact().addContact("Bob", "123");
+        assertEquals(db5.getSelectContact().selectAllContact().size(), 1);
+    }
+
+    @Test
+    void testIfPossibleToInsertValidValuesThatAlreadyExistInTable(){
         Database db6 = new Database("test_insert6.db");
         db6.getAddContact().addContact("Bob", "123");
-        //todo mooooooore values here
-        //assertEquals(db6.getSelectContact().selectAllContact().size(), 1);
-    }
-
-    @Test
-    void testIfPossibleToInsertValuesThatAlreadyExistInTable(){
-        Database db7 = new Database("test_insert7.db");
-        db7.getAddContact().addContact("Bob", "123");
-        db7.getAddContact().addContact("Bob", "123");
-        assertEquals(db7.getSelectContact().selectAllContact().size(), 2);
+        db6.getAddContact().addContact("Bob", "123");
+        assertEquals(db6.getSelectContact().selectAllContact().size(), 2);
     }
 
 
     @AfterAll
     void removeDatabasesSoTheTestsAlwaysRunWithNewOnes(){
         try {
-            for(int i = 1; i <= 7; i++){
+            for(int i = 1; i <= 6; i++){
                 Files.deleteIfExists(Paths.get("test_insert" + i + ".db"));
             }
         } catch (IOException e) {
