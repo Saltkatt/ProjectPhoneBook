@@ -12,9 +12,13 @@ public class ContactManager {
      * This class manages the user interactions which concern creating new and editing existing contacts.
      */
 
-    private Database db = new Database("my_contacts.db");
+    private Database db;
 
     private int chosenContactID;
+
+    public ContactManager(String dbName) {
+        this.db = new Database(dbName);
+    }
 
     /**
      * Getting info from user for creating a contact and providing the result to database adding method.
