@@ -23,12 +23,8 @@ public class ContactManager {
         String name = enterName("Enter name");
         String phoneNumber = enterPhoneNumber("Enter phone number");
         if(areYouSure()) {
-            try {
-                db.getAddContact().addContact(name, phoneNumber);
-                UserOutput.printLine("Contact added");
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            db.getAddContact().addContact(name, phoneNumber);
+            UserOutput.printLine("Contact added");
         }else
             UserOutput.printLine("Contact not added");
 
