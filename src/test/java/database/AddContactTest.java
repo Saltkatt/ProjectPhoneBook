@@ -1,77 +1,83 @@
 package database;
 
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.sql.SQLException;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class AddContactTest {
 
-    
-    private Database db;
-
-    @BeforeAll
-    void setupDatabase(){
-        db = new Database("database_test_insert.db");
-    }
 
     @Test
     void testThatValuesCantBeNull(){
-        //assertThrows(SQLException.class, () -> db.getAddContact().addContact(null, null));
+        Database db1 = new Database("test_insert1.db");
+        db1.getAddContact().addContact(null, null);
+        assertEquals(db1.getSelectContact().selectAllContact().size(), 0);
     }
 
 
     @Test
     void testThatStringValuesCantBeEmpty(){
-        //assertThrows(SQLException.class, () -> db.getAddContact().addContact("", ""));
+        Database db2 = new Database("test_insert2.db");
+        db2.getAddContact().addContact("", "");
+        assertEquals(db2.getSelectContact().selectAllContact().size(), 0);
     }
 
-    @Test
-    void testIfPossibleToInsertValuesThatDoesntAlreadyExistInTable(){
-//        try {
-//            db.getAddContact().addContact("Bob", "123");
-//        } catch (SQLException e) {
-//            fail(e.getMessage());
-//        }
-    }
 
     @Test
-    void testIfPossibleToInsertValuesThatAlreadyExistInTable(){
-//        try{
-//            db.getAddContact().addContact("TheSuperCreativeName", "123321");
-//            db.getAddContact().addContact("TheSuperCreativeName", "123321");
-//        } catch (SQLException e){
-//            fail(e.getMessage());
-//        }
+    void testThatNameOnlyAcceptLetters(){
+        Database db3 = new Database("test_insert3.db");
+        //todo + fix database sql
+    }
+
+
+    @Test
+    void testThatNumberOnlyAcceptNumbers(){
+        Database db4 = new Database("test_insert4.db");
+        //todo + fix database sql
     }
 
 
     @Test
     void testThatCharactersCantExceedMaxLimit(){
-//        try{
-//            db.getAddContact().addContact("aaaaaaaaaaaaaaaaaaaaaaaaa", "11111111111111111111");
-//        } catch(SQLException e){
-//            fail(e.getMessage());
-//        }
-//        assertThrows(SQLException.class, () ->
-//                db.getAddContact().addContact("aaaaaaaaaaaaaaaaaaaaaaaaaa", "111111111111111111111"));
+        Database db5 = new Database("test_insert5.db");
+        //todo + fix database sql bug
     }
 
+
+    @Test
+    void testIfPossibleToInsertValuesThatShouldBeValidThatDoesntAlreadyExistInTable(){
+        Database db6 = new Database("test_insert6.db");
+        db6.getAddContact().addContact("Bob", "123");
+        //todo mooooooore values here
+        //assertEquals(db6.getSelectContact().selectAllContact().size(), 1);
+    }
+
+    @Test
+    void testIfPossibleToInsertValuesThatAlreadyExistInTable(){
+        Database db7 = new Database("test_insert7.db");
+        db7.getAddContact().addContact("Bob", "123");
+        db7.getAddContact().addContact("Bob", "123");
+        assertEquals(db7.getSelectContact().selectAllContact().size(), 2);
+    }
+
+
     @AfterAll
-    void removeDatabaseSoTheTestsAlwaysRunWithANewOne(){
-//        try {
-//            Files.deleteIfExists(Paths.get("database_test_insert.db"));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+    void removeDatabasesSoTheTestsAlwaysRunWithNewOnes(){
+        try {
+            for(int i = 1; i <= 7; i++){
+                Files.deleteIfExists(Paths.get("test_insert" + i + ".db"));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

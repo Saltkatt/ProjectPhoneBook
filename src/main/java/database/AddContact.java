@@ -27,7 +27,7 @@ public class AddContact {
         String sql = "INSERT INTO contacts(name,number) VALUES(?,?)";
 
         try(Connection conn = DriverManager.getConnection("jdbc:sqlite:" + fileName);
-            PreparedStatement pstmt = conn.prepareStatement(sql);){
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
             pstmt.setString(1, name);
             pstmt.setString(2, number);
             pstmt.executeUpdate();
