@@ -4,8 +4,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test that the Class MenuOption works correctly
+ *
+ * @author Daniella Norén
+ * @version 1 Build 2018
+ */
 class MenuOptionTest {
-
+    /**
+     * If given an empty String as MenuText it should throw an IllegalArgumentException
+     */
     @Test
     void badStringTest(){
         assertThrows(IllegalArgumentException.class, () -> new MenuOption("", () -> {}));
@@ -15,6 +23,10 @@ class MenuOptionTest {
 
     }
 
+    /**
+     * Check so that the DoSomething-method returns correctly and when executed
+     * does what it should do
+     */
     @Test
     void getDoIt() {
         DoSomething d = () -> System.out.println("Test successful");
@@ -30,6 +42,10 @@ class MenuOptionTest {
         assertFalse(mo2.getDoIt().equals(mo.getDoIt()));
     }
 
+    /**
+     * Check so that the getMenuText() returns the correct
+     * MenuText given into the constructor
+     */
     @Test
     void getMenuText() {
         String str = "Test";

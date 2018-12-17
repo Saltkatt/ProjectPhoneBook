@@ -6,10 +6,20 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test for PhoneBookMenus
+ * This class uses a lot of the functionality tested by the other classes eg MenuOption and MenuReader
+ *
+ * @author Daniella Norén
+ * @version 1 Build 2018
+ */
 class PhoneBookMenusTest {
 
     private static DoSomething d = () -> {};
 
+    /**
+     * Test so that the getLists()-methods returns a copy of the list and not the same List
+     */
     @Test
     void listIsCopyTest(){
         ArrayList<MenuOption> main = PhoneBookMenus.newMenu().getMainMenuList();
@@ -29,6 +39,9 @@ class PhoneBookMenusTest {
         assertTrue(main.size() == 5 && PhoneBookMenus.newMenu().getMainMenuList().size() == 4);
     }
 
+    /**
+     * Assert that the menuTexts of the lists are correct
+     */
    @Test
     void getMainMenuListStringTest(){
         ArrayList<MenuOption> edit = PhoneBookMenus.newMenu().getEditMenuList();
