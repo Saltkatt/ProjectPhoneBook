@@ -12,16 +12,23 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+
+/**
+ * This test class tests the RemoveContact class.
+ *
+ * @author Elin Sexton
+ */
 class RemoveContactTest {
 
     private Database db;
 
-    //Create testing database.
+    /**
+     * Creates a testing database.
+     */
     @BeforeAll
     void setupDatabase() {
         db = new Database("database_testing_remove");
 
-        //Database to check updates against.
         db.getAddContact().addContact("Anton", "0107433221");
         db.getAddContact().addContact("Bertil", "0206122334");
         db.getAddContact().addContact("Carl", "0305564738");
@@ -32,7 +39,9 @@ class RemoveContactTest {
 
     /**
      * Test removeContact:
-     * Removes one contact: 2. Bertil is removed from the list, this is verified by checking the size of the list.
+     * Removes one contact (2. Bertil) is removed from the list by checking the size of the list.
+     * When testing removeContact it is expected that the contact_id chosen is removed from the list
+     * and that the list size reflects the new amount of contacts.
      */
 
     @Test
@@ -42,8 +51,10 @@ class RemoveContactTest {
         assertEquals(db.getSelectContact().selectAllContact().size(), 4);
 
     }
-    
-    //Removes the testing database after tests.
+
+    /**
+     * Removes the testing database after tests.
+     */
     @AfterAll
     void removeDatabase(){
         try {
