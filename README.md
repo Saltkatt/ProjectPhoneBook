@@ -20,6 +20,7 @@ Clone this project into your local machine.
 ````
 git clone https://github.com/blixtr/ProjectPhoneBook.git/
 ````
+You can also download a zip-file with all the files and unzip the downloaded file in whatever folder you'd like.
 
 This will create a folder named ProjectPhoneBook with all necessary files. Enter the folder, compile and package the program.
 
@@ -47,11 +48,16 @@ You are sent to a simple console-menu with each option having a corresponding nu
 Enter the number of the option you want to choose.
 
 To add a contact press 1, enter a name and a phone number.
+
 To view all contacts press 2 and select the contact you want to edit by inputting the contact id number.
+
 Once you have selected the contact you want to edit you will be sent to the edit menu where you can update or remove the contact.
+
 To search for a contact press 3.
+
 Searching for a letter/s will return contacts beginning with the letter/s.
 Searching for number/s will return contacts whose phone number contains the number/s.
+
 To exit the program press 4.
 
 When exiting the program, all your contacts are saved.
