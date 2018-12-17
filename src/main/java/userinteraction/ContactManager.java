@@ -12,9 +12,13 @@ public class ContactManager {
      * This class manages the user interactions which concern creating new and editing existing contacts.
      */
 
-    private Database db = new Database("my_contacts.db");
+    private Database db;
 
     private int chosenContactID;
+
+    public ContactManager(String dbName) {
+        this.db = new Database(dbName);
+    }
 
     /**
      * Getting info from user for creating a contact and providing the result to database adding method.
@@ -86,7 +90,7 @@ public class ContactManager {
     }
 
     /**
-     * Picking from full contact list and saving the chosen contacts id.
+     * Picking from full contact list and return if found or not
      */
     public boolean findByList() {
         if (chooseContactFromList(db.getSelectContact().selectAllContact())) {
@@ -130,7 +134,6 @@ public class ContactManager {
             String contact = contacts.get(i);
             UserOutput.printLine(i + 1 + ". " + contact.substring(contact.indexOf("\t") + 1));
         }
-
 
         int listChoice = UserInput.chooseFromList(contacts);
         if(listChoice == contacts.size())
