@@ -14,37 +14,25 @@ public class Contact {
         return number;
     }
 
-    @Override
-    public String toString() {
-        return "Contact{" +
-                "name='" + name + '\'' +
-                ", number='" + number + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Contact{" +
+//                "name='" + name + '\'' +
+//                ", number='" + number + '\'' +
+//                '}';
+//    }
 
     public void setNumber(String number) {
         this.number = number;
     }
 
-    public String getContactID() {
-        return contactID;
-    }
 
-    public void setContactID(String contactID) {
-        this.contactID = contactID;
-    }
 
     private String name;
     private String number;
-    private String contactID;
 
-    public Contact(){
-
-    }
-
-    public Contact(String contactId, String name, String number){
+    public Contact(String name, String number){
         this.name = name;
         this.number = number;
-        this.contactID = contactId;
     }
 }

@@ -15,8 +15,8 @@ public class ArrayToObservable {
 
             String contact = list.get(i);
             String[] contacts = contact.split("\t");
-            Contact c = new Contact(contacts[0], contacts[1], contacts[2]);
-            System.out.println(c.getContactID()+" "+c.getName()+" "+c.getNumber());
+            Contact c = new Contact(contacts[1], contacts[2]);
+            System.out.println(c.getName()+" "+c.getNumber());
         }
 
         return contactList;

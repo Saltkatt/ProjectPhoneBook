@@ -1,5 +1,6 @@
 package main;
 
+import database.Database;
 import javafx.Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +20,7 @@ public class Main extends Application {
         controller.init();
         controller.setStage();
 
-        primaryStage.setTitle("ProjectPhoneBook");
+        primaryStage.setTitle("PhoneBook");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
         primaryStage.show();
