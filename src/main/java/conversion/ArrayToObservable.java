@@ -17,7 +17,7 @@ import java.util.List;
  * @author Daniella Norén
  * @version 1 Build 2018
  */
- class ArrayToObservable {
+ public class ArrayToObservable {
 
     /**
      * Static method that takes a List<String> from
