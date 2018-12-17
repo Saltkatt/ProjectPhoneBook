@@ -27,14 +27,14 @@ This will create a folder named ProjectPhoneBook with all necessary files. Enter
 ````
 mvn package
 ````
-This has now created a .jar in the newly made target-folder that will run the program.
+This has now created a PhoneBook.jar in the newly made target-folder that will run the program.
 
 ## Running the program
 
 Run the program via the .jar file:
 
 ````
-java -jar ProjectPhoneBook-1.0-jar-with-dependencies.jar
+java -jar PhoneBook.jar
 ````
 Run only with maven:
 
