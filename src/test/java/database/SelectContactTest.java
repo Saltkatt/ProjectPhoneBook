@@ -12,16 +12,23 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+/**
+ * This class tests the SelectContact class.
+ *
+ * @author Elin Sexton
+ */
 class SelectContactTest {
 
     private Database db;
 
-    //Create testing database
+    /**
+     * Create testing database.
+     */
+
     @BeforeAll
     void setupDatabase() {
         db = new Database("database_testing_select");
 
-        //Database to check updates against.
         db.getAddContact().addContact("Anton", "0107433221");
         db.getAddContact().addContact("Bertil", "0206122334");
         db.getAddContact().addContact("Carl", "0305564738");
@@ -33,9 +40,9 @@ class SelectContactTest {
     /**
      * Tests for selecting all, name and number.
      * SelectContact sends information to an ArrayList and therefore needs a toString to find contacts.
+     * When testing selectAll it is expected that all contacts in the list are found.
      */
 
-    //Tests that selectAll selects all the contacts in the database.
     @Test
     void testSelectAll() {
 
@@ -48,7 +55,10 @@ class SelectContactTest {
 
     }
 
-    //Tests that the contact (Daniella) is the one selected from the database.
+    /**
+     * Tests that the selected name produces the correct contact or contacts in the list.
+     * When testing selectName it is expected that the name selected matches the correct contact.
+     */
     @Test
     void testSelectName() {
 
@@ -56,7 +66,10 @@ class SelectContactTest {
 
     }
 
-    //Tests that the contact number (0206122334) is the one selected from the database.
+    /**
+     * Tests that the selected number produces the correct contact in the list.
+     * When testing selectNumber it is expected that the number selected matches the correct contact.
+     */
     @Test
     void testSelectNumber() {
 
@@ -64,7 +77,9 @@ class SelectContactTest {
 
     }
 
-    //Removes testing database after the tests.
+    /**
+     *  Removes testing database after the tests have run.
+     */
     @AfterAll
     void removeDatabase(){
         try {

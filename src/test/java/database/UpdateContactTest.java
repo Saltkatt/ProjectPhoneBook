@@ -12,16 +12,22 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+/**
+ * This class tests the updateContact methods.
+ * @author Elin Sexton
+ */
 class UpdateContactTest {
 
     private Database db;
 
-    //Create testing database.
+    /**
+     * Creates testing database.
+     */
+
     @BeforeAll
     void setupDatabase() {
         db = new Database("database_testing_update");
 
-        //Database to check updates against.
         db.getAddContact().addContact("Anton", "0107433221");
         db.getAddContact().addContact("Bertil", "0206122334");
         db.getAddContact().addContact("Carl", "0305564738");
@@ -31,33 +37,43 @@ class UpdateContactTest {
     }
 
     /**
-     * Tests for updating name and number.
+     * Tests that updateName updates the name of the first contact in the database.
+     * Updates name of contact Anton to Solveig.
+     * SelectContact uses an Arraylist and therefore starts the list at position 0 instead of 1.
+     * Therefore we get position 0 instead of 1.
+     *
+     * When testing updateName it is expected that the new name replaces the name of the correct contact.
      */
 
-    //Tests that updateName updates the name of the first contact in the database.
     @Test
     void testUpdateName() {
-        //Updates name of contact Anton to Solveig.
+
         db.getUpdateContact().updateName(1,"Solveig");
-        //SelectContact uses an arraylist and therefore starts the list at position 0 instead of 1.
-        //Therefore we get position 0 instead of 1.
         assertEquals(db.getSelectContact().selectAllContact().get(0),"1	Solveig	0107433221");
 
     }
 
-    //Tests that updatePhoneNumber updates the number of the third contact in the database.
+    /**
+     * Tests that updatePhoneNumber updates the number of the third contact in the database.
+     * Updates phone number of contact.
+     * SelectContact uses an arraylist and therefore starts the list at position 0 instead of 1.
+     * Therefore we get position 2 for Carl instead of 3.
+     *
+     * When testing updateNumber it is expected that the new number replaces the number of the correct contact.
+     */
+
     @Test
     void testUpdateNumber() {
-        //Updates phone number of contact.
+
         db.getUpdateContact().updatePhoneNumber(3,"1234567890");
-        //SelectContact uses an arraylist and therefore starts the list at position 0 instead of 1.
-        //Therefore we get position 2 for Carl instead of 3.
         assertEquals(db.getSelectContact().selectAllContact().get(2),"3\tCarl\t1234567890");
 
     }
 
 
-    //Removes testing database after the tests.
+    /**
+     * Removes testing database after the tests.
+     */
     @AfterAll
     void removeDatabase(){
         try {
