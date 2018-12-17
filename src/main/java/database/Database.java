@@ -20,7 +20,8 @@ public class Database {
     
     /**
      * Having instances of all the smaller classes here ensures that the right a database gets updated when a method in
-     * one of the smaller classes are used since they can call the right database by it's name automatically.
+     * one of the smaller classes are used since they can call the right database by it's name automatically. This makes
+     * it possible to create and use more than one database.
      *
      * @param fileName the name of the database that will be created
      */
@@ -34,7 +35,7 @@ public class Database {
     }
 
     /**
-     * Creates a database in the same directory as where the project is saved
+     * Creates a database in the same directory as where the project is saved.
      */
     private void setupDatabase(){
 
