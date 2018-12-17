@@ -4,12 +4,15 @@ public class Contact {
 
     private String name;
     private String number;
-    private String contactID;
+    private int contactID;
+    private static int contactCount;
 
-    public Contact(String contactId, String name, String number){
+    public Contact(String name, String number){
         this.name = name;
-        this.number = number;
-        this.contactID = contactId;
+        if(number.length() <= 20 && number.matches("[0-9]+"))
+            this.number = number;
+        contactID = contactCount;
+        contactCount++;
     }
 
     public String getName() {
@@ -28,21 +31,19 @@ public class Contact {
         this.number = number;
     }
 
-    public String getContactID() {
+    public int getContactID() {
         return contactID;
-    }
-
-    public void setContactID(String contactID) {
-        this.contactID = contactID;
     }
 
 
     @Override
     public String toString() {
-        return "Contact{" +
-                "name='" + name + '\'' +
-                ", number='" + number + '\'' +
-                '}';
+        return "Contact[Name=" +
+                name + ", Number="+ number + ']';
+    }
+
+    public static void reset(){
+        contactCount = 1;
     }
 
 

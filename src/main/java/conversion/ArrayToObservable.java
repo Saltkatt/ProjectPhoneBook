@@ -27,8 +27,12 @@ public class ArrayToObservable {
     public static ObservableList<Contact> toContactObservable(List<String> list){
         ObservableList<Contact> contactList = FXCollections.observableArrayList();
         for(int i = 0; i < list.size(); i++){
+            Contact c;
             String[] contacts = list.get(i).split("\t");
-            Contact c = new Contact(contacts[0], contacts[1], contacts[2]);
+            if(contacts.length == 3) {
+                c = new Contact(contacts[1], contacts[2]);
+                contactList.add(c);
+            }
         }
 
         return contactList;
