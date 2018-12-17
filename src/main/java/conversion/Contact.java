@@ -2,6 +2,16 @@ package conversion;
 
 public class Contact {
 
+    private String name;
+    private String number;
+    private String contactID;
+
+    public Contact(String contactId, String name, String number){
+        this.name = name;
+        this.number = number;
+        this.contactID = contactId;
+    }
+
     public String getName() {
         return name;
     }
@@ -12,14 +22,6 @@ public class Contact {
 
     public String getNumber() {
         return number;
-    }
-
-    @Override
-    public String toString() {
-        return "Contact{" +
-                "name='" + name + '\'' +
-                ", number='" + number + '\'' +
-                '}';
     }
 
     public void setNumber(String number) {
@@ -34,17 +36,14 @@ public class Contact {
         this.contactID = contactID;
     }
 
-    private String name;
-    private String number;
-    private String contactID;
 
-    public Contact(){
-
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "name='" + name + '\'' +
+                ", number='" + number + '\'' +
+                '}';
     }
 
-    public Contact(String contactId, String name, String number){
-        this.name = name;
-        this.number = number;
-        this.contactID = contactId;
-    }
+
 }
