@@ -8,20 +8,34 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Test for MenuReader class
+ *
+ * @author Daniella Norén
+ * @version 1 Build 2018
+ */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MenuReaderTest {
 
     private String test = "";
-    ArrayList<MenuOption> mo = new ArrayList<>();
+    List<MenuOption> mo = new ArrayList<>();
 
+    /**
+     * Creates a List full of MenuOptions.
+     */
     @BeforeAll
     void setUp(){
         mo.add(new MenuOption("1. Say hello", () -> System.out.print("Hello")));
         mo.add(new MenuOption("2. Change Stringtest to \"Hello\"", () -> test = "Hello"));
     }
 
+    /**
+     * Test so that the output of the list is correct
+     */
     @Test
     void printMenuTest() {
         PrintStream stream = new PrintStream(System.out);
@@ -37,6 +51,10 @@ class MenuReaderTest {
         System.setOut(stream);
     }
 
+    /**
+     * Test that you can execute the method attached to the MenuOption in the list
+     * @throws SQLException
+     */
     @Test
     void executeMenuTest() throws SQLException {
         test = "";
@@ -52,6 +70,9 @@ class MenuReaderTest {
 
     }
 
+    /**
+     * Test so that IllegalArgumentException is thrown when giving a bad input
+     */
     @Test
     void illegalInputTest(){
         ArrayList<MenuOption> list = new ArrayList<>();

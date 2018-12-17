@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * This is a Singleton-class that creates menus with Lists of MenuOptions
  * specifically for the Phone Book program.
- * Calling the mainMenu()-method will start the program
+ * It is through the MainMenu()-method you start the console-version of the program
  *
  * @author Daniella Norén
  * @version version 1.0 2018

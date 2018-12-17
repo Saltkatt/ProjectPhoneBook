@@ -10,10 +10,14 @@ import java.util.List;
  * and creates Contact-instances and an ObservableList for JavaFX
  * with all the Contacts
  *
+ * It is tailormade for SelectContact-class, it doesn't work if the
+ * List<String> doesn't follow the pattern of the returning List<String> from
+ * SelectContact-methods
+ *
  * @author Daniella Norén
  * @version 1 Build 2018
  */
-public class ArrayToObservable {
+ class ArrayToObservable {
 
     /**
      * Static method that takes a List<String> from
