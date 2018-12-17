@@ -41,6 +41,8 @@ class UpdateContactTest {
      * Updates name of contact Anton to Solveig.
      * SelectContact uses an Arraylist and therefore starts the list at position 0 instead of 1.
      * Therefore we get position 0 instead of 1.
+     *
+     * When testing updateName it is expected that the new name replaces the name of the correct contact.
      */
 
     @Test
@@ -56,6 +58,8 @@ class UpdateContactTest {
      * Updates phone number of contact.
      * SelectContact uses an arraylist and therefore starts the list at position 0 instead of 1.
      * Therefore we get position 2 for Carl instead of 3.
+     *
+     * When testing updateNumber it is expected that the new number replaces the number of the correct contact.
      */
 
     @Test
