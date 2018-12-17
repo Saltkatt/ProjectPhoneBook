@@ -11,7 +11,7 @@ Extract the file in a fitting folder and then add your *maven-folder/bin* to you
 
 Download java JDK on [oracles website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). This
 is JDK version 8, which is the JDK used for writing this program. 
-When downloaded, add the *java-jdk-folder/bin* to your 'JAVA_HOME'-enivornment variable.
+When downloaded, add the *java-jdk-folder/bin* to your 'JAVA_HOME'-environment variable.
 
 ## Set up
 
@@ -42,12 +42,17 @@ mvn exec:java -Dexec.mainClass=main.Main
 ````
 ## How it works
 
-When started, a database has been created in the ProjectPhoneBook-folder. You are sent to a simple console-menu with each option having a corresponding number. Enter the number of the option you want to choose. 
+When started, a database is created in the ProjectPhoneBook-folder.
+You are sent to a simple console-menu with each option having a corresponding number.
+Enter the number of the option you want to choose.
 
-You can add a contact, here you will enter a name and a phonenumber.
-You can view all your contacts and also update/remove them. When viewing contacts, enter the number corresponding to the contact
-and you will be sent to the edit-menu.
-Search for contacts in the search-menu. Searching for a letter/s will return contacts beginning with the letter/s. Searching for number/s will return contacts whose phonenumber contains the number/s. 
+To add a contact press 1, enter a name and a phone number.
+To view all contacts press 2 and select the contact you want to edit by inputting the contact id number.
+Once you have selected the contact you want to edit you will be sent to the edit menu where you can update or remove the contact.
+To search for a contact press 3.
+Searching for a letter/s will return contacts beginning with the letter/s.
+Searching for number/s will return contacts whose phone number contains the number/s.
+To exit the program press 4.
 
 When exiting the program, all your contacts are saved.
 
