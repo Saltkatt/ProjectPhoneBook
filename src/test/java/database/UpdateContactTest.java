@@ -27,7 +27,7 @@ class UpdateContactTest {
     @BeforeAll
     void setupDatabase() {
         db = new Database("database_testing_update");
-        
+
         db.getAddContact().addContact("Anton", "0107433221");
         db.getAddContact().addContact("Bertil", "0206122334");
         db.getAddContact().addContact("Carl", "0305564738");
