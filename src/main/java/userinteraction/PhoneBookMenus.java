@@ -24,7 +24,7 @@ public class PhoneBookMenus {
      *
      */
     private PhoneBookMenus(){
-        this.cm =  new ContactManager();
+        this.cm =  new ContactManager("my_contacts.db");
         fillEditMenu();
         fillMainMenu();
         fillSearchMenu();
