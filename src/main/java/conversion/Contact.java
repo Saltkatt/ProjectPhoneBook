@@ -14,6 +14,8 @@ public class Contact {
         return number;
     }
 
+    public String getId(){return id;}
+
 //    @Override
 //    public String toString() {
 //        return "Contact{" +
@@ -27,11 +29,12 @@ public class Contact {
     }
 
 
-
+    private String id;
     private String name;
     private String number;
 
-    public Contact(String name, String number){
+    public Contact(String id, String name, String number){
+        this.id = id;
         this.name = name;
         this.number = number;
     }

@@ -20,21 +20,21 @@
    <children>
       <Pane prefHeight="441.0" prefWidth="453.0">
          <children>
-            <TableView fx:id="tableView" layoutX="148.0" layoutY="-7.0" prefHeight="455.0" prefWidth="313.0">
+            <TableView fx:id="tableView" onMouseClicked="#tableViewClicked" layoutX="148.0" layoutY="-7.0" prefHeight="455.0" prefWidth="313.0">
               <columns>
                 <TableColumn fx:id="nameColumn" minWidth="0.0" prefWidth="147.0" text="Name" />
                 <TableColumn fx:id="numberColumn" prefWidth="165.0" text="Number" />
               </columns>
             </TableView>
             <Button fx:id="addContactButton" layoutX="13.0" layoutY="71.0" mnemonicParsing="false" onAction="#addContact" prefHeight="25.0" prefWidth="109.0" text="Add contact" />
-            <Button fx:id="addContactButton2" disable="true" layoutX="13.0" layoutY="104.0" mnemonicParsing="false" onAction="#addContact2" prefHeight="13.0" prefWidth="109.0" text="Update contact" />
+            <Button fx:id="updateContactButton" layoutX="13.0" layoutY="104.0" mnemonicParsing="false" onAction="#updateContact" prefHeight="13.0" prefWidth="109.0" text="Update contact" />
             <TextField layoutX="6.0" layoutY="23.0" prefHeight="25.0" prefWidth="129.0" promptText="Search" />
-            <Button fx:id="addContactButton1" disable="true" layoutX="13.0" layoutY="136.0" mnemonicParsing="false" onAction="#addContact" prefHeight="25.0" prefWidth="109.0" text="Delete contact" />
-            <TextField layoutX="13.0" layoutY="274.0" prefHeight="25.0" prefWidth="121.0" />
-            <TextField layoutX="13.0" layoutY="325.0" prefHeight="25.0" prefWidth="121.0" />
-            <Label layoutX="13.0" layoutY="257.0" text="Enter name:" />
-            <Label layoutX="14.0" layoutY="308.0" text="Enter number:" />
-            <Button layoutX="44.0" layoutY="366.0" mnemonicParsing="false" text="Confirm" />
+            <Button fx:id="deleteContactButton" layoutX="13.0" layoutY="136.0" mnemonicParsing="false" onAction="#deleteContact" prefHeight="25.0" prefWidth="109.0" text="Delete contact" />
+            <TextField fx:id="nameField" layoutX="13.0" layoutY="274.0" prefHeight="25.0" prefWidth="121.0" />
+            <TextField fx:id="numberField" layoutX="13.0" layoutY="325.0" prefHeight="25.0" prefWidth="121.0" />
+            <Label fx:id="nameLabel" layoutX="13.0" layoutY="257.0" text="Enter name:" />
+            <Label fx:id="numberLabel" layoutX="14.0" layoutY="308.0" text="Enter number:" />
+            <Button fx:id="confirmButton" onAction="#confirm" layoutX="44.0" layoutY="366.0" mnemonicParsing="false" text="Confirm" />
          </children></Pane>
    </children>
 </GridPane>
