@@ -26,15 +26,18 @@ public class Controller {
     @FXML TableView<Contact> tableView;
     @FXML TableColumn<Contact, String> nameColumn;
     @FXML TableColumn<Contact, String> numberColumn;
-    @FXML Button addContactButton;
+    @FXML Button addContactButton, addContactButton2;
 
     ObservableList<Contact> observableContacts = FXCollections.observableArrayList();
 
 
     public void addContact(){
         observableContacts.add(new Contact("hiii", "123"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         tableView.setItems(observableContacts);
+
+    }
+
+    public void addContact2(){
 
     }
 
@@ -44,13 +47,17 @@ public class Controller {
     }
     void doSomething(){
         System.out.println("yay");
-        //tableView.getColumns(observableList);
+        //tableView.setItems();
+
     }
 
 
     public void init(){
-        //observableList.addListener((ListChangeListener<Contact>) c -> doSomething());
-        //ArrayToObservable.toContactObservable(db.getSelectContact().selectAllContact()).
-                //addListener((ListChangeListener<Contact>) list -> addContact());
+//        ArrayToObservable.toContactObservable(db.getSelectContact().selectAllContact()).
+//                addListener((ListChangeListener<Contact>) c -> doSomething());
+
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        numberColumn.setCellValueFactory(new PropertyValueFactory<>("number"));
+
     }
 }
