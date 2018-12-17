@@ -90,7 +90,7 @@ public class ContactManager {
     }
 
     /**
-     * Picking from full contact list and saving the chosen contacts id.
+     * Picking from full contact list and return if found or not
      */
     public boolean findByList() {
         if (chooseContactFromList(db.getSelectContact().selectAllContact())) {
@@ -134,7 +134,6 @@ public class ContactManager {
             String contact = contacts.get(i);
             UserOutput.printLine(i + 1 + ". " + contact.substring(contact.indexOf("\t") + 1));
         }
-
 
         int listChoice = UserInput.chooseFromList(contacts);
         if(listChoice == contacts.size())
