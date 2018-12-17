@@ -1,5 +1,6 @@
 package main;
 
+import conversion.Contact;
 import database.Database;
 import javafx.Controller;
 import javafx.application.Application;
@@ -28,6 +29,9 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        for(Contact c: Controller.searchBackup){
+            Controller.db.getAddContact().addContact(c.getName(), c.getNumber());
+        }
         //PhoneBookMenus.newMenu().mainMenu();
     }
 }

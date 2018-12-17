@@ -28,7 +28,7 @@
             </TableView>
             <Button fx:id="addContactButton" layoutX="13.0" layoutY="71.0" mnemonicParsing="false" onAction="#addContact" prefHeight="25.0" prefWidth="109.0" text="Add contact" />
             <Button fx:id="updateContactButton" layoutX="13.0" layoutY="104.0" mnemonicParsing="false" onAction="#updateContact" prefHeight="13.0" prefWidth="109.0" text="Update contact" />
-            <TextField layoutX="6.0" layoutY="23.0" prefHeight="25.0" prefWidth="129.0" promptText="Search" />
+            <TextField fx:id="searchField" onKeyReleased="#search" layoutX="6.0" layoutY="23.0" prefHeight="25.0" prefWidth="129.0" promptText="Search" />
             <Button fx:id="deleteContactButton" layoutX="13.0" layoutY="136.0" mnemonicParsing="false" onAction="#deleteContact" prefHeight="25.0" prefWidth="109.0" text="Delete contact" />
             <TextField fx:id="nameField" layoutX="13.0" layoutY="274.0" prefHeight="25.0" prefWidth="121.0" />
             <TextField fx:id="numberField" layoutX="13.0" layoutY="325.0" prefHeight="25.0" prefWidth="121.0" />
