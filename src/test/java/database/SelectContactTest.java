@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 /**
  * This class tests the SelectContact class.
- * 
+ *
  * @author Elin Sexton
  */
 class SelectContactTest {
