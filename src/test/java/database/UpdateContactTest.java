@@ -77,12 +77,25 @@ class UpdateContactTest {
      */
 
     @Test
-    void testUpdateNameCantBeNull(){
+    void testUpdateNameCantBeNull() {
 
         db.getUpdateContact().updateName(4, null);
         assertEquals(db.getSelectContact().selectAllContact().get(3), "4\tDaniella\t0404659301");
     }
-    
+
+    /**
+     * Tests that the number updated cannot be null.
+     *
+     * When testing updateNumberCantBeNull it is expected that the null value not replace the current contact number.
+     */
+
+    @Test
+    void testUpdateNumberCantBeNull() {
+
+        db.getUpdateContact().updatePhoneNumber(5, null);
+        assertEquals(db.getSelectContact().selectAllContact().get(4), "5\tElin\t0509384929");
+
+    }
 
 
     /**
