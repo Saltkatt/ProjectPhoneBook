@@ -36,7 +36,9 @@ public class ArrayToObservable {
 
             String contact = list.get(i);
             String[] contacts = contact.split("\t");
-            contactList.add(new Contact(contacts[0], contacts[1], contacts[2]));
+            if(contacts.length == 3) {
+                contactList.add(new Contact(contacts[0], contacts[1], contacts[2]));
+            }
         }
 
         return contactList;
