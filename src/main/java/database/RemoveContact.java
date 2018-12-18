@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 /**
  * This class removes a row from the database using the contact_id.
- * @author Elin
+ * @author Elin Sexton
  */
 
 public class RemoveContact {
