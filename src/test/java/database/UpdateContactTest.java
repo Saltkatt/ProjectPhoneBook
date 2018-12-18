@@ -70,6 +70,20 @@ class UpdateContactTest {
 
     }
 
+    /**
+     * Tests that the name updated cannot be null.
+     *
+     * When testing updateNameCantBeNull it is expected that the null value not replace the current contact name.
+     */
+
+    @Test
+    void testUpdateNameCantBeNull(){
+
+        db.getUpdateContact().updateName(4, null);
+        assertEquals(db.getSelectContact().selectAllContact().get(3), "4\tDaniella\t0404659301");
+    }
+    
+
 
     /**
      * Removes testing database after the tests.
