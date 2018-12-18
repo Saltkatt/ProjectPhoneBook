@@ -30,7 +30,9 @@ public class Controller {
     @FXML Label numberLabel;
 
 
-    public static Database db = new Database("datebasefx.db");
+
+
+    public static Database db = new Database("my_contacts.db");
     private Contact currentContact;
     private Boolean confirmUpdate = false;
 
