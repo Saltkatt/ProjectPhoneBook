@@ -1,6 +1,7 @@
 # Phone book
 
 Small program that will let you add, edit, update, remove and view contacts by name and phone number and saves them in a database.
+It can be run as a console-app or a graphical interface.
 
 ## Requirements
 
@@ -31,6 +32,7 @@ This has now created a PhoneBook.jar in the newly made target-folder that will r
 
 ## Running the program
 
+Go to the target-folder.
 Run the program via the .jar file:
 
 ````
@@ -42,6 +44,10 @@ Run only with maven:
 mvn exec:java -Dexec.mainClass=main.Main
 ````
 ## How it works
+
+You are sent to a menu where you get two options, run as Console or Interface. Press 1 for console and 2 for graphical interface.
+
+## Console
 
 When started, a database is created in the ProjectPhoneBook-folder.
 You are sent to a simple console-menu with each option having a corresponding number.
@@ -61,6 +67,18 @@ Searching for number/s will return contacts whose phone number contains the numb
 To exit the program press 4.
 
 When exiting the program, all your contacts are saved.
+
+## GUI
+
+To add contact, press the "Add contact"-button and two textfields will show up. Enter name and phone number and press confirm.
+The new contact is now added to the table.
+
+Click on added contact and you will be able to update and delete said contact. Pressing "Update Contact" opens up two textfields
+with the contacts name and number, edit the entries and press confirm. Pressing "Delete" deletes the contact.
+
+To search for contact, type something into the search-bar and contacts matching the entry will show up.
+
+On exit all contacts will be automatically saved.
 
 ## Tests
 
