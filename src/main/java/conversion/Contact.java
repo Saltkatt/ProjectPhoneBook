@@ -1,7 +1,42 @@
 package conversion;
 
+/**
+ *Class representing a contact in the phone book
+ *It holds a name, phone number and an ID
+ *
+ * @author Daniella Norén
+ * @version 1 Build 2018
+ */
 public class Contact {
 
+
+    private String id;
+    private String name;
+    private String number;
+
+    /**
+     * Constructor for Contact
+     *
+     * @param id The ID of the contact
+     * @param name The name of the contact
+     * @param number The phone number of the contact
+     */
+    public Contact(String id, String name, String number){
+        if(name.matches("^[a-zåäöA-ZÅÄÖ]{1,30}$"))
+            this.name = name;
+        else
+            throw new IllegalArgumentException();
+        this.id = id;
+        if(number.matches("^[0-9]{1,20}$"))
+            this.number = number;
+        else
+            throw new IllegalArgumentException();
+    }
+
+    /**
+     * Gets the ID of the contact
+     * @return int ID of contact
+     */
     public String getName() {
         return name;
     }
@@ -11,7 +46,10 @@ public class Contact {
      * @param name The new name of the contact
      */
     public void setName(String name) {
-        this.name = name;
+        if(name.matches("^[a-zåäöA-ZÅÄÖ]{1,30}$"))
+            this.name = name;
+        else
+            throw new IllegalArgumentException();
     }
 
     /**
@@ -31,10 +69,11 @@ public class Contact {
      */
     @Override
     public String toString() {
-        return "Contact{" +
-                "name='" + name + '\'' +
-                ", number='" + number + '\'' +
-                '}';
+        return "Contact[" +
+                "Name=" + name +
+                ", Number=" + number +
+                ", ID="+id+
+                ']';
     }
 
     /**
@@ -42,22 +81,10 @@ public class Contact {
      * @param number New number of contact
      */
     public void setNumber(String number) {
-        this.number = number;
+        if(number.matches("^[0-9]{1,20}$"))
+            this.number = number;
+        else
+            throw new IllegalArgumentException();
     }
 
-    /**
-     * Gets the ID of the contact
-     * @return int ID of contact
-     */
-
-
-    private String id;
-    private String name;
-    private String number;
-
-    public Contact(String id, String name, String number){
-        this.id = id;
-        this.name = name;
-        this.number = number;
-    }
 }
