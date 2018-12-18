@@ -2,7 +2,9 @@ package conversion;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import userinteraction.UserOutput;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +19,7 @@ import java.util.List;
  * @author Daniella Norén
  * @version 1 Build 2018
  */
- public class ArrayToObservable {
+public class ArrayToObservable {
 
     /**
      * Static method that takes a List<String> from
@@ -31,12 +33,10 @@ import java.util.List;
     public static ObservableList<Contact> toContactObservable(List<String> list){
         ObservableList<Contact> contactList = FXCollections.observableArrayList();
         for(int i = 0; i < list.size(); i++){
-            Contact c;
-            String[] contacts = list.get(i).split("\t");
-            if(contacts.length == 3) {
-                c = new Contact(contacts[1], contacts[2]);
-                contactList.add(c);
-            }
+
+            String contact = list.get(i);
+            String[] contacts = contact.split("\t");
+            contactList.add(new Contact(contacts[0], contacts[1], contacts[2]));
         }
 
         return contactList;
