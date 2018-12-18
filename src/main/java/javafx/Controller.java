@@ -115,10 +115,12 @@ public class Controller {
     }
 
     public void updateContact(){
-        confirmUpdate = true;
-        viewTextFields(true);
-        nameField.setText(currentContact.getName());
-        numberField.setText(currentContact.getNumber());
+        if(currentContact != null){
+            confirmUpdate = true;
+            viewTextFields(true);
+            nameField.setText(currentContact.getName());
+            numberField.setText(currentContact.getNumber());
+        }
     }
 
     public void deleteContact(){
