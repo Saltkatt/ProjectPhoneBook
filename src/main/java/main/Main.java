@@ -44,7 +44,6 @@ public class Main extends Application {
         for(Contact c: Controller.searchBackup){
             Controller.db.getAddContact().addContact(c.getName(), c.getNumber());
         }
-        //PhoneBookMenus.newMenu().mainMenu();
     }
 
 }
