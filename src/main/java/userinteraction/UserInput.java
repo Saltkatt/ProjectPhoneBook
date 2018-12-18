@@ -15,7 +15,7 @@ public class UserInput {
     public static String name() {
         Scanner sc = new Scanner(System.in);
         String userInput;
-        while (!checkUserInputValidity(userInput = sc.nextLine().trim(), "[a-öA-Ö\\-\\s\\']{1,30}"));
+        while (!checkUserInputValidity(userInput = sc.nextLine().trim(), "^[a-zåäöA-ZÅÄÖ]{1,30}$"));
         return userInput;
     }
 
