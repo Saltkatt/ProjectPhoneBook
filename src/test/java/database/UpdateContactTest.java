@@ -33,6 +33,7 @@ class UpdateContactTest {
         db.getAddContact().addContact("Carl", "0305564738");
         db.getAddContact().addContact("Daniella", "0404659301");
         db.getAddContact().addContact("Elin", "0509384929");
+        db.getAddContact().addContact("Arne", "010101010");
 
     }
 
@@ -108,6 +109,19 @@ class UpdateContactTest {
 
         db.getUpdateContact().updateName(2, "1234");
         assertEquals(db.getSelectContact().selectAllContact().get(1), "2\tBertil\t0206122334");
+    }
+
+    /**
+     * Tests that number cannot be updated with letters.
+     *
+     * When testing updateNumberCantBeLetters it is expected that the number value cannot be replaced with letters.
+     */
+
+    @Test
+    void testUpdateNumberCantBeLetters() {
+
+        db.getUpdateContact().updatePhoneNumber(6, "phoneNumber");
+        assertEquals(db.getSelectContact().selectAllContact().get(5),"6\tArne\t010101010");
     }
 
 
