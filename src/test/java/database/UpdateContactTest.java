@@ -33,6 +33,7 @@ class UpdateContactTest {
         db.getAddContact().addContact("Carl", "0305564738");
         db.getAddContact().addContact("Daniella", "0404659301");
         db.getAddContact().addContact("Elin", "0509384929");
+        db.getAddContact().addContact("Arne", "010101010");
 
     }
 
@@ -68,6 +69,59 @@ class UpdateContactTest {
         db.getUpdateContact().updatePhoneNumber(3,"1234567890");
         assertEquals(db.getSelectContact().selectAllContact().get(2),"3\tCarl\t1234567890");
 
+    }
+
+    /**
+     * Tests that the name updated cannot be null.
+     *
+     * When testing updateNameCantBeNull it is expected that the null value not replace the current contact name.
+     */
+
+    @Test
+    void testUpdateNameCantBeNull() {
+
+        db.getUpdateContact().updateName(4, null);
+        assertEquals(db.getSelectContact().selectAllContact().get(3), "4\tDaniella\t0404659301");
+    }
+
+    /**
+     * Tests that the number updated cannot be null.
+     *
+     * When testing updateNumberCantBeNull it is expected that the null value not replace the current contact number.
+     */
+
+    @Test
+    void testUpdateNumberCantBeNull() {
+
+        db.getUpdateContact().updatePhoneNumber(5, null);
+        assertEquals(db.getSelectContact().selectAllContact().get(4), "5\tElin\t0509384929");
+
+    }
+
+    /**
+     * Tests that name cannot be updated with digits.
+     *
+     * When testing updateNameCantBeNumber it is expected that the name value cannot be replaced by digits.
+     */
+
+    @Test
+    void testUpdateNameCantBeDigits() {
+
+        db.getUpdateContact().updateName(2, "1234");
+        assertEquals(db.getSelectContact().selectAllContact().get(1), "2\tBertil\t0206122334");
+    }
+
+    /**
+     * Tests that number cannot be updated with letters.
+     *
+     * When testing updateNumberCantBeLetters it is expected that the number value cannot be replaced with letters.
+     */
+
+    @Test
+    void testUpdateNumberCantBeLetters() {
+
+        db.getUpdateContact().updatePhoneNumber(6, "phoneNumber");
+        assertEquals(db.getSelectContact().selectAllContact().get(5),"6\tArne\t010101010");
     }
 
 
