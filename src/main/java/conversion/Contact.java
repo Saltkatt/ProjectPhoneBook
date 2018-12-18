@@ -49,9 +49,7 @@ public class Contact {
      * Gets the ID of the contact
      * @return int ID of contact
      */
-    public String getContactID() {
-        return contactID;
-    }
+
 
     private String id;
     private String name;
