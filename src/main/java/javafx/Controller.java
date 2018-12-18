@@ -35,7 +35,7 @@ public class Controller {
 
     private Database db = new Database("my_contacts.db");
     private Contact currentContact;
-    private String whatToConfirm;
+    private String whatToConfirm = "";
 
     private ObservableList<Contact> observableContacts;
     public static List<Contact> storedContacts = new ArrayList<>();
@@ -84,7 +84,7 @@ public class Controller {
      * is possible to do with a database, the tableView needs to add or remove something to display updated information.
      */
     public void confirm(){
-        if(nameField.getText().matches("^[a-zA-Z]{1,30}$") && numberField.getText().matches("^[0-9]{1,20}$"))
+        if(nameField.getText().matches("^[a-zåäöA-ZÅÄÖ]{1,30}$") && numberField.getText().matches("^[0-9]{1,20}$"))
             if(currentContact != null && whatToConfirm.equals("update"))
                 db.getRemoveContact().removeContact(Integer.parseInt(currentContact.getId()));
         db.getAddContact().addContact(nameField.getText(), numberField.getText());

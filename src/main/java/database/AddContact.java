@@ -25,7 +25,7 @@ public class AddContact {
      */
     public void addContact(String name, String number) {
         if (name != null && number !=null &&
-                name.matches("^[a-zA-Z]{1,30}$") && number.matches("^[0-9]{1,20}$")) {
+                name.matches("^[a-zåäöA-ZÅÄÖ]{1,30}$") && number.matches("^[0-9]{1,20}$")) {
             String sql = "INSERT INTO contacts(name,number) VALUES(?,?)";
 
             try(Connection conn = DriverManager.getConnection("jdbc:sqlite:" + fileName);
