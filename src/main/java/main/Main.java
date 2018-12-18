@@ -17,7 +17,15 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("sample.fxml"));
         Parent root = loader.load();
 
-public class Main {
+        Controller controller = loader.getController();
+        controller.init();
+        controller.setStage();
+
+        primaryStage.setTitle("PhoneBook");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.setResizable(false);
+        primaryStage.show();
+    }
 
     public static void main(String[] args) {
         launch(args);
