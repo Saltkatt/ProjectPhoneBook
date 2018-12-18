@@ -97,6 +97,19 @@ class UpdateContactTest {
 
     }
 
+    /**
+     * Tests that name cannot be updated with digits.
+     *
+     * When testing updateNameCantBeNumber it is expected that the name value cannot be replaced by digits.
+     */
+
+    @Test
+    void testUpdateNameCantBeDigits() {
+
+        db.getUpdateContact().updateName(2, "1234");
+        assertEquals(db.getSelectContact().selectAllContact().get(1), "2\tBertil\t0206122334");
+    }
+
 
     /**
      * Removes testing database after the tests.
