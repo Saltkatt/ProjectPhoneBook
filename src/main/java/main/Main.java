@@ -8,6 +8,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import userinteraction.MenuOption;
+import userinteraction.MenuReader;
+import userinteraction.PhoneBookMenus;
+import userinteraction.UserInput;
+
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main extends Application {
 
@@ -28,7 +36,11 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        List<MenuOption> menu = new ArrayList<>();
+        menu.add(new MenuOption("1. Console version", () -> PhoneBookMenus.newMenu().mainMenu()));
+        menu.add(new MenuOption("2. Interface version", () -> launch(args)));
+        MenuReader.printMenu(menu);
+        MenuReader.executeMenu(menu, UserInput.chooseFromList(menu)-1);
         for(Contact c: Controller.searchBackup){
             Controller.db.getAddContact().addContact(c.getName(), c.getNumber());
         }

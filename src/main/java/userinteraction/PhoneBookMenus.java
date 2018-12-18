@@ -57,7 +57,7 @@ public class PhoneBookMenus {
             mainMenu();
         }));
         mainMenuList.add(new MenuOption("3. Search contact", () -> searchMenu()));
-        mainMenuList.add(new MenuOption("4. Exit", () -> {}));
+        mainMenuList.add(new MenuOption("4. Exit", () -> {System.exit(0);}));
 
     }
     /**
