@@ -13,7 +13,6 @@ import userinteraction.MenuReader;
 import userinteraction.PhoneBookMenus;
 import userinteraction.UserInput;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +40,8 @@ public class Main extends Application {
         menu.add(new MenuOption("2. Interface version", () -> launch(args)));
         MenuReader.printMenu(menu);
         MenuReader.executeMenu(menu, UserInput.chooseFromList(menu)-1);
-        for(Contact c: Controller.searchBackup){
-            Controller.db.getAddContact().addContact(c.getName(), c.getNumber());
+        for(Contact c: Controller.storedContacts){
+            new Database("my_contacts.db").getAddContact().addContact(c.getName(), c.getNumber());
         }
     }
 
