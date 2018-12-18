@@ -49,26 +49,19 @@ public class UpdateContact {
      */
     public void updatePhoneNumber(int contact_id, String number) {
 
-        //SQL-statement updates contact number.
-        String updatePhoneNumber = "UPDATE contacts SET number= ? WHERE contact_id= ?";
+        if (number != null && number.matches("^[0-9]{1,20}$")) {
+            //SQL-statement updates contact number.
+            String updatePhoneNumber = "UPDATE contacts SET number= ? WHERE contact_id= ?";
 
-        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" + fileName);
-             PreparedStatement pstmt = con.prepareStatement(updatePhoneNumber)) {
-            pstmt.setString(1, number);
-            pstmt.setInt(2, contact_id);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            try (Connection con = DriverManager.getConnection("jdbc:sqlite:" + fileName);
+                 PreparedStatement pstmt = con.prepareStatement(updatePhoneNumber)) {
+                pstmt.setString(1, number);
+                pstmt.setInt(2, contact_id);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
         }
-
-
-
-
-
-
-
-
-
 
 
     }
