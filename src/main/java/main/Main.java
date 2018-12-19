@@ -18,8 +18,6 @@ import java.util.List;
 
 /**
  * The main class that starts the application.
- *
- * @author Ida and Daniella
  */
 public class Main extends Application {
 
