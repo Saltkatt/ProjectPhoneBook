@@ -52,7 +52,6 @@ class SelectContactTest {
                 "3\tCarl\t0305564738, " +
                 "4\tDaniella\t0404659301, " +
                 "5\tElin\t0509384929]");
-
     }
 
     /**
@@ -75,6 +74,35 @@ class SelectContactTest {
 
         assertEquals(db.getSelectContact().selectNumberContact("0206122334").toString(),"[2\tBertil\t0206122334]");
 
+    }
+
+    /**
+     *Tests that search function name LIKE% finds contacts with the letter searched for.
+     *
+     * When testing selectNameLike it is expected that the first test returns all contacts containing the letter E.
+     * The second test is expected to return zero contacts as none of the names contains the letter Y.
+     */
+
+    @Test
+    void testSelectNameLike() {
+
+        assertEquals(db.getSelectContact().selectNameContact("E").toString(),"[2\tBertil\t0206122334, 4\tDaniella\t0404659301, 5\tElin\t0509384929]");
+        assertEquals(db.getSelectContact().selectNameContact("Y").toString(), "[]");
+        assertEquals(db.getSelectContact().selectNameContact("Ar").toString(), "[3\tCarl\t0305564738]");
+    }
+
+    /**
+     *Tests that search function number LIKE% finds contacts with the number searched for.
+     *
+     * When testing selectNumberLike it is expected that the program returns the contacts that contain the number searched for.
+     */
+    @Test
+    void testSelectNumberLike() {
+
+        assertEquals(db.getSelectContact().selectNumberContact("9").toString(), "[4\tDaniella\t0404659301, 5\tElin\t0509384929]");
+        assertEquals(db.getSelectContact().selectNumberContact("7").toString(), "[1\tAnton\t0107433221, 3\tCarl\t0305564738]");
+        assertEquals(db.getSelectContact().selectNumberContact("07").toString(), "[1\tAnton\t0107433221]");
+        assertEquals(db.getSelectContact().selectNumberContact("0707").toString(), "[]");
     }
 
     /**
