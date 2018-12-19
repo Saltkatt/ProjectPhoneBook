@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 /**
  * This class removes a contact from the database using the contact_id.
- * 
+ *
  * @author Elin Sexton
  */
 
@@ -21,7 +21,7 @@ public class RemoveContact {
      * @param fileName of the database.
      */
 
-    public RemoveContact(String fileName){
+    public RemoveContact(String fileName) {
         this.fileName = fileName;
     }
 
@@ -31,7 +31,7 @@ public class RemoveContact {
      * @param contact_id of the contact.
      */
 
-    public void removeContact(int contact_id){
+    public void removeContact(int contact_id) {
         //String SQL-statement to delete contact.
         String removeSQL = "DELETE FROM contacts WHERE contact_id= ?";
 
