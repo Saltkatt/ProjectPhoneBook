@@ -41,7 +41,7 @@ public class Controller {
     public static List<Contact> storedContacts = new ArrayList<>();
 
     /**
-     * This method/button gives the user fields where they can enter information about their contact and let.
+     * This method/button gives the user fields where they can enter information about their contact.
      *
      * "viewTextFields(true)" displays the fields where the user can enter information.
      * "nameField.setText("")" makes sure the fields are empty since the user wants to add a new contact.

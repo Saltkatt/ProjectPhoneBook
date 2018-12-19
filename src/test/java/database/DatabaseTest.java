@@ -37,7 +37,7 @@ public class DatabaseTest {
     }
 
     /**
-     * Deletes the database so every time this test class runs it setup new ones which assures an old database can't
+     * Deletes the database so every time this test class runs it setup a new one which assures an old database can't
      * cause bugs which makes the test more reliable.
      */
     @AfterAll
