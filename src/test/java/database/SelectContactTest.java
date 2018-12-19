@@ -52,7 +52,6 @@ class SelectContactTest {
                 "3\tCarl\t0305564738, " +
                 "4\tDaniella\t0404659301, " +
                 "5\tElin\t0509384929]");
-
     }
 
     /**
@@ -89,6 +88,7 @@ class SelectContactTest {
 
         assertEquals(db.getSelectContact().selectNameContact("E").toString(),"[2\tBertil\t0206122334, 4\tDaniella\t0404659301, 5\tElin\t0509384929]");
         assertEquals(db.getSelectContact().selectNameContact("Y").toString(), "[]");
+        assertEquals(db.getSelectContact().selectNameContact("Ar").toString(), "[3\tCarl\t0305564738]");
     }
 
     /**
