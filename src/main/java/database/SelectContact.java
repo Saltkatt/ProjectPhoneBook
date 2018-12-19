@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * This class selects contacts from the database.
+ *
  * @author Elin Sexton
  */
 
@@ -13,12 +14,14 @@ public class SelectContact {
 
     private String fileName;
 
-    public SelectContact(String fileName){
+    public SelectContact(String fileName) {
         this.fileName = fileName;
     }
 
     /**
-     * Selects all contacts from the database and prints the list.
+     * Selects all contacts from the database via SQL-statement and prints the list.
+     *
+     * @return contacts ArrayList of the selected contacts.
      */
     public List<String> selectAllContact() {
 
@@ -29,15 +32,15 @@ public class SelectContact {
         List<String> contacts = new ArrayList<>();
 
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:" + fileName);
-            Statement stmt  = con.createStatement();
-            ResultSet rs    = stmt.executeQuery(selectAll)){
+             Statement stmt = con.createStatement();
+             ResultSet rs = stmt.executeQuery(selectAll)) {
 
-                //Adds contact_id, name and number to the list contacts.
-                while (rs.next()) {
-                    contacts.add(rs.getInt("contact_id") + "\t" +
-                            rs.getString("name") + "\t" +
-                            rs.getString("number"));
-                }
+            //Adds contact_id, name and number to the list contacts.
+            while (rs.next()) {
+                contacts.add(rs.getInt("contact_id") + "\t" +
+                        rs.getString("name") + "\t" +
+                        rs.getString("number"));
+            }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -46,10 +49,13 @@ public class SelectContact {
     }
 
     /**
-     * Selects a contact based on the input name.
+     * Selects a contact via the SQL-statement based on the name input received.
+     * Creates an Arraylist of the contacts selected from the table.
+     *
      * @param name of the contact.
+     * @return contactName ArrayList of the selected contacts.
      */
-    public List<String> selectNameContact(String name){
+    public List<String> selectNameContact(String name) {
 
         //SQL-statement selects contact based on name.
         String selectName = "SELECT contact_id, name, number FROM contacts WHERE name LIKE ?";
@@ -58,13 +64,13 @@ public class SelectContact {
         List<String> contactName = new ArrayList<>();
 
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:" + fileName);
-             PreparedStatement pstmt  = con.prepareStatement(selectName)){
-            pstmt.setString(1,"%" + name + "%");
-            ResultSet rs  = pstmt.executeQuery();
+             PreparedStatement pstmt = con.prepareStatement(selectName)) {
+            pstmt.setString(1, "%" + name + "%");
+            ResultSet rs = pstmt.executeQuery();
 
-            ////Adds contact_id, name and number to the list contactName.
+            //Adds contact_id, name and number to the list contactName.
             while (rs.next()) {
-                contactName.add(rs.getInt("contact_id") +  "\t" +
+                contactName.add(rs.getInt("contact_id") + "\t" +
                         rs.getString("name") + "\t" +
                         rs.getString("number"));
             }
@@ -76,10 +82,14 @@ public class SelectContact {
     }
 
     /**
-     * Selects a contact based on the input number.
+     * Selects a contact via the SQL-statement based on the number input received.
+     * Creates an Arraylist of the contacts selected from the table.
+     *
+     *
      * @param number of the contact.
+     * @return contactNumber ArrayList of the selected contacts.
      */
-    public List<String> selectNumberContact(String number){
+    public List<String> selectNumberContact(String number) {
 
         //SQL-statement selects contact based on number.
         String selectNumber = "SELECT contact_id, name, number FROM contacts WHERE number LIKE ?";
@@ -88,13 +98,13 @@ public class SelectContact {
         List<String> contactNumber = new ArrayList<>();
 
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:" + fileName);
-             PreparedStatement pstmt  = con.prepareStatement(selectNumber)){
-            pstmt.setString(1,"%" + number + "%");
-            ResultSet rs  = pstmt.executeQuery();
+             PreparedStatement pstmt = con.prepareStatement(selectNumber)) {
+            pstmt.setString(1, "%" + number + "%");
+            ResultSet rs = pstmt.executeQuery();
 
-            ////Adds contact_id, name and number to the list contactNumber.
+            //Adds contact_id, name and number to the list contactNumber.
             while (rs.next()) {
-                contactNumber.add (rs.getInt("contact_id") +  "\t" +
+                contactNumber.add(rs.getInt("contact_id") + "\t" +
                         rs.getString("name") + "\t" +
                         rs.getString("number"));
             }
