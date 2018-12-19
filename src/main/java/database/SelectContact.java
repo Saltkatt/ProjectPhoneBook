@@ -14,6 +14,12 @@ public class SelectContact {
 
     private String fileName;
 
+    /**
+     * Constructor allowing connection to Database.
+     *
+     * @param fileName of the database.
+     */
+
     public SelectContact(String fileName) {
         this.fileName = fileName;
     }
