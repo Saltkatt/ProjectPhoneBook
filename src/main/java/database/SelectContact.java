@@ -15,7 +15,7 @@ public class SelectContact {
     private String fileName;
 
     /**
-     * Constructor allowing connection to Database.
+     * Constructor.
      *
      * @param fileName of the database.
      */

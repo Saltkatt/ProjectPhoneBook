@@ -16,7 +16,7 @@ public class RemoveContact {
     private String fileName;
 
     /**
-     * Constructor allowing connection to Database.
+     * Constructor.
      *
      * @param fileName of the database.
      */

@@ -18,7 +18,7 @@ public class UpdateContact {
     private String fileName;
 
     /**
-     * Constructor allowing connection to Database.
+     * Constructor.
      *
      * @param fileName of the database.
      */
