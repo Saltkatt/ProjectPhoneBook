@@ -78,6 +78,20 @@ class SelectContactTest {
     }
 
     /**
+     *Tests that search function name LIKE% finds contacts with the letter searched for.
+     *
+     * When testing selectNameLike it is expected that the first test returns all contacts containing the letter E.
+     * The second test is expected to return zero contacts as none of the names contains the letter Y.
+     */
+
+    @Test
+    void testSelectNameLike() {
+
+        assertEquals(db.getSelectContact().selectNameContact("E").toString(),"[2\tBertil\t0206122334, 4\tDaniella\t0404659301, 5\tElin\t0509384929]");
+        assertEquals(db.getSelectContact().selectNameContact("Y").toString(), "[]");
+    }
+
+    /**
      *  Removes testing database after the tests have run.
      */
     @AfterAll
