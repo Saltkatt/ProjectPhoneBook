@@ -7,22 +7,33 @@ import java.sql.SQLException;
 
 /**
  * This class updates contacts in the database.
+ *
  * @author Elin Sexton
  */
 
 public class UpdateContact {
 
-    /**
-     * Updates the name of the row selected.
-     * @param contact_id of the contact.
-     * @param name of the contact.
-     */
+
 
     private String fileName;
 
-    public UpdateContact(String fileName){
+    /**
+     * Constructor.
+     *
+     * @param fileName of the database.
+     */
+
+    public UpdateContact(String fileName) {
         this.fileName = fileName;
     }
+
+    /**
+     * Updates the name of the contact selected via SQL-statement.
+     * if-statement ensures that name input falls within parameters.
+     *
+     * @param contact_id of the contact.
+     * @param name of the contact.
+     */
 
     public void updateName(int contact_id, String name) {
 
@@ -43,9 +54,11 @@ public class UpdateContact {
     }
 
     /**
-     * Updates the number of the contact selected.
+     * Updates the number of the contact selected via SQL-statement.
+     * if-statement ensures that number input falls within parameters.
+     *
      * @param contact_id of the contact.
-     * @param number of the contact.
+     * @param number     of the contact.
      */
     public void updatePhoneNumber(int contact_id, String number) {
 
