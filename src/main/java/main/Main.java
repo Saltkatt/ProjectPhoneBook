@@ -16,8 +16,14 @@ import userinteraction.UserInput;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The main class that starts the application.
+ */
 public class Main extends Application {
 
+    /**
+     * Sets up some settings if the program is chosen to run as an javaFX application so it's able to.
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -34,6 +40,10 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Prints out an option in the console when launching the program whether the user wants to run the program in
+     * the console or javaFX and starts the application based on the selected option.
+     */
     public static void main(String[] args) {
         List<MenuOption> menu = new ArrayList<>();
         menu.add(new MenuOption("1. Console version", () -> PhoneBookMenus.newMenu().mainMenu()));
